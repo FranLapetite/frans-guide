@@ -1,0 +1,178 @@
+/* --- Global Variables (Root) --- */
+/* --- Warm Boutique Parisian Variables (Romantic/Elegant) --- */
+:root {
+    /* Boutique Paris Hues */
+    --color-background: #F3E9DC;       /* Soft beige, warm and inviting */
+    --color-primary-light: #F3E9DC;    /* For sections needing extra lightness */
+    --color-text-dark: #2E2A26;        /* Softer, deep brown-charcoal */
+    --color-navy: #1E2A5E;             /* Deep Parisian blue */
+    --color-accent: #E9B4A8;           /* Rosé pink accent */
+    --color-cta: #D6A01D;              /* Golden amber for CTAs */
+
+    /* Boutique Dividers & Scrollbar */
+    --color-divider: #E9B4A8;          /* Rosé pink for luxury dividers */
+    --color-scrollbar-thumb: #CBB89D;  /* Warm taupe for scrollbar thumb */
+    --color-scrollbar-track: #F3E9DC;  /* Soft beige for scrollbar track */
+
+    /* Typography */
+    --font-primary: 'Playfair Display', serif;      /* Luxurious serif */
+    --font-body: 'Poppins', sans-serif;             /* Modern, soft sans */
+}
+
+/* Add these imports to your main CSS file (you may need to link these in your index.html/App.js for a proper build): */
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap'); */
+
+/* --- Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text-dark);
+    background: linear-gradient(120deg, #F3E9DC 0%, #F9E8E1 100%);
+    min-height: 100vh;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.025em;
+    padding: 0 5%;
+    box-shadow: 0 0 32px 0 rgba(233,180,168,0.06) inset;
+}
+
+/* Scrollbar Customization */
+body::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--color-scrollbar-track);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb);
+    border-radius: 10px;
+    border: 2px solid var(--color-scrollbar-track);
+}
+
+/* Headers */
+/* Boutique Typography */
+h1, h2, h3 {
+    font-family: var(--font-primary);
+    color: var(--color-navy);
+    letter-spacing: 0.06em;
+    margin-bottom: 0.7em;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 0 2px 10px rgba(233,180,168,0.08);
+}
+
+/* Responsive Typography Scaling with Luxury */
+h1 {
+    font-size: 3.2rem;
+    letter-spacing: 0.08em;
+    line-height: 1.13;
+}
+
+h2 {
+    font-size: 2.4rem;
+    letter-spacing: 0.07em;
+}
+
+h3 {
+    font-size: 1.7rem;
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.1rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    h3 {
+        font-size: 1.15rem;
+    }
+}
+
+/* Boutique Links */
+a {
+    text-decoration: none;
+    color: var(--color-navy);
+    transition: color 0.2s cubic-bezier(.4,0,.2,1), letter-spacing 0.3s cubic-bezier(.4,0,.2,1);
+    letter-spacing: 0.03em;
+    font-weight: 500;
+}
+a:hover {
+    color: var(--color-accent);
+    letter-spacing: 0.09em;
+    text-shadow: 0 2px 10px rgba(233,180,168,0.12);
+}
+
+/* Boutique Section Styling */
+section {
+    padding: 90px 0 90px 0;
+    background: linear-gradient(120deg, rgba(233,180,168,0.07) 0%, rgba(246,223,206,0.10) 100%);
+    border-radius: 28px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 32px 0 rgba(30,42,94,0.03), 0 2px 28px 0 rgba(214,160,29,0.06) inset;
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: -40px; right: -40px; bottom: -40px;
+    z-index: 0;
+    background: radial-gradient(ellipse 110% 70% at 80% 10%, rgba(233,180,168,0.13) 0%, transparent 90%);
+    pointer-events: none;
+}
+
+/* Boutique Divider Style */
+.divider-luxury, .section-divider, hr.divider-luxury {
+    border: none;
+    border-top: 2.5px solid var(--color-divider);
+    margin: 2.8em auto;
+    opacity: 0.72;
+    width: 80px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--color-divider) 0%, var(--color-cta) 100%);
+}
+
+/* Boutique Fade-in Animation Classes */
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(.53,.01,.46,1.02) forwards;
+    transform: translateY(28px);
+    will-change: opacity, transform;
+}
+.fade-in-delay {
+    animation-delay: 0.5s;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(32px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Soft Inner Glow for Cards/Sections */
+.inner-glow {
+    box-shadow: 0 0 0 10px rgba(233,180,168,0.08) inset;
+}
+
+/* Subtle Organic Gradient Texture */
+.organic-gradient {
+    background: radial-gradient(circle at 80% 10%, rgba(233,180,168,0.13) 0%, transparent 70%);
+}
