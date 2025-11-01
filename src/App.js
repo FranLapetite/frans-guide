@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 // --- Import component styles ---
 import './styles/Header.css';
@@ -189,7 +189,7 @@ export default function App() {
 
       {/* --- Main App Container with Fade-in and warm beige background --- */}
       <div className="FransGuideApp fade-in" style={{ backgroundColor: '#F3E9DC' }}>
-        <BrowserRouter>
+        <Router>
           {/* --- Header and Language Switcher --- */}
           <Header
             language={language}
@@ -263,7 +263,7 @@ export default function App() {
               ↑
             </button>
           )}
-        </BrowserRouter>
+        </Router>
       </div>
       {/* --- Fade-in CSS and body background texture/gradient --- */}
       <style>{`
