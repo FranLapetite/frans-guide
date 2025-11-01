@@ -15,8 +15,8 @@ function Footer({ language }) {
           to { opacity: 1; transform: translateY(0); }
         }
         .site-footer {
-          background: #ffffff;
-          color: #1E2A5E;
+          background: linear-gradient(180deg, #F8F2EC 0%, #F1E4D6 100%);
+          color: #3B2F22;
           padding: 2rem 1.5rem;
           font-family: 'Poppins', sans-serif;
           text-align: center;
@@ -24,16 +24,16 @@ function Footer({ language }) {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          border-top: 1px solid rgba(30, 42, 94, 0.1);
+          border-top: 1px solid rgba(59, 47, 34, 0.1);
         }
         .site-footer h2, .site-footer h3, .site-footer h4 {
           font-family: 'Playfair Display', serif;
-          color: #1E2A5E;
+          color: #3B2F22;
         }
         .footer-divider {
           width: 60px;
           height: 3px;
-          background: #1E2A5E;
+          background: #3B2F22;
           margin: 0 auto 1.5rem auto;
           border-radius: 2px;
         }
@@ -45,7 +45,7 @@ function Footer({ language }) {
           flex-wrap: wrap;
         }
         .footer-links a {
-          color: #1E2A5E;
+          color: #3B2F22;
           text-decoration: none;
           font-weight: 500;
           position: relative;
@@ -60,12 +60,12 @@ function Footer({ language }) {
           height: 2px;
           left: 0;
           bottom: 0;
-          background: #1E2A5E;
+          background: #3B2F22;
           transition: width 0.4s ease;
           border-radius: 1px;
         }
         .footer-links a:hover {
-          color: #14204B;
+          color: #2C241A;
         }
         .footer-links a:hover::after {
           width: 100%;
@@ -73,15 +73,15 @@ function Footer({ language }) {
         .copyright {
           font-size: 0.9rem;
           margin-bottom: 1rem;
-          color: #1E2A5E;
+          color: #3B2F22;
           font-family: 'Poppins', sans-serif;
         }
         .signature {
-          font-size: 0.9rem;
-          color: #1E2A5E;
           font-family: 'Playfair Display', serif;
-          margin-top: 0.5rem;
           font-style: italic;
+          color: #3B2F22;
+          font-size: 1rem;
+          margin-top: 0.5rem;
         }
         .social-links {
           display: flex;
@@ -91,7 +91,7 @@ function Footer({ language }) {
           align-items: center;
         }
         .social-links a {
-          color: #1E2A5E;
+          color: #3B2F22;
           text-decoration: none;
           display: flex;
           align-items: center;
@@ -102,14 +102,15 @@ function Footer({ language }) {
         }
         .social-links a:hover {
           filter: brightness(1.1);
-          color: #1E2A5E;
+          color: #3B2F22;
         }
       `}</style>
       <footer className="site-footer fade-in">
         <div className="footer-divider" />
         <div className="footer-links">
-          <a href="#tours">Tours</a>
-          <a href="#about">About</a>
+          <a href="/tours">Tours</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
           <a href="/mentions-legales">Mentions Légales (FR)</a>
           <a href="/cgv">CGV (Terms)</a>
         </div>
@@ -121,7 +122,7 @@ function Footer({ language }) {
             <span role="img" aria-hidden="true">📸</span> Instagram (@fran.traveling)
           </a>
         </div>
-        <p className="signature">Made with ❤️ in Paris</p>
+        <p className="signature">✨ Crafted with love in Paris by Fran ✨</p>
       </footer>
     </>
   );

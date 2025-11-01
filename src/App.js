@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // --- Import component styles ---
 import './styles/Header.css';
@@ -7,10 +8,13 @@ import './index.css';
 // --- Import components ---
 import Header from './components/Header';
 import Hero from './components/Hero';
-import ToursSection from './components/ToursSection';
+import TourPage from './components/TourPage';
 import About from './components/About';
 import ContactSection from './components/ContactSection';
 import PageFooter from './components/Footer';
+import AboutPage from './components/AboutPage';
+import MentionsLegales from './components/MentionsLegales';
+import CGV from './components/CGV';
 
 // --- Multi-language content dictionary (kept and unchanged except for small fixes) ---
 const TEXTS = {
@@ -185,75 +189,81 @@ export default function App() {
 
       {/* --- Main App Container with Fade-in and warm beige background --- */}
       <div className="FransGuideApp fade-in" style={{ backgroundColor: '#F3E9DC' }}>
-
-        {/* --- Header and Language Switcher --- */}
-        <Header
-          language={language}
-          switchLanguage={switchLanguage}
-        />
-
-        {/* --- Main Content --- */}
-        <main>
-          {/* --- Hero Section --- */}
-          <Hero
-            title={content.heroTitle}
-            subtitle={content.heroSubtitle}
-            cta={content.cta}
-            heroImage={heroImages[language]}
+        <BrowserRouter>
+          {/* --- Header and Language Switcher --- */}
+          <Header
+            language={language}
+            switchLanguage={switchLanguage}
           />
 
-          {/* --- Tours Section --- */}
-          <ToursSection content={content} />
+          <Routes>
+            <Route path="/" element={
+              <>
+                {/* --- Hero Section --- */}
+                <Hero
+                  title={content.heroTitle}
+                  subtitle={content.heroSubtitle}
+                  cta={content.cta}
+                  heroImage={heroImages[language]}
+                />
 
-          {/* --- About Fran Section --- */}
-          <About content={content} />
+                {/* --- About Fran Section --- */}
+                <About content={content} />
 
-          {/* --- Contact Section --- */}
-          <ContactSection content={content} />
-        </main>
+                {/* --- Contact Section --- */}
+                <ContactSection content={content} />
+              </>
+            } />
+            <Route path="/tours" element={<TourPage content={content} />} />
+            <Route path="/about" element={<AboutPage content={content} />} />
+            <Route path="/contact" element={<ContactSection content={content} />} />
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="/cgv" element={<CGV />} />
+          </Routes>
 
-        {/* --- Footer --- */}
-        <PageFooter content={content} />
+          {/* --- Footer --- */}
+          <PageFooter content={content} />
 
-        {/* --- Scroll-to-Top Button --- */}
-        {showScrollTop && (
-          <button
-            ref={scrollButtonRef}
-            className="scroll-to-top"
-            onClick={scrollToTop}
-            aria-label="Scroll to top"
-            style={{
-              position: 'fixed',
-              bottom: '2rem',
-              right: '2rem',
-              zIndex: 1000,
-              background: 'linear-gradient(135deg, #D4AF7F, #F7C59F)', // gold-rosé gradient
-              border: 'none',
-              borderRadius: '50%',
-              width: '48px',
-              height: '48px',
-              color: '#5B3A00',
-              fontSize: '2rem',
-              boxShadow: '0 4px 12px rgba(212,175,127,0.6)',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              userSelect: 'none',
-            }}
-            onMouseEnter={e => {
-              e.currentTarget.style.transform = 'translateY(-4px)';
-              e.currentTarget.style.boxShadow = '0 8px 20px rgba(212,175,127,0.9), 0 0 8px 2px rgba(247,197,159,0.7)';
-            }}
-            onMouseLeave={e => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(212,175,127,0.6)';
-            }}
-          >
-            ↑
-          </button>
-        )}
+          {/* --- Scroll-to-Top Button --- */}
+          {showScrollTop && (
+            <button
+              ref={scrollButtonRef}
+              className="scroll-to-top"
+              onClick={scrollToTop}
+              aria-label="Scroll to top"
+              style={{
+                position: 'fixed',
+                bottom: '2rem',
+                right: '2rem',
+                zIndex: 1000,
+                background: 'linear-gradient(135deg, #D4AF7F, #F7C59F)', // gold-rosé gradient
+                border: 'none',
+                borderRadius: '50%',
+                width: '48px',
+                height: '48px',
+                color: '#5B3A00',
+                fontSize: '2rem',
+                boxShadow: '0 4px 12px rgba(212,175,127,0.6)',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                userSelect: 'none',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = 'translateY(-4px)';
+                e.currentTarget.style.boxShadow = '0 8px 20px rgba(212,175,127,0.9), 0 0 8px 2px rgba(247,197,159,0.7)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(212,175,127,0.6)';
+              }}
+            >
+              ↑
+            </button>
+          )}
+        </BrowserRouter>
       </div>
       {/* --- Fade-in CSS and body background texture/gradient --- */}
       <style>{`

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function ToursSection({ content }) {
+  const [selectedTour, setSelectedTour] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
   const mockTours = [
     {
       title: "Eiffel Secrets — From the Streets to the Summit",
@@ -27,6 +30,22 @@ export default function ToursSection({ content }) {
       image: "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?auto=format&fit=crop&w=1470&q=80",
     },
   ];
+
+  const openModal = (tour) => {
+    setSelectedTour(tour);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedTour(null);
+  };
+
+  const handleOverlayClick = (e) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
 
   return (
     <section
@@ -154,6 +173,11 @@ export default function ToursSection({ content }) {
                   textDecoration: "none",
                   boxShadow: "0 2px 6px rgba(30,42,94,0.3)",
                   transition: "background-color 0.3s ease",
+                  cursor: "pointer",
+                }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  openModal(tour);
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "#14204B";
@@ -185,6 +209,137 @@ export default function ToursSection({ content }) {
       >
         Integrated booking calendar and full details coming soon!
       </p>
+
+      {showModal && selectedTour && (
+        <div
+          onClick={handleOverlayClick}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "rgba(0, 0, 0, 0.6)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+            animation: "fadeIn 0.3s ease forwards",
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "#ffffff",
+              borderRadius: "12px",
+              boxShadow: "0 8px 24px rgba(30,42,94,0.2)",
+              maxWidth: "700px",
+              width: "90%",
+              maxHeight: "90vh",
+              overflowY: "auto",
+              position: "relative",
+              padding: "2rem",
+              fontFamily: "'Poppins', sans-serif",
+              color: "#1E2A5E",
+              animation: "fadeIn 0.3s ease forwards",
+            }}
+          >
+            <button
+              onClick={closeModal}
+              aria-label="Close modal"
+              style={{
+                position: "absolute",
+                top: "1rem",
+                right: "1rem",
+                background: "none",
+                border: "none",
+                fontSize: "2rem",
+                fontWeight: "700",
+                color: "#1E2A5E",
+                cursor: "pointer",
+                lineHeight: "1",
+                padding: 0,
+                userSelect: "none",
+              }}
+            >
+              ×
+            </button>
+            <img
+              src={selectedTour.image}
+              alt={selectedTour.title}
+              style={{
+                width: "100%",
+                maxHeight: "300px",
+                objectFit: "cover",
+                borderRadius: "8px",
+                marginBottom: "1.5rem",
+              }}
+            />
+            <h3
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontWeight: "700",
+                fontSize: "2rem",
+                marginBottom: "1rem",
+                color: "#1E2A5E",
+              }}
+            >
+              {selectedTour.title}
+            </h3>
+            <p
+              style={{
+                fontWeight: "600",
+                fontSize: "1rem",
+                marginBottom: "0.5rem",
+                color: "#1E2A5E",
+              }}
+            >
+              Duration: {selectedTour.duration} | Price: {selectedTour.price}
+            </p>
+            <p
+              style={{
+                fontSize: "1rem",
+                lineHeight: "1.6",
+                marginBottom: "2rem",
+                color: "#1E2A5E",
+              }}
+            >
+              {selectedTour.description}
+            </p>
+            <button
+              style={{
+                padding: "12px 28px",
+                fontSize: "1rem",
+                fontWeight: "600",
+                backgroundColor: "#1E2A5E",
+                color: "#ffffff",
+                borderRadius: "6px",
+                border: "none",
+                cursor: "pointer",
+                boxShadow: "0 2px 6px rgba(30,42,94,0.3)",
+                transition: "background-color 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "#14204B";
+                e.currentTarget.style.boxShadow = "0 3px 8px rgba(20,32,75,0.5)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "#1E2A5E";
+                e.currentTarget.style.boxShadow = "0 2px 6px rgba(30,42,94,0.3)";
+              }}
+              onClick={() => alert('Booking functionality coming soon!')}
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes fadeIn {
+          from {opacity: 0;}
+          to {opacity: 1;}
+        }
+      `}</style>
     </section>
   );
 }

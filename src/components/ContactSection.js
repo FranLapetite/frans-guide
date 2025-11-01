@@ -1,3 +1,4 @@
+import emailjs from 'emailjs-com';
 import React, { useState } from 'react';
 
 const tourOptions = [
@@ -45,26 +46,48 @@ function ContactSection() {
     setSubmitting(true);
     setError('');
     setSuccess('');
-    setTimeout(() => {
-      setSubmitting(false);
-      setSuccess('Thank you for reaching out! I will get back to you soon.');
-      setForm({ name: '', email: '', tour: '', message: '' });
-    }, 1200);
+    const templateParams = {
+      name: form.name,
+      email: form.email,
+      tour: form.tour || 'No tour selected',
+      message: form.message,
+      time: new Date().toLocaleString('en-GB', { dateStyle: 'full', timeStyle: 'short' }),
+    };
+    emailjs
+      .send(
+        'service_vq7gy4f',
+        'template_tcbtep4',
+        templateParams,
+        '4w8bZ_pf2uI9qJWPj'
+      )
+      .then(
+        () => {
+          setSubmitting(false);
+          setSuccess('Thank you for reaching out! I will get back to you soon.');
+          setForm({ name: '', email: '', tour: '', message: '' });
+        },
+        (err) => {
+          setSubmitting(false);
+          setError('Sorry, there was a problem sending your message. Please try again later or contact me via Instagram.');
+        }
+      );
   };
 
   return (
     <section
-      id="contact"
-      className="contact-section"
+      className="contact-page"
       style={{
-        background: 'linear-gradient(180deg, #ffffff 0%, #f9f7f4 100%)',
+        background: 'linear-gradient(180deg, #ffffff 0%, #f9f3ed 100%)',
         minHeight: '100vh',
+        width: '100%',
         display: 'flex',
-        flexDirection: 'column',
         alignItems: 'center',
-        padding: '4rem 1.5rem',
+        justifyContent: 'center',
+        padding: '2rem 1.5rem 4rem',
         fontFamily: "'Poppins', sans-serif",
         color: '#4a5875',
+        flexDirection: 'column',
+        boxSizing: 'border-box',
       }}
     >
       <style>{`
@@ -78,13 +101,22 @@ function ContactSection() {
             transform: translateY(0);
           }
         }
+        h1.page-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 2.4rem;
+          color: #1E2A5E;
+          margin-bottom: 1.5rem;
+          font-weight: 700;
+          text-align: center;
+          user-select: none;
+        }
         .form-container {
           background: #ffffff;
           border-radius: 14px;
           box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-          max-width: 600px;
+          max-width: 520px;
           width: 100%;
-          padding: 3rem 3.5rem;
+          padding: 2.5rem 2.5rem;
           box-sizing: border-box;
           animation: fadeUp 1s ease forwards;
           font-family: 'Poppins', sans-serif;
@@ -95,9 +127,9 @@ function ContactSection() {
         }
         h2 {
           font-family: 'Playfair Display', serif;
-          font-size: 2.8rem;
+          font-size: 2rem;
           color: #1E2A5E;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.2rem;
           font-weight: 700;
           text-align: center;
         }
@@ -108,7 +140,7 @@ function ContactSection() {
           font-weight: 600;
           color: #4a5875;
           font-family: 'Poppins', sans-serif;
-          font-size: 1rem;
+          font-size: 0.95rem;
           user-select: none;
         }
         input[type="text"],
@@ -121,7 +153,7 @@ function ContactSection() {
           border-radius: 10px;
           padding: 0.75rem 1rem;
           font-family: 'Poppins', sans-serif;
-          font-size: 1rem;
+          font-size: 0.95rem;
           color: #4a5875;
           transition: border-color 0.3s ease;
           resize: vertical;
@@ -193,38 +225,20 @@ function ContactSection() {
           background-color: #1E2A5E;
           transform: none;
         }
-        .contact-info {
-          max-width: 600px;
-          width: 100%;
-          margin-top: 2.5rem;
+        p.contact-note {
+          margin-top: 1rem;
           font-family: 'Poppins', sans-serif;
-          color: #4a5875;
-          animation: fadeUp 1s ease forwards;
-          animation-delay: 0.3s;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
+          font-size: 0.85rem;
+          color: #5a5a5a;
           text-align: center;
           user-select: none;
+          max-width: 600px;
+          padding: 0 1rem;
         }
-        .contact-info p {
-          font-size: 1rem;
-          margin: 0;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 0.5rem;
-        }
-        .contact-info a {
-          color: #4a5875;
-          text-decoration: none;
-          font-weight: 600;
-          transition: color 0.3s ease;
-          font-family: 'Poppins', sans-serif;
-        }
-        .contact-info a:hover {
-          color: #14204B;
-          text-decoration: underline;
+        @media (min-width: 651px) {
+          .form-container {
+            padding: 4rem 3rem;
+          }
         }
         @media (max-width: 650px) {
           .form-container {
@@ -232,6 +246,7 @@ function ContactSection() {
           }
         }
       `}</style>
+      <h1 className="page-title">Contact Fran’s Guide</h1>
       <div className="form-container">
         <form className="contact-form" onSubmit={handleSubmit} autoComplete="off" noValidate>
           <h2>Get in Touch</h2>
@@ -297,6 +312,9 @@ function ContactSection() {
           </button>
         </form>
       </div>
+      <p className="contact-note">
+        You can also reach me on Instagram @fran.traveling for quick questions!
+      </p>
     </section>
   );
 }

@@ -11,19 +11,19 @@ function About({ language }) {
         <p className="about-text fade-in" style={{ animationDelay: '0.6s' }}>
           {language === 'fr' ? (
             <>
-              Née d’une riche fusion franco-brésilienne, je navigue entre quatre langues et cultures. Paris est mon terrain de jeu, où chaque ruelle raconte une histoire que je me réjouis de vous faire découvrir avec passion et regard technique.
+              Ayant grandi fascinée par les rues intemporelles et les histoires cachées de Paris, ma passion pour cette ville est née très tôt. Après des années à explorer chaque arrondissement, j’ai transformé cette passion en métier — celui de partager l’âme de Paris avec chaque visiteur. Mon parcours est une aventure de curiosité, de dévouement et d’un profond désir de créer des expériences authentiques au-delà des lieux connus.
             </>
           ) : language === 'pt' ? (
             <>
-              Nascida de uma rica fusão franco-brasileira, navego por quatro línguas e culturas. Paris é meu playground, onde cada rua conta uma história que tenho prazer em compartilhar com paixão e olhar técnico.
+              Cresci encantada pelas ruas atemporais e pelas histórias escondidas de Paris. Depois de anos explorando cada arrondissement, transformei essa paixão em profissão — compartilhar a alma de Paris com cada visitante. Minha jornada é de curiosidade, dedicação e o desejo sincero de conectar viajantes a experiências autênticas além dos pontos turísticos.
             </>
           ) : language === 'es' ? (
             <>
-              Nacida de una rica fusión franco-brasileña, navego entre cuatro idiomas y culturas. París es mi terreno de juego, donde cada calle cuenta una historia que me encanta compartir con pasión y mirada técnica.
+              Crecí fascinada por las calles atemporales y las historias escondidas de París. Después de años explorando cada distrito, convertí esa pasión en una profesión: compartir el alma de París con cada visitante. Mi camino es de curiosidad, dedicación y un profundo deseo de ofrecer experiencias auténticas más allá de los lugares habituales.
             </>
           ) : (
             <>
-              Born from a rich Franco-Brazilian blend, I navigate four languages and cultures. Paris is my playground, where every street tells a story I delight in sharing with passion and a technical eye.
+              Growing up enchanted by the timeless streets and hidden stories of Paris, Fran’s love for this city blossomed early. After years of exploring every arrondissement, she transformed her passion into a profession, becoming a guide who shares the soul of Paris with every visitor. Her journey is one of curiosity, dedication, and a heartfelt desire to connect travelers with authentic experiences beyond the usual sights.
             </>
           )}
         </p>

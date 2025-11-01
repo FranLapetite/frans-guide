@@ -38,8 +38,9 @@ export default function Header({ language, switchLanguage }) {
           top: 0;
           width: 100%;
           height: 80px;
-          background-color: #F5F0E6;
-          box-shadow: 0 2px 6px rgba(15, 23, 42, 0.1);
+          background-color: #ffffff;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+          border-bottom: 1px solid rgba(30, 42, 94, 0.1);
           backdrop-filter: blur(6px);
           display: flex;
           align-items: center;
@@ -95,13 +96,14 @@ export default function Header({ language, switchLanguage }) {
           align-items: center;
           justify-content: center;
           border-radius: 8px;
-          background: #E9EDF7;
+          background: #ffffff;
           box-shadow: 0 1px 4px rgba(30, 42, 94, 0.1);
           transition: background-color 0.25s ease, box-shadow 0.25s ease;
         }
         .hamburger-menu:hover,
         .hamburger-menu:focus-visible {
-          background-color: #D7E1FF;
+          background-color: #f2f4f8;
+          color: #1E2A5E;
           box-shadow: 0 0 8px rgba(30, 42, 94, 0.2);
           outline: none;
         }
@@ -183,14 +185,15 @@ export default function Header({ language, switchLanguage }) {
           align-items: center;
           border-radius: 20px;
           padding: 8px 14px;
-          background: #E9EDF7;
+          background: #ffffff;
           box-shadow: 0 1px 4px rgba(30,42,94,0.1);
           transition: background-color 0.25s ease, box-shadow 0.25s ease;
           position: relative;
         }
         .language-selector:hover,
         .language-selector:focus-visible {
-          background: #D7E1FF;
+          background: #f2f4f8;
+          color: #1E2A5E;
           box-shadow: 0 0 8px rgba(30,42,94,0.2);
           outline: none;
         }
@@ -289,15 +292,18 @@ export default function Header({ language, switchLanguage }) {
             >
               &#9776;
               <nav className={`menu-dropdown${menuOpen ? ' open' : ''}`} aria-label="Primary Navigation">
-                <a href="#tours">Tours</a>
-                <a href="#about">About Fran</a>
-                <a href="#contact">Contact</a>
+                <a href="/">Home</a>
+                <a href="/tours">Tours</a>
+                <a href="/about">About Fran</a>
+                <a href="/contact">Contact</a>
               </nav>
             </div>
           </div>
           <div className="center-section">
             <div className="logo" aria-label="Site Logo and Title">
-              <img src={logoSrc} alt="Fran's Guide — logo" />
+              <a href="/" aria-label="Go to homepage">
+                <img src={logoSrc} alt="Fran's Guide — logo" />
+              </a>
             </div>
           </div>
           <div className="right-section">

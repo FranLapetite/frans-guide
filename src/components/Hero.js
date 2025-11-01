@@ -1,9 +1,13 @@
 import React from "react";
 
-export default function Hero({ title, subtitle, cta, tagline }) {
+export default function Hero({
+  title = "Discover Paris with Fran",
+  subtitle = "A passionate Franco-Brazilian guide sharing the city’s secrets, stories, and soul — one charming street at a time.",
+  cta = "Explore My Tours",
+  tagline = "Authentic experiences • Hidden corners • Heartfelt connections",
+}) {
   const heroStyle = {
-    backgroundImage:
-      "linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1650&q=80')",
+    backgroundImage: "linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('/B6689E79-05BE-4DF4-BD2B-7054494F04AA_1_201_a.jpeg')",
     backgroundColor: "#ffffff",
     backgroundSize: "cover",
     backgroundPosition: "center center",
@@ -84,7 +88,7 @@ export default function Hero({ title, subtitle, cta, tagline }) {
       <h1>{title}</h1>
       <p className="subtitle">{subtitle}</p>
       {tagline && <p className="tagline">{tagline}</p>}
-      <a href="#tours" className="cta-button">
+      <a href="/tours" className="cta-button">
         {cta}
       </a>
     </section>
