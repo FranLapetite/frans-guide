@@ -1,7 +1,7 @@
 import emailjs from 'emailjs-com';
 import React, { useState } from 'react';
 
-const WHATSAPP_NUMBER = '33679304002'; // e.g. '33712345678' (no +, spaces, or leading zeros)
+const WHATSAPP_NUMBER = '33759752536'; // e.g. '33712345678' (no +, spaces, or leading zeros)
 
 const buildWhatsAppLink = (form, language = 'en') => {
   const base = `https://wa.me/${WHATSAPP_NUMBER}`;
