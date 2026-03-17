@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // --- Import component styles ---
 import './styles/Header.css';
@@ -8,24 +8,25 @@ import './index.css';
 // --- Import components ---
 import Header from './components/Header';
 import Hero from './components/Hero';
-import TourPage from './components/TourPage';
+import ToursPage from './components/TourPage';
 import About from './components/About';
 import ContactSection from './components/ContactSection';
 import PageFooter from './components/Footer';
 import AboutPage from './components/AboutPage';
 import MentionsLegales from './components/MentionsLegales';
 import CGV from './components/CGV';
+import TourDetails from './components/TourDetails';
 
 // --- Multi-language content dictionary (kept and unchanged except for small fixes) ---
 const TEXTS = {
   en: { 
-    heroTitle: "Paris. Understood.", 
+    heroTitle: "Paris. With You.",
     heroSubtitle: "Your Multilingual Guide and Photographer to the City of Light.",
     cta: "Explore My Tours",
     toursTitle: "My Signature Tours",
     aboutTitle: "Meet Fran – Your Traveling Guide",
-    aboutText1: "I'm Fran, a travel professional and lifelong Francophile who believes the magic of Paris is best shared through personal stories and unforgettable views.",
-    aboutText2: "I offer a unique blend of French precision, Brazilian warmth, and a keen, photographic eye. My private tours are available in four languages: French, English, Portuguese, and Spanish.",
+    aboutText1: "I'm Fran, a Paris-based multilingual guide and photographer who found my true calling in sharing the city through a personal and authentic lens. I discovered my passion by guiding visitors through my favourite places and capturing the magic of their unique moments.",
+    aboutText2: "What inspires me the most is seeing that spark in my guests’ eyes as they explore Paris comfortably in the language of their choice. All my tours are available in French, English, Portuguese, and Spanish. My style is authentic, adaptable, and empathetic, creating a warm, personal experience for everyone.",
     tour1Title: "Architectural Gems & Hidden Alleys",
     tour1Description: "A curated walk revealing the stunning Parisian architecture, from the medieval core to the Grand Haussmann style. We focus on the aesthetic and cultural stories of the city's most beautiful spaces and hidden passages.",
     tour2Title: "Bossa Nova Paris: Food, Art, and Latin Flair",
@@ -44,13 +45,13 @@ const TEXTS = {
     footerCopy: "All Rights Reserved."
   },
   fr: { 
-    heroTitle: "Paris. Décrypté.", 
+    heroTitle: "Paris. Avec Vous.",
     heroSubtitle: "Votre Guide Multilingue et Photographe de la Ville Lumière.",
     cta: "Découvrez Mes Visites",
     toursTitle: "Mes Visites Signature",
     aboutTitle: "Rencontrez Fran – Votre Guide Voyageuse",
-    aboutText1: "Je suis Fran, une professionnelle du voyage et Francophile de toujours qui croit que la magie de Paris se partage le mieux à travers des histoires personnelles et des vues inoubliables.",
-    aboutText2: "J'offre un mélange unique de précision française, de chaleur brésilienne et d'un œil photographique aiguisé. Mes visites privées sont disponibles en quatre langues : Français, Anglais, Portugais et Espagnol.",
+    aboutText1: "Je suis Fran, guide et photographe installée à Paris, passionnée par l'art de faire découvrir la ville sous un angle personnel et authentique. J'ai trouvé ma voie en partageant mes endroits préférés et en capturant la magie des moments uniques.",
+    aboutText2: "Ce qui me passionne, c'est de voir la lumière dans les yeux de mes visiteurs lorsqu'ils explorent Paris sans barrière, dans la langue de leur choix. Tous mes tours sont disponibles en français, anglais, portugais et espagnol. Mon style est authentique, adaptable et empreint d'empathie, pour offrir une expérience chaleureuse à chacun.",
     tour1Title: "Trésors Architecturaux & Passages Secrets",
     tour1Description: "Une promenade organisée révélant la magnifique architecture parisienne, du noyau médiéval au Grand Style Haussmannien. Nous nous concentrons sur les histoires esthétiques et culturelles des plus beaux espaces de la ville et de ses passages secrets.",
     tour2Title: "Paris Bossa Nova : Gastronomie, Art et Ambiance Latine",
@@ -69,13 +70,13 @@ const TEXTS = {
     footerCopy: "Tous droits réservés."
   },
   pt: { 
-    heroTitle: "Paris. Compreendida.", 
+    heroTitle: "Paris. Com Você.",
     heroSubtitle: "Seu Guia Multilíngue e Fotógrafa da Cidade Luz.",
     cta: "Explore Meus Tours",
     toursTitle: "Meus Tours de Assinatura",
     aboutTitle: "Conheça Fran – Sua Guia Viajante",
-    aboutText1: "Eu sou Fran, uma profissional de viagens e francófila de longa data que acredita que a magia de Paris é melhor compartilhada através de histórias pessoais e vistas inesquecíveis.",
-    aboutText2: "Ofereço uma mistura única de precisão francesa, calor brasileiro e um olhar fotográfico aguçado. Meus tours privados estão disponíveis em quatro idiomas: Francês, Inglês, Português e Espanhol.",
+    aboutText1: "Oii eu sou a Fran, guia e fotógrafa em Paris, que descobriu sua verdadeira vocação ao mostrar a cidade por um olhar pessoal e autêntico. Encontrei minha paixão ao acompanhar visitantes pelos meus lugares preferidos e registrar a magia de cada momento único.",
+    aboutText2: "O que mais me inspira é ver o brilho nos olhos dos meus visitantes ao descobrirem Paris sem barreiras, no idioma que preferirem. Todos os meus tours estão disponíveis em francês, inglês, português e espanhol. Meu estilo é autêntico, acolhedor e adaptável, criando uma experiência calorosa e única para cada pessoa.",
     tour1Title: "Jóias Arquitetônicas e Becos Secretos",
     tour1Description: "Uma caminhada com curadoria que revela a arquitetura parisiense, desde o núcleo medieval até o Grand Estilo Haussmann. Focamos nas histórias estéticas e culturais dos espaços mais bonitos da cidade e de suas passagens ocultas.",
     tour2Title: "Bossa Nova Paris: Comida, Arte e Sabor Latino",
@@ -94,13 +95,13 @@ const TEXTS = {
     footerCopy: "Todos os Direitos Reservados."
   },
   es: { 
-    heroTitle: "París. Comprendida.", 
+    heroTitle: "París. Contigo.",
     heroSubtitle: "Su Guía Multilingüe y Fotógrafa de la Ciudad de la Luz.",
     cta: "Explora Mis Tours",
     toursTitle: "Mis Tours de Autor",
     aboutTitle: "Conoce a Fran – Tu Guía Viajera",
-    aboutText1: "Soy Fran, una profesional de viajes y francófila de toda la vida que cree que la magia de París se comparte mejor a través de historias personales y vistas inolvidables.",
-    aboutText2: "Ofrezco una mezcla única de precisión francesa, calidez brasileña y un ojo fotográfico agudo. Mis tours privados están disponibles en cuatro idiomas: francés, inglés, portugués y español.",
+    aboutText1: "Soy Fran, guía y fotógrafa en París, y descubrí mi verdadera vocación al mostrar la ciudad desde una mirada personal y auténtica. Encontré mi pasión guiando a visitantes por mis rincones favoritos y capturando la magia de sus momentos únicos.",
+    aboutText2: "Lo que más me inspira es ver el brillo en los ojos de mis visitantes cuando descubren París sin barreras, en el idioma que elijan. Todos mis tours están disponibles en francés, inglés, portugués y español. Mi estilo es auténtico, empático y adaptable, creando una experiencia cálida y personal para cada persona.",
     tour1Title: "Gemas Arquitectónicas y Callejones Ocultos",
     tour1Description: "Un paseo curado que revela la impresionante arquitectura parisina, desde el núcleo medieval hasta el Grand Estilo Haussmann. Nos centramos en las historias estéticas y culturales de los espacios más bellos de la ciudad y sus pasajes secretos.",
     tour2Title: "París Bossa Nova: Comida, Arte y Estilo Latino",
@@ -126,6 +127,12 @@ export default function App() {
   const [language, setLanguage] = useState('en');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const scrollButtonRef = useRef(null);
+
+  // --- GitHub Pages redirect handler ---
+  if (window.location.search.includes('?p=')) {
+    const newPath = window.location.search.replace('?p=', '');
+    window.history.replaceState(null, '', newPath);
+  }
 
   // --- Language switching logic (unchanged) ---
   const switchLanguage = (lang) => {
@@ -176,8 +183,7 @@ export default function App() {
     <>
       {/* --- Meta tags and SEO --- */}
       <head>
-        <title>Fran's Guide | Boutique Paris Tours & Photography</title>
-        <meta name="description" content="Multilingual boutique Paris tours and photography by Fran – French, English, Portuguese, Spanish. Discover hidden gems, stories, and stunning photos." />
+        <title>Fran's Guide | Private Paris Tours & Photography</title>        <meta name="description" content="Multilingual boutique Paris tours and photography by Fran – French, English, Portuguese, Spanish. Discover hidden gems, stories, and stunning photos." />
         <meta name="language" content={language} />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -188,8 +194,8 @@ export default function App() {
       </head>
 
       {/* --- Main App Container with Fade-in and warm beige background --- */}
-      <div className="FransGuideApp fade-in" style={{ backgroundColor: '#F3E9DC' }}>
-        <BrowserRouter>
+      <div className="FransGuideApp fade-in">     
+        <Router>
           {/* --- Header and Language Switcher --- */}
           <Header
             language={language}
@@ -214,16 +220,16 @@ export default function App() {
                 <ContactSection content={content} />
               </>
             } />
-            <Route path="/tours" element={<TourPage content={content} />} />
-            <Route path="/about" element={<AboutPage content={content} />} />
+            <Route path="/tours" element={<ToursPage language={language} content={content} />} />
+            <Route path="/tour/:id" element={<TourDetails />} />
+            <Route path="/about" element={<AboutPage language={language} />} />
             <Route path="/contact" element={<ContactSection content={content} />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="/cgv" element={<CGV />} />
           </Routes>
 
           {/* --- Footer --- */}
-          <PageFooter content={content} />
-
+          <PageFooter language={language} content={content} />
           {/* --- Scroll-to-Top Button --- */}
           {showScrollTop && (
             <button
@@ -263,13 +269,16 @@ export default function App() {
               ↑
             </button>
           )}
-        </BrowserRouter>
+        </Router>
       </div>
       {/* --- Fade-in CSS and body background texture/gradient --- */}
-      <style>{`
+            <style>{`
         body {
-          background: linear-gradient(180deg, #F3E9DC 0%, #F9F1ED 100%);
-          background-attachment: fixed;
+          background:
+            radial-gradient(circle at top left, rgba(254,217,241,0.30) 0, transparent 55%),
+            radial-gradient(circle at top right, rgba(201,253,255,0.28) 0, transparent 55%),
+            radial-gradient(circle at bottom, rgba(254,246,173,0.30) 0, transparent 60%),
+            #ffffff;
           background-repeat: no-repeat;
           background-size: cover;
           font-family: 'Poppins', sans-serif;

@@ -1,6 +1,82 @@
 import React from 'react';
 
-const AboutPage = () => {
+const ABOUT_TEXTS = {
+  en: {
+    heroTitle: 'Meet Fran – The Full Story',
+    heroSubtitle: 'Discover the journey and passion behind Fran, your dedicated guide to the heart of Paris.',
+    journeyTitle: 'The Journey So Far',
+    journeyBody:
+      "Growing up enchanted by the timeless streets and hidden stories of Paris, Fran's love for this city blossomed early. After years of exploring each arrondissement, she turned that fascination into a vocation: guiding people through the Paris she truly loves, far beyond the usual postcards.",
+    behindTitle: 'Behind Every Tour',
+    behindBody:
+      "For Fran, every tour is a story waiting to be lived. With authenticity, warmth, and a photographer’s eye for detail, she designs experiences that celebrate Paris’s culture, history, and everyday magic. Her approach is human-first: listening, adapting, and creating a space where every guest feels seen, welcomed, and at ease.",
+    cornersTitle: 'My Favorite Corners of Paris',
+    cornersIntro:
+      'From quiet cobblestone alleys to sunlit cafés, these are the places that capture the essence of Paris for me — intimate, timeless, and full of stories.',
+    connectTitle: "Let's Connect",
+    connectIntro:
+      "Ready to explore Paris with me? Let's talk about your ideas, your rhythm, and what would make this trip feel truly yours.",
+    connectLinkText: 'Get in touch',
+  },
+  fr: {
+    heroTitle: 'Rencontrez Fran – Toute l’Histoire',
+    heroSubtitle:
+      'Découvrez le parcours et la passion de Fran, votre guide dédiée au cœur de Paris.',
+    journeyTitle: 'Mon Parcours',
+    journeyBody:
+      "Très jeune, Fran est tombée amoureuse des rues intemporelles et des histoires cachées de Paris. Au fil des années à explorer chaque arrondissement, cette fascination est devenue une évidence : elle voulait partager sa propre vision de la ville, bien au-delà des cartes postales.",
+    behindTitle: 'Derrière Chaque Visite',
+    behindBody:
+      "Pour Fran, chaque visite est une histoire à vivre. Avec authenticité, chaleur et un regard de photographe, elle crée des expériences qui célèbrent la culture, l'histoire et la magie du quotidien parisien. Sa démarche est profondément humaine : écouter, s’adapter et offrir un espace où chacun se sent accueilli et en confiance.",
+    cornersTitle: 'Mes Coins Préférés de Paris',
+    cornersIntro:
+      'Des ruelles pavées aux cafés baignés de lumière, ce sont les endroits qui résument Paris pour moi : intimes, intemporels et pleins d’histoires.',
+    connectTitle: 'Restons en Contact',
+    connectIntro:
+      'Envie de découvrir Paris avec moi ? Parlons de vos envies, de votre rythme et de ce qui rendrait ce voyage vraiment à votre image.',
+    connectLinkText: 'Écrivez-moi',
+  },
+  pt: {
+    heroTitle: 'Conheça a Fran – A História Completa',
+    heroSubtitle:
+      'Descubra a trajetória e a paixão da Fran, sua guia dedicada ao coração de Paris.',
+    journeyTitle: 'Minha Jornada Até Aqui',
+    journeyBody:
+      'Desde cedo, a Fran se encantou pelas ruas, luzes e cantinhos escondidos de Paris. Depois de anos explorando cada bairro, essa curiosidade virou vocação: acompanhar viajantes pela cidade que ela ama de verdade, para além dos pontos turísticos óbvios.',
+    behindTitle: 'Por Trás de Cada Tour',
+    behindBody:
+      'Para a Fran, cada tour é uma história sendo vivida. Com autenticidade, acolhimento e um olhar fotográfico atento aos detalhes, ela cria experiências que celebram a cultura, a história e a magia do cotidiano parisiense. Seu jeito de guiar é, antes de tudo, humano: ouvir, adaptar e fazer cada pessoa se sentir à vontade, vista e bem-vinda.',
+    cornersTitle: 'Meus Cantinhos Preferidos de Paris',
+    cornersIntro:
+      'De ruazinhas de pedra a cafés banhados de sol, são esses lugares que, para mim, traduzem a essência de Paris — íntima, atemporal e cheia de histórias.',
+    connectTitle: 'Vamos Conversar',
+    connectIntro:
+      'Pronto(a) para explorar Paris comigo? Me conte suas ideias, seu ritmo e o que faria essa viagem ser realmente especial para você.',
+    connectLinkText: 'Fale comigo',
+  },
+  es: {
+    heroTitle: 'Conoce a Fran – Toda la Historia',
+    heroSubtitle:
+      'Descubre el camino y la pasión de Fran, tu guía dedicada al corazón de París.',
+    journeyTitle: 'Mi Recorrido',
+    journeyBody:
+      'Desde muy joven, Fran se enamoró de las calles eternas y las historias escondidas de París. Tras años explorando cada barrio, esa fascinación se convirtió en vocación: acompañar a viajeros por la ciudad que ella ama de verdad, mucho más allá de las postales típicas.',
+    behindTitle: 'Detrás de Cada Tour',
+    behindBody:
+      'Para Fran, cada tour es una historia que se vive en primera persona. Con autenticidad, calidez y una mirada fotográfica atenta, diseña experiencias que celebran la cultura, la historia y la magia cotidiana de París. Su manera de guiar es profundamente humana: escuchar, adaptarse y crear un espacio donde cada persona se sienta bienvenida y en confianza.',
+    cornersTitle: 'Mis Rincones Favoritos de París',
+    cornersIntro:
+      'Desde callejones adoquinados hasta cafés bañados por el sol, estos son los lugares que, para mí, capturan la esencia de París: íntima, atemporal y llena de historias.',
+    connectTitle: 'Conectemos',
+    connectIntro:
+      '¿Listo/a para descubrir París conmigo? Hablemos de tus ideas, tu ritmo y de lo que haría que este viaje se sienta verdaderamente tuyo.',
+    connectLinkText: 'Escríbeme',
+  },
+};
+
+const AboutPage = ({ language = 'en' }) => {
+  const t = ABOUT_TEXTS[language] || ABOUT_TEXTS.en;
+
   const scrollToNextSection = () => {
     const nextSection = document.getElementById('journey-section');
     if (nextSection) {
@@ -9,12 +85,21 @@ const AboutPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Poppins', sans-serif", color: '#1E2A5E', maxWidth: '900px', margin: '0 auto', padding: '0 1rem' }}>
+    <div
+      style={{
+        fontFamily: "'Poppins', sans-serif",
+        color: '#1E2A5E',
+        maxWidth: '900px',
+        margin: '0 auto',
+        padding: '0 1rem',
+      }}
+    >
       {/* Hero Section */}
       <section
         style={{
           position: 'relative',
-          backgroundImage: "url('/D79A7894-ED03-4D95-ACE9-849DF200DCFC_1_105_c.jpeg')",
+          backgroundImage:
+            "url('/D79A7894-ED03-4D95-ACE9-849DF200DCFC_1_105_c.jpeg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           height: '100vh',
@@ -41,17 +126,36 @@ const AboutPage = () => {
             zIndex: 0,
           }}
         />
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: '700px', padding: '0 1rem' }}>
-          <h1 style={{ fontSize: '4rem', marginBottom: '1rem', fontWeight: '700', lineHeight: '1.1', color: '#fff' }}>Meet Fran – The Full Story</h1>
+        <div
+          style={{
+            position: 'relative',
+            zIndex: 1,
+            maxWidth: '700px',
+            padding: '0 1rem',
+          }}
+        >
+          <h1
+            style={{
+              fontSize: '4rem',
+              marginBottom: '1rem',
+              fontWeight: '700',
+              lineHeight: '1.1',
+              color: '#fff',
+            }}
+          >
+            {t.heroTitle}
+          </h1>
           <p style={{ fontSize: '1.5rem', lineHeight: '1.6', marginTop: 0 }}>
-            Discover the passion and journey behind Fran, your dedicated guide to the heart of Paris.
+            {t.heroSubtitle}
           </p>
         </div>
         <div
           onClick={scrollToNextSection}
           role="button"
           tabIndex={0}
-          onKeyPress={e => { if (e.key === 'Enter') scrollToNextSection(); }}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') scrollToNextSection();
+          }}
           aria-label="Scroll down to next section"
           style={{
             position: 'absolute',
@@ -63,7 +167,16 @@ const AboutPage = () => {
             animation: 'bounce 2s infinite',
           }}
         >
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#fff"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <line x1="12" y1="5" x2="12" y2="19" />
             <polyline points="19 12 12 19 5 12" />
           </svg>
@@ -75,12 +188,37 @@ const AboutPage = () => {
       {/* The Journey So Far */}
       <section
         id="journey-section"
-        style={{ backgroundColor: '#FAF5EB', textAlign: 'center', padding: '3rem 1rem', animation: 'fadeUp 1s ease forwards', opacity: 0, animationFillMode: 'forwards', animationDelay: '0.3s' }}
+        style={{
+          backgroundColor: '#FAF5EB',
+          textAlign: 'center',
+          padding: '3rem 1rem',
+          animation: 'fadeUp 1s ease forwards',
+          opacity: 0,
+          animationFillMode: 'forwards',
+          animationDelay: '0.3s',
+        }}
         className="fade-up"
       >
-        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '3rem', marginBottom: '1.5rem', fontWeight: '700', color: '#1E2A5E' }}>The Journey So Far</h2>
-        <p style={{ maxWidth: '700px', margin: '0 auto', lineHeight: '1.8', fontSize: '1.125rem' }}>
-          Growing up enchanted by the timeless streets and hidden stories of Paris, Fran’s love for this city blossomed early. After years of exploring every arrondissement, she transformed her passion into a profession, becoming a guide who shares the soul of Paris with every visitor. Her journey is one of curiosity, dedication, and a heartfelt desire to connect travelers with authentic experiences beyond the usual sights.
+        <h2
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: '3rem',
+            marginBottom: '1.5rem',
+            fontWeight: '700',
+            color: '#1E2A5E',
+          }}
+        >
+          {t.journeyTitle}
+        </h2>
+        <p
+          style={{
+            maxWidth: '700px',
+            margin: '0 auto',
+            lineHeight: '1.8',
+            fontSize: '1.125rem',
+          }}
+        >
+          {t.journeyBody}
         </p>
       </section>
 
@@ -88,12 +226,37 @@ const AboutPage = () => {
 
       {/* Behind Every Tour */}
       <section
-        style={{ backgroundColor: '#FFFFFF', textAlign: 'center', padding: '3rem 1rem', animation: 'fadeUp 1s ease forwards', opacity: 0, animationFillMode: 'forwards', animationDelay: '0.5s' }}
+        style={{
+          backgroundColor: '#FFFFFF',
+          textAlign: 'center',
+          padding: '3rem 1rem',
+          animation: 'fadeUp 1s ease forwards',
+          opacity: 0,
+          animationFillMode: 'forwards',
+          animationDelay: '0.5s',
+        }}
         className="fade-up"
       >
-        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '3rem', marginBottom: '1.5rem', fontWeight: '700', color: '#1E2A5E' }}>Behind Every Tour</h2>
-        <p style={{ maxWidth: '700px', margin: '0 auto', lineHeight: '1.8', fontSize: '1.125rem' }}>
-          Fran believes that every tour is a story waiting to be told. With authenticity, warmth, and a keen eye for detail, she crafts experiences that celebrate Paris’s culture, history, and charm. Her philosophy centers on meaningful connections — between people, places, and moments — ensuring each journey is personal, memorable, and inspiring.
+        <h2
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: '3rem',
+            marginBottom: '1.5rem',
+            fontWeight: '700',
+            color: '#1E2A5E',
+          }}
+        >
+          {t.behindTitle}
+        </h2>
+        <p
+          style={{
+            maxWidth: '700px',
+            margin: '0 auto',
+            lineHeight: '1.8',
+            fontSize: '1.125rem',
+          }}
+        >
+          {t.behindBody}
         </p>
       </section>
 
@@ -101,12 +264,37 @@ const AboutPage = () => {
 
       {/* My Favorite Corners of Paris */}
       <section
-        style={{ backgroundColor: '#FAF5EB', textAlign: 'center', padding: '3rem 1rem', animation: 'fadeUp 1s ease forwards', opacity: 0, animationFillMode: 'forwards', animationDelay: '0.7s' }}
+        style={{
+          backgroundColor: '#FAF5EB',
+          textAlign: 'center',
+          padding: '3rem 1rem',
+          animation: 'fadeUp 1s ease forwards',
+          opacity: 0,
+          animationFillMode: 'forwards',
+          animationDelay: '0.7s',
+        }}
         className="fade-up"
       >
-        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '3rem', marginBottom: '1.5rem', fontWeight: '700', color: '#1E2A5E' }}>My Favorite Corners of Paris</h2>
-        <p style={{ maxWidth: '700px', margin: '0 auto 2rem', lineHeight: '1.7', fontSize: '1.125rem' }}>
-          From quiet cobblestone alleys to sunlit cafés, these are the places that capture the essence of Paris for me — intimate, timeless, and full of stories.
+        <h2
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: '3rem',
+            marginBottom: '1.5rem',
+            fontWeight: '700',
+            color: '#1E2A5E',
+          }}
+        >
+          {t.cornersTitle}
+        </h2>
+        <p
+          style={{
+            maxWidth: '700px',
+            margin: '0 auto 2rem',
+            lineHeight: '1.7',
+            fontSize: '1.125rem',
+          }}
+        >
+          {t.cornersIntro}
         </p>
         <div
           style={{
@@ -134,7 +322,6 @@ const AboutPage = () => {
               src: '/C4FE08AB-710F-4CB4-B427-6BAC0CF5657A_1_105_c.jpeg',
               alt: 'Quiet Parisian alley with flowers',
             },
-            
             {
               src: '/E7577CDB-C4C5-412C-B322-17BC8E7DA8DF_1_105_c.jpeg',
               alt: 'Elegant Paris architecture',
@@ -171,15 +358,20 @@ const AboutPage = () => {
               className="photo-card"
               tabIndex={0}
               aria-label={alt}
-              onFocus={e => e.currentTarget.style.transform = 'scale(1.05)'}
-              onBlur={e => e.currentTarget.style.transform = 'scale(1)'}
-              onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+              onFocus={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+              onBlur={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
             >
               <img
                 src={src}
                 alt={alt}
-                style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}
+                style={{
+                  width: '100%',
+                  height: '220px',
+                  objectFit: 'cover',
+                  display: 'block',
+                }}
               />
             </div>
           ))}
@@ -190,12 +382,47 @@ const AboutPage = () => {
 
       {/* Let's Connect */}
       <section
-        style={{ backgroundColor: '#FFFFFF', textAlign: 'center', padding: '3rem 1rem', animation: 'fadeUp 1s ease forwards', opacity: 0, animationFillMode: 'forwards', animationDelay: '0.9s' }}
+        style={{
+          backgroundColor: '#FFFFFF',
+          textAlign: 'center',
+          padding: '3rem 1rem',
+          animation: 'fadeUp 1s ease forwards',
+          opacity: 0,
+          animationFillMode: 'forwards',
+          animationDelay: '0.9s',
+        }}
         className="fade-up"
       >
-        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '3rem', marginBottom: '1.5rem', fontWeight: '700', color: '#1E2A5E' }}>Let’s Connect</h2>
-        <p style={{ maxWidth: '600px', margin: '0 auto 2rem', lineHeight: '1.7', fontSize: '1.125rem' }}>
-          Ready to explore Paris with me? <a href="/contact" style={{ color: '#1E2A5E', textDecoration: 'underline', fontWeight: '600' }}>Get in touch</a> and let’s start planning your unforgettable journey.
+        <h2
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: '3rem',
+            marginBottom: '1.5rem',
+            fontWeight: '700',
+            color: '#1E2A5E',
+          }}
+        >
+          {t.connectTitle}
+        </h2>
+        <p
+          style={{
+            maxWidth: '600px',
+            margin: '0 auto 2rem',
+            lineHeight: '1.7',
+            fontSize: '1.125rem',
+          }}
+        >
+          {t.connectIntro}{' '}
+          <a
+            href="/contact"
+            style={{
+              color: '#1E2A5E',
+              textDecoration: 'underline',
+              fontWeight: '600',
+            }}
+          >
+            {t.connectLinkText}
+          </a>{' '}
         </p>
       </section>
 

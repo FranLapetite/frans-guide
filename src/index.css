@@ -2,8 +2,8 @@
 /* --- Warm Boutique Parisian Variables (Romantic/Elegant) --- */
 :root {
     /* Boutique Paris Hues */
-    --color-background: #F3E9DC;       /* Soft beige, warm and inviting */
-    --color-primary-light: #F3E9DC;    /* For sections needing extra lightness */
+    --color-background: #484239;       /* Soft beige, warm and inviting */
+    --color-primary-light: #564e44;    /* For sections needing extra lightness */
     --color-text-dark: #2E2A26;        /* Softer, deep brown-charcoal */
     --color-navy: #1E2A5E;             /* Deep Parisian blue */
     --color-accent: #E9B4A8;           /* Rosé pink accent */
@@ -33,7 +33,7 @@
 body {
     font-family: var(--font-body);
     color: var(--color-text-dark);
-    background: linear-gradient(120deg, #F3E9DC 0%, #F9E8E1 100%);
+    background: linear-gradient(to bottom, #ffffff 0%, #fef6ad26 100%);
     min-height: 100vh;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
@@ -175,4 +175,91 @@ section::before {
 /* Subtle Organic Gradient Texture */
 .organic-gradient {
     background: radial-gradient(circle at 80% 10%, rgba(233,180,168,0.13) 0%, transparent 70%);
+}
+
+/* === Global mobile responsiveness === */
+
+/* Images should never overflow on mobile */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* General container comfort on big screens */
+.FransGuideApp {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tablet and small laptop */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 2.1rem !important;
+    line-height: 1.2 !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .FransGuideApp {
+    padding: 0 1.25rem;
+  }
+
+  /* Hero / big banner sections */
+  .hero-section,
+  .hero-banner {
+    padding: 3rem 1.5rem !important;
+    min-height: 60vh !important;
+  }
+
+  /* Tours grid spacing */
+  .tours-grid {
+    gap: 1.5rem !important;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.8rem !important;
+  }
+
+  h2 {
+    font-size: 1.35rem !important;
+  }
+
+  .FransGuideApp {
+    padding: 0 1rem;
+  }
+
+  .hero-section,
+  .hero-banner {
+    padding: 2.5rem 1.2rem !important;
+    min-height: 55vh !important;
+    text-align: center !important;
+  }
+
+  /* Make tour cards breathe on small screens */
+  .tour-card {
+    padding: 1.4rem 1.2rem !important;
+  }
+
+  /* Scroll-to-top button a bit smaller */
+  .scroll-to-top {
+    width: 42px !important;
+    height: 42px !important;
+    bottom: 1.4rem !important;
+    right: 1.4rem !important;
+  }
 }

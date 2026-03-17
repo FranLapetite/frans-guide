@@ -1,15 +1,210 @@
 import emailjs from 'emailjs-com';
 import React, { useState } from 'react';
 
-const tourOptions = [
-  { value: '', label: 'Select a tour (optional)' },
-  { value: 'city', label: 'City Tour' },
-  { value: 'museum', label: 'Museum Tour' },
-  { value: 'food', label: 'Food Tour' },
-  { value: 'custom', label: 'Custom Tour' },
-];
+const WHATSAPP_NUMBER = '33679304002'; // e.g. '33712345678' (no +, spaces, or leading zeros)
 
-function ContactSection() {
+const buildWhatsAppLink = (form, language = 'en') => {
+  const base = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+  const intros = {
+    en: 'Hello Fran, I’d like to get in touch regarding a tour.',
+    fr: 'Bonjour Fran, je souhaite vous contacter à propos d’un tour.',
+    pt: 'Olá Fran, gostaria de entrar em contato sobre um tour.',
+    es: 'Hola Fran, me gustaría ponerme en contacto contigo sobre un tour.',
+  };
+
+  const templates = {
+    en: {
+      name: (name) => (name ? `My name is ${name}.` : ''),
+      type: (type) => (type ? `Request type: ${type}.` : ''),
+      message: (msg) => (msg ? `Message: ${msg}` : ''),
+      email: (email) => (email ? `You can also reach me at ${email}.` : ''),
+    },
+    fr: {
+      name: (name) => (name ? `Je m'appelle ${name}.` : ''),
+      type: (type) => (type ? `Type de demande : ${type}.` : ''),
+      message: (msg) => (msg ? `Message : ${msg}` : ''),
+      email: (email) => (email ? `Vous pouvez aussi me joindre à l'adresse ${email}.` : ''),
+    },
+    pt: {
+      name: (name) => (name ? `Meu nome é ${name}.` : ''),
+      type: (type) => (type ? `Tipo de pedido: ${type}.` : ''),
+      message: (msg) => (msg ? `Mensagem: ${msg}` : ''),
+      email: (email) => (email ? `Você também pode falar comigo pelo e-mail ${email}.` : ''),
+    },
+    es: {
+      name: (name) => (name ? `Me llamo ${name}.` : ''),
+      type: (type) => (type ? `Tipo de consulta: ${type}.` : ''),
+      message: (msg) => (msg ? `Mensaje: ${msg}` : ''),
+      email: (email) => (email ? `También puedes contactarme en ${email}.` : ''),
+    },
+  };
+
+  const intro = intros[language] || intros.en;
+  const t = templates[language] || templates.en;
+
+  const bodyParts = [
+    t.name(form.name),
+    t.type(form.tour),
+    t.message(form.message),
+    t.email(form.email),
+  ].filter(Boolean);
+
+  const text = encodeURIComponent([intro, ...bodyParts].join(' '));
+  return `${base}?text=${text}`;
+};
+
+const detectLanguageFromContent = (content) => {
+  if (!content) return 'en';
+  switch (content.contactTitle) {
+    case 'Contact & Booking':
+      return 'en';
+    case 'Contact & Réservation':
+      return 'fr';
+    case 'Contato & Reserva':
+      return 'pt';
+    case 'Contacto & Reserva':
+      return 'es';
+    default:
+      return 'en';
+  }
+};
+
+const getTourOptions = (language) => {
+  switch (language) {
+    case 'fr':
+      return [
+        { value: '', label: 'Sélectionnez un type de demande (optionnel)' },
+        { value: 'Réservation', label: 'Réservation' },
+        { value: 'Renseignements', label: 'Renseignements' },
+        { value: 'Demande sur mesure', label: 'Demande sur mesure' },
+      ];
+    case 'pt':
+      return [
+        { value: '', label: 'Escolha o tipo de pedido (opcional)' },
+        { value: 'Reserva', label: 'Reserva' },
+        { value: 'Dúvida', label: 'Dúvida' },
+        { value: 'Pedido personalizado', label: 'Pedido personalizado' },
+      ];
+    case 'es':
+      return [
+        { value: '', label: 'Elige el tipo de consulta (opcional)' },
+        { value: 'Reserva', label: 'Reserva' },
+        { value: 'Pregunta', label: 'Pregunta' },
+        { value: 'Solicitud a medida', label: 'Solicitud a medida' },
+      ];
+    default:
+      return [
+        { value: '', label: 'Select request type (optional)' },
+        { value: 'Booking', label: 'Booking' },
+        { value: 'Question', label: 'Question' },
+        { value: 'Custom request', label: 'Custom request' },
+      ];
+  }
+};
+
+const getCopy = (language, content = {}) => {
+  const pageTitles = {
+    en: "Contact Fran’s Guide",
+    fr: "Contactez Fran’s Guide",
+    pt: "Contato Fran’s Guide",
+    es: "Contacta con Fran’s Guide",
+  };
+
+  const sectionTitles = {
+    en: 'Contact & Booking',
+    fr: 'Contact & Réservation',
+    pt: 'Contato & Reserva',
+    es: 'Contacto & Reserva',
+  };
+
+  const orLabels = {
+    en: 'or',
+    fr: 'ou',
+    pt: 'ou',
+    es: 'o',
+  };
+
+  const whatsappLabels = {
+    en: 'Chat on WhatsApp',
+    fr: 'Discuter sur WhatsApp',
+    pt: 'Conversar no WhatsApp',
+    es: 'Chatear por WhatsApp',
+  };
+
+  const contactNotes = {
+    en: "You can also reach me on Instagram @frans.guide — or tap the green button to chat on WhatsApp instantly.",
+    fr: "Vous pouvez aussi me contacter sur Instagram @frans.guide — ou appuyer sur le bouton vert pour discuter instantanément sur WhatsApp.",
+    pt: "Você também pode falar comigo pelo Instagram @frans.guide — ou tocar no botão verde para conversar comigo pelo WhatsApp.",
+    es: "También puedes escribirme por Instagram @frans.guide — o tocar el botón verde para hablar conmigo por WhatsApp al instante.",
+  };
+
+  const validation = {
+    en: {
+      nameRequired: 'Please enter your name.',
+      emailRequired: 'Please enter your email address.',
+      emailInvalid: 'Please enter a valid email address.',
+      messageRequired: 'Please enter your message.',
+    },
+    fr: {
+      nameRequired: 'Veuillez indiquer votre nom.',
+      emailRequired: 'Veuillez indiquer votre adresse e-mail.',
+      emailInvalid: 'Veuillez saisir une adresse e-mail valide.',
+      messageRequired: 'Veuillez écrire votre message.',
+    },
+    pt: {
+      nameRequired: 'Por favor, escreva seu nome.',
+      emailRequired: 'Por favor, informe seu e-mail.',
+      emailInvalid: 'Por favor, informe um e-mail válido.',
+      messageRequired: 'Por favor, escreva sua mensagem.',
+    },
+    es: {
+      nameRequired: 'Por favor, escribe tu nombre.',
+      emailRequired: 'Por favor, indica tu correo electrónico.',
+      emailInvalid: 'Por favor, escribe un correo electrónico válido.',
+      messageRequired: 'Por favor, escribe tu mensaje.',
+    },
+  };
+
+  const submitLabels = {
+    en: { idle: 'Send Message', sending: 'Sending...' },
+    fr: { idle: 'Envoyer le message', sending: 'Envoi...' },
+    pt: { idle: 'Enviar mensagem', sending: 'Enviando...' },
+    es: { idle: 'Enviar mensaje', sending: 'Enviando...' },
+  };
+
+  const requestTypeLabels = {
+    en: 'Type of request (optional)',
+    fr: 'Type de demande (optionnel)',
+    pt: 'Tipo de pedido (opcional)',
+    es: 'Tipo de consulta (opcional)',
+  };
+
+  const lang = validation[language] ? language : 'en';
+
+  return {
+    pageTitle: pageTitles[lang],
+    sectionTitle: sectionTitles[lang],
+    nameLabel: content.contactName || (lang === 'fr' ? 'Nom' : lang === 'pt' ? 'Nome' : lang === 'es' ? 'Nombre' : 'Name'),
+    emailLabel: content.contactEmail || (lang === 'fr' ? 'E-mail' : lang === 'pt' ? 'Email' : lang === 'es' ? 'Correo electrónico' : 'Email'),
+    tourLabel: requestTypeLabels[lang],
+    messageLabel: content.contactMessage || (lang === 'fr' ? 'Message' : lang === 'pt' ? 'Mensagem' : lang === 'es' ? 'Mensaje' : 'Message'),
+    submitIdle: submitLabels[lang].idle,
+    submitSending: submitLabels[lang].sending,
+    successMessage: content.contactSuccess || (lang === 'fr' ? "Merci ! Votre message a bien été envoyé." : lang === 'pt' ? 'Obrigada! Sua mensagem foi enviada com sucesso.' : lang === 'es' ? '¡Gracias! Tu mensaje ha sido enviado.' : 'Thank you! Your message has been sent.'),
+    errorMessage: content.contactError || (lang === 'fr' ? "Désolé, une erreur s'est produite lors de l'envoi. Veuillez essayer d'envoyer un e-mail directement." : lang === 'pt' ? 'Desculpe, houve um erro ao enviar sua mensagem. Tente enviar um email diretamente.' : lang === 'es' ? 'Lo sentimos, hubo un error al enviar tu mensaje. Por favor, intenta enviar un correo electrónico directamente.' : 'Sorry, there was an error sending your message. Please try emailing directly.'),
+    orLabel: orLabels[lang],
+    whatsappButton: whatsappLabels[lang],
+    contactNote: contactNotes[lang],
+    validation: validation[lang],
+  };
+};
+
+function ContactSection({ content }) {
+  const language = detectLanguageFromContent(content || {});
+  const tourOptions = getTourOptions(language);
+  const copy = getCopy(language, content || {});
+
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -28,10 +223,10 @@ function ContactSection() {
   };
 
   const validate = () => {
-    if (!form.name.trim()) return 'Please enter your name.';
-    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      return 'Please enter a valid email address.';
-    if (!form.message.trim()) return 'Please enter your message.';
+    if (!form.name.trim()) return copy.validation.nameRequired;
+    if (!form.email.trim()) return copy.validation.emailRequired;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) return copy.validation.emailInvalid;
+    if (!form.message.trim()) return copy.validation.messageRequired;
     return '';
   };
 
@@ -63,12 +258,12 @@ function ContactSection() {
       .then(
         () => {
           setSubmitting(false);
-          setSuccess('Thank you for reaching out! I will get back to you soon.');
+          setSuccess(copy.successMessage);
           setForm({ name: '', email: '', tour: '', message: '' });
         },
         (err) => {
           setSubmitting(false);
-          setError('Sorry, there was a problem sending your message. Please try again later or contact me via Instagram.');
+          setError(copy.errorMessage);
         }
       );
   };
@@ -91,6 +286,34 @@ function ContactSection() {
       }}
     >
       <style>{`
+        @media (max-width: 480px) {
+          h1.page-title {
+            font-size: 2rem;
+            margin-bottom: 1.1rem;
+          }
+          .form-container {
+            padding: 2rem 1.4rem;
+            border-radius: 12px;
+          }
+          h2 {
+            font-size: 1.7rem;
+          }
+          label {
+            font-size: 0.9rem;
+          }
+          .cta-button,
+          .whatsapp-button {
+            font-size: 1rem;
+            padding: 0.75rem 1.6rem;
+          }
+          p.contact-note {
+            font-size: 0.8rem;
+            padding: 0 0.5rem 0.5rem;
+          }
+          .contact-page {
+            padding: 1.5rem 1rem 3rem;
+          }
+        }
         @keyframes fadeUp {
           from {
             opacity: 0;
@@ -245,13 +468,51 @@ function ContactSection() {
             padding: 2.5rem 2rem;
           }
         }
+        .whatsapp-button {
+          background: #25D366;
+          border: none;
+          border-radius: 8px;
+          color: #ffffff;
+          font-size: 1.05rem;
+          font-weight: 700;
+          padding: 0.8rem 2rem;
+          cursor: pointer;
+          transition: transform 0.2s ease, filter 0.2s ease;
+          font-family: 'Poppins', sans-serif;
+          user-select: none;
+          width: 100%;
+          margin-top: 0.75rem;
+          box-sizing: border-box;
+          text-align: center;
+          display: inline-block;
+        }
+        .whatsapp-button:hover {
+          filter: brightness(0.95);
+          transform: translateY(-2px);
+        }
+        .or-divider {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin: 0.75rem 0 0.25rem;
+          color: #7a889f;
+          font-size: 0.85rem;
+        }
+        .or-divider::before,
+        .or-divider::after {
+          content: '';
+          height: 1px;
+          background: #e5e9f2;
+          flex: 1;
+        }
       `}</style>
-      <h1 className="page-title">Contact Fran’s Guide</h1>
+      <h1 className="page-title">{copy.pageTitle}</h1>
       <div className="form-container">
         <form className="contact-form" onSubmit={handleSubmit} autoComplete="off" noValidate>
-          <h2>Get in Touch</h2>
+          <h2>{copy.sectionTitle}</h2>
           <label>
-            Name
+            {copy.nameLabel}
             <input
               type="text"
               name="name"
@@ -263,7 +524,7 @@ function ContactSection() {
             />
           </label>
           <label>
-            Email
+            {copy.emailLabel}
             <input
               type="email"
               name="email"
@@ -275,7 +536,7 @@ function ContactSection() {
             />
           </label>
           <label>
-            Tour
+            {copy.tourLabel}
             <select
               name="tour"
               value={form.tour}
@@ -290,7 +551,7 @@ function ContactSection() {
             </select>
           </label>
           <label>
-            Message
+            {copy.messageLabel}
             <textarea
               name="message"
               value={form.message}
@@ -308,12 +569,25 @@ function ContactSection() {
             disabled={submitting}
             aria-busy={submitting}
           >
-            {submitting ? 'Sending...' : 'Send Message'}
+            {submitting ? copy.submitSending : copy.submitIdle}
+          </button>
+          <div className="or-divider">{copy.orLabel}</div>
+          <button
+            type="button"
+            className="whatsapp-button"
+            onClick={() => {
+              const link = buildWhatsAppLink(form, language);
+              window.open(link, '_blank');
+            }}
+            disabled={submitting}
+            aria-label={copy.whatsappButton}
+          >
+            {copy.whatsappButton}
           </button>
         </form>
       </div>
       <p className="contact-note">
-        You can also reach me on Instagram @fran.traveling for quick questions!
+        {copy.contactNote}
       </p>
     </section>
   );

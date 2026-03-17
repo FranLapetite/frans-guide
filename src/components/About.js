@@ -1,36 +1,41 @@
 import React from 'react';
 
-function About({ language }) {
-  // NOTE: You will expand this component later with your personal story
+function About({ content }) {
   return (
     <section id="about" className="about-section fade-in">
       <div className="about-content">
-        <h2 className="about-title fade-in" style={{ animationDelay: '0.2s' }}>Meet Fran – Your Traveling Guide</h2>
+        <h2
+          className="about-title fade-in"
+          style={{ animationDelay: '0.2s' }}
+        >
+          {content.aboutTitle}
+        </h2>
+
         <hr className="divider" />
-        <div className="photo-container fade-in" aria-label="Portrait of Fran" style={{ animationDelay: '0.4s' }} />
-        <p className="about-text fade-in" style={{ animationDelay: '0.6s' }}>
-          {language === 'fr' ? (
-            <>
-              Ayant grandi fascinée par les rues intemporelles et les histoires cachées de Paris, ma passion pour cette ville est née très tôt. Après des années à explorer chaque arrondissement, j’ai transformé cette passion en métier — celui de partager l’âme de Paris avec chaque visiteur. Mon parcours est une aventure de curiosité, de dévouement et d’un profond désir de créer des expériences authentiques au-delà des lieux connus.
-            </>
-          ) : language === 'pt' ? (
-            <>
-              Cresci encantada pelas ruas atemporais e pelas histórias escondidas de Paris. Depois de anos explorando cada arrondissement, transformei essa paixão em profissão — compartilhar a alma de Paris com cada visitante. Minha jornada é de curiosidade, dedicação e o desejo sincero de conectar viajantes a experiências autênticas além dos pontos turísticos.
-            </>
-          ) : language === 'es' ? (
-            <>
-              Crecí fascinada por las calles atemporales y las historias escondidas de París. Después de años explorando cada distrito, convertí esa pasión en una profesión: compartir el alma de París con cada visitante. Mi camino es de curiosidad, dedicación y un profundo deseo de ofrecer experiencias auténticas más allá de los lugares habituales.
-            </>
-          ) : (
-            <>
-              Growing up enchanted by the timeless streets and hidden stories of Paris, Fran’s love for this city blossomed early. After years of exploring every arrondissement, she transformed her passion into a profession, becoming a guide who shares the soul of Paris with every visitor. Her journey is one of curiosity, dedication, and a heartfelt desire to connect travelers with authentic experiences beyond the usual sights.
-            </>
-          )}
+
+        <div
+          className="photo-container fade-in"
+          aria-label="Portrait of Fran"
+          style={{ animationDelay: '0.4s' }}
+        />
+
+        <p
+          className="about-text fade-in"
+          style={{ animationDelay: '0.6s' }}
+        >
+          {content.aboutText1}
+          <br /><br />
+          {content.aboutText2}
         </p>
-        <p className="signature fade-in" style={{ animationDelay: '0.8s' }}>
+
+        <p
+          className="signature fade-in"
+          style={{ animationDelay: '0.8s' }}
+        >
           À bientôt à Paris — Fran 💫
         </p>
       </div>
+
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Playfair+Display&display=swap');
 
@@ -124,12 +129,31 @@ function About({ language }) {
           font-family: inherit;
         }
         .fade-in {
-          /* This class is kept for the section fade-in */
+          /* kept for fade-in */
         }
         @keyframes fadeInUp {
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+        @media (max-width: 480px) {
+          .about-section {
+            padding: 4rem 1rem;
+          }
+          .about-title {
+            font-size: 2rem;
+          }
+          .about-text {
+            font-size: 1rem;
+            line-height: 1.6;
+          }
+          .photo-container {
+            width: 150px;
+            height: 150px;
+          }
+          .signature {
+            font-size: 0.9rem;
           }
         }
       `}</style>

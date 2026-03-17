@@ -83,6 +83,34 @@ export default function Hero({
           .hero-section p.tagline { font-size: 1rem; margin-bottom: 2rem; }
           .cta-button { font-size: 1rem; padding: 0.9rem 2.5rem; }
         }
+        @media (max-width: 480px) {
+          .hero-section {
+            padding: 3rem 1.2rem !important;
+            min-height: 75vh !important;
+            background-attachment: scroll !important;
+          }
+          .hero-section h1 {
+            font-size: 2.2rem !important;
+            letter-spacing: 1px !important;
+            margin-bottom: 0.8rem !important;
+          }
+          .hero-section p.subtitle {
+            font-size: 1rem !important;
+            line-height: 1.45 !important;
+            max-width: 95% !important;
+            margin-bottom: 1.2rem !important;
+          }
+          .hero-section p.tagline {
+            font-size: 0.9rem !important;
+            margin-bottom: 1.8rem !important;
+          }
+          .cta-button {
+            padding: 0.8rem 2rem !important;
+            font-size: 0.95rem !important;
+            letter-spacing: 0.6px !important;
+            border-radius: 6px !important;
+          }
+        }
       `}</style>
 
       <h1>{title}</h1>
