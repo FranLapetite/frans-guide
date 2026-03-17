@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WHATSAPP_NUMBER = '330759752536'; // no +, spaces, or leading zeros
+const WHATSAPP_NUMBER = '33759752536'; // no +, spaces, or leading zeros
 const WHATSAPP_BASE_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
 
 function Footer({ language = 'en', content }) {
