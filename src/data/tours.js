@@ -2,7 +2,6 @@
 export const tours = [
   {
     title: '🗼 Eiffel Secrets — From the Streets to the Summit',
-    price: '45 € + Eiffel Tower ticket',
     duration: '1 hour',
     description:
       'Start at the stunning Trocadéro viewpoint for story-filled photo stops, then stroll across the Seine to the base of the Eiffel Tower where you continue to the summit at your own pace.',
@@ -16,7 +15,6 @@ Along the way, I share historical facts, little-known secrets, and photo tips to
   },
   {
     title: '🌉 Along the Seine — From Concorde to the Eiffel Tower',
-    price: '35 €',
     duration: '1h30',
     description:
       'A dreamy riverside walk along the most beautiful stretch of the Seine, from Pont de la Concorde to Pont d’Iéna, with golden statues, Belle Époque bridges, and ever-closer views of the Eiffel Tower.',
@@ -33,7 +31,6 @@ Continue along the riverbanks, passing boats, barges, and peaceful paths until y
   {
     title:
       '🏛 From Les Invalides to the Champs de Mars — A Classic Paris Walk (with Seine Cruise Option)',
-    price: '35 € (60 € with Seine cruise)',
     duration: '1h15–1h30 (≈2h45 with cruise)',
     description:
       'A calm, elegant walk from the golden dome of Les Invalides to the lawns of the Champs de Mars, with some of the best Eiffel Tower views — and an optional Seine River cruise finale.',
@@ -47,7 +44,6 @@ It’s a calm and cultural stroll full of fresh air, stories, and photo stops. F
   },
   {
     title: '❤️ Heart of Paris — Île de la Cité & Île Saint-Louis Walking Tour',
-    price: '40 €',
     duration: '1h30–2h',
     description:
       'Walk through the birthplace of Paris — from royal palaces and medieval cathedrals on Île de la Cité to the quiet charm, cafés, and ice cream of Île Saint-Louis.',
@@ -63,7 +59,6 @@ We end on Île Saint-Louis, a peaceful and elegant island known for its art gall
   },
   {
     title: '📚 Le Marais Secrets — Place des Vosges & Victor Hugo’s Paris',
-    price: '40 €',
     duration: '1h30',
     description:
       'A historical and poetic walk through Le Marais, from Hôtel de Ville to Place des Vosges and the Maison de Victor Hugo, with hidden courtyards, medieval streets, and noble mansions.',
@@ -80,7 +75,6 @@ The walk continues through boutiques, courtyards, and charming lanes before endi
   {
     title:
       '🌿 Left Bank Elegance — Luxembourg Gardens, Panthéon & Rue Mouffetard',
-    price: '50 €',
     duration: '2 hours',
     description:
       'A beautiful walk through the most authentic part of the Left Bank, from the peaceful Luxembourg Gardens to the grandeur of the Panthéon and the flavors of Rue Mouffetard — with a crêpe tasting included.',
@@ -98,7 +92,6 @@ We end on a sweet note: a warm crêpe from my favorite spot — a delicious tast
   },
   {
     title: '🎨 Montmartre Classique & Romantique',
-    price: '45 €',
     duration: '1h30–2h',
     description:
       'A romantic walk through Montmartre’s village streets, between Sacré-Cœur, artists’ squares, pastel houses, and cozy cafés — perfect for photos, couples, and dreamers.',
@@ -114,7 +107,6 @@ The walk ends in a typical Montmartre café — the perfect moment to enjoy a co
   },
   {
     title: '☀️ Morning Rituals in Paris — Saint-Germain & Saint-Sulpice Edition',
-    price: '45 €',
     duration: '1h30',
     description:
       'See Paris wake up in Saint-Germain and around Saint-Sulpice: warm croissants, morning markets, and quiet streets before the city rushes in.',
@@ -130,7 +122,6 @@ We share stories of daily life, neighborhood traditions, and a few gourmet secre
   },
   {
     title: '⛪ Notre-Dame & Quartier Latin Walking Tour (2025 Edition)',
-    price: '40 €',
     duration: '1h30',
     description:
       'A historic walk between the Conciergerie, Sainte-Chapelle, Notre-Dame, and the literary streets of the Latin Quarter — where medieval Paris meets the world of books and cafés.',
@@ -146,7 +137,6 @@ It’s the perfect walk for history lovers, couples, and families who want to fe
   },
   /*{
     title: '🎄 Paris Christmas Lights — From Vendôme to Montaigne',
-    price: '45 €',
     duration: '1h30',
     description:
       'An evening walk under Paris’s most beautiful Christmas lights, from Place Vendôme to the Champs-Élysées and Avenue Montaigne — perfect for photos, stories, and warm winter memories.',
@@ -162,7 +152,6 @@ We stop for photos, share stories of Christmas traditions, and may warm up with 
   },*/
   {
     title: '🌙 The Magic of Paris by Night — A Romantic Evening Walk',
-    price: '45 €',
     duration: '1h30',
     description:
       'A dreamy nighttime walk through bridges, river reflections, golden lights, and romantic Parisian streets — perfect for couples and night photography.',
@@ -176,7 +165,6 @@ It’s the ideal tour for couples, solo dreamers, and anyone who wants to experi
   },
   {
     title: '🌟 Parisian Elegance — From Royal Gardens to Hidden Passages',
-    price: '60 €',
     duration: '2h15–2h30',
     description: 'An elegant journey from Concorde and the Tuileries to the Louvre, Palais‑Royal, and Galerie Vivienne — a refined walk through royal gardens and hidden passages.',
     details: `Begin at historic Place de la Concorde, walk through the royal Tuileries Gardens and the Louvre courtyard, then slip into the poetic courtyards of Palais-Royal. Continue through Galerie Vivienne’s mosaic floors and glass ceilings, ending near Bibliothèque Richelieu. A refined, slow-paced walk through the most elegant heart of Paris.`,
@@ -184,7 +172,6 @@ It’s the ideal tour for couples, solo dreamers, and anyone who wants to experi
   },
   {
     title: '✨ Parisian Elegance Walk — Opéra, Vendôme, Madeleine & Concorde',
-    price: '35 €',
     duration: '1h15–1h30',
     description: 'A refined introduction to the most elegant Paris streets — Opéra Garnier, Place Vendôme, La Madeleine, and Concorde.',
     details: `Start at the golden Opéra Garnier, stroll through luxury streets to Place Vendôme, continue to La Madeleine and finish at historic Place de la Concorde. Perfect for architecture lovers and first‑time visitors.`,
@@ -192,7 +179,6 @@ It’s the ideal tour for couples, solo dreamers, and anyone who wants to experi
   },
   {
     title: '📸 Private Photoshoot & Guided Tour — 3 Perfect Paris Spots',
-    price: '120 € (1–2 people) +20 € per extra person',
     duration: '1h30',
     description: 'A fully private photoshoot + guided walk through your choice of three iconic or hidden Paris locations.',
     details: `Choose 3 locations — Eiffel Tower, Louvre, Palais-Royal, Montmartre, bridges, or hidden corners. Includes storytelling, posing guidance, and 20–40 edited photos. Perfect for couples, solo travelers, and special occasions.`,
@@ -200,7 +186,6 @@ It’s the ideal tour for couples, solo dreamers, and anyone who wants to experi
   },
   {
     title: '🥐 Secret Passages of Paris — From Vivienne to Verdeau (with Croissant Break)',
-    price: '45 €',
     duration: '1h45',
     description: 'A cozy walk through Paris’s 19th‑century covered passages — Galerie Vivienne, Panoramas, Jouffroy, Verdeau — with a croissant included.',
     details: `Discover elegant galleries filled with mosaics, boutiques, and warm lights. Includes a croissant pause, cultural storytelling, and visits to Vivienne, Panoramas, Jouffroy, and Verdeau. Perfect in winter or rainy days.`,
@@ -208,7 +193,6 @@ It’s the ideal tour for couples, solo dreamers, and anyone who wants to experi
   },
   {
     title: '🌿 The Green Path of Paris — A Walk on the Coulée Verte',
-    price: '35 €',
     duration: '1h30',
     description: 'A peaceful elevated walk along the Coulée Verte — flowers, wooden paths, gardens, and Paris rooftops.',
     details: `Explore the world’s first elevated park, built on an old railway line. Walk through garden corridors, bamboo tunnels, viewpoints, and the beautiful Reuilly Bridge. A calm, photogenic, and refreshing tour.`,
@@ -216,7 +200,6 @@ It’s the ideal tour for couples, solo dreamers, and anyone who wants to experi
   },
   {
     title: '🍷 Wine & Cheese Tasting Experience — French Flavors in Paris',
-    price: '65 €',
     duration: '1h30',
     description: 'A warm, intimate French wine & cheese tasting in a cozy Parisian setting — 2–3 wines, 3–4 cheeses, and pairing secrets.',
     details: `Taste iconic French cheeses and wines while learning how to pair them like a local. Includes cultural stories, aromas, regional insights, and a friendly gourmet moment in a charming wine bar.`,
