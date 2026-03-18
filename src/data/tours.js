@@ -30,8 +30,8 @@ Continue along the riverbanks, passing boats, barges, and peaceful paths until y
   },
   {
     title:
-      '🏛 From Les Invalides to the Champs de Mars — A Classic Paris Walk (with Seine Cruise Option)',
-    duration: '1h15–1h30 (≈2h45 with cruise)',
+      '🏛 From Les Invalides to the Champs de Mars — A Classic Paris Walk',
+    duration: '1h15–1h30',
     description:
       'A calm, elegant walk from the golden dome of Les Invalides to the lawns of the Champs de Mars, with some of the best Eiffel Tower views — and an optional Seine River cruise finale.',
     details: `This walk reveals the elegance and light of the Left Bank.
@@ -121,7 +121,7 @@ We share stories of daily life, neighborhood traditions, and a few gourmet secre
       'https://fransguide.setmore.com/services/f3c405c2-7227-4e8d-92a8-da6feeb8b122',
   },
   {
-    title: '⛪ Notre-Dame & Quartier Latin Walking Tour (2025 Edition)',
+    title: '⛪ Notre-Dame & Quartier Latin Walking Tour (2026 Edition)',
     duration: '1h30',
     description:
       'A historic walk between the Conciergerie, Sainte-Chapelle, Notre-Dame, and the literary streets of the Latin Quarter — where medieval Paris meets the world of books and cafés.',
