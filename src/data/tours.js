@@ -1,17 +1,19 @@
 // src/data/tours.js
 export const tours = [
   {
-    title: '🗼 Eiffel Secrets — From the Streets to the Summit',
+    title: '🗼 Discover the Eiffel Tower Differently',
     duration: '1 hour',
     description:
-      'Start at the stunning Trocadéro viewpoint for story-filled photo stops, then stroll across the Seine to the base of the Eiffel Tower where you continue to the summit at your own pace.',
-    details: `This experience is the perfect mix between a guided walk and an unforgettable visit.
+      'Start at the stunning Trocadéro viewpoint for story-filled photo stops, then stroll across the Seine to the base of the Eiffel Tower for a unique storytelling experience.',
+    details: `This experience is a unique storytelling walk around the Eiffel Tower.
 
 From the elegant terraces of Trocadéro to the feet of the Iron Lady, discover the stories behind the world’s most iconic monument.
 
-Along the way, I share historical facts, little-known secrets, and photo tips to make your visit even more memorable. At the base of the tower, I explain everything you’ll see inside, then give you your skip-the-line tickets so you can continue independently to the top — no waiting, no stress, just pure Parisian magic.`,
+Along the way, I share historical facts, little-known secrets, and photo tips to make your visit even more memorable.
+
+The experience ends at the base of the Eiffel Tower, where you are free to continue your visit independently.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/1de74b58-2712-42a9-8252-7a889357498c',
+      'https://wa.me/33759752536?text=Hi! I saw your "🗼 Discover the Eiffel Tower Differently" tour on Fran’s Guide 😊 When is your next available tour?',
   },
   {
     title: '🌉 Along the Seine — From Concorde to the Eiffel Tower',
@@ -26,21 +28,21 @@ Enjoy quiet views around the Esplanade des Invalides before reaching the elegant
 
 Continue along the riverbanks, passing boats, barges, and peaceful paths until you reach Pont de l’Alma, with one of the best mid-distance views of the Eiffel Tower, and finish at Pont d’Iéna — directly facing the Iron Lady.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/fd4a0b37-8875-45f4-8cea-5eaabee030f0',
+      'https://wa.me/33759752536?text=Hi! I saw your "🌉 Along the Seine — From Concorde to the Eiffel Tower" tour on Fran’s Guide 😊 When is your next available tour?',
   },
   {
     title:
       '🏛 From Les Invalides to the Champs de Mars — A Classic Paris Walk',
     duration: '1h15–1h30',
     description:
-      'A calm, elegant walk from the golden dome of Les Invalides to the lawns of the Champs de Mars, with some of the best Eiffel Tower views — and an optional Seine River cruise finale.',
+      'A calm, elegant walk from the golden dome of Les Invalides to the lawns of the Champs de Mars, with some of the best Eiffel Tower views in Paris.',
     details: `This walk reveals the elegance and light of the Left Bank.
 
 From the monumental Invalides, we follow the axis of power, history, and architecture all the way to the romantic lawns of the Champs de Mars, with beautiful perspectives on the Eiffel Tower.
 
-It’s a calm and cultural stroll full of fresh air, stories, and photo stops. For those who want the perfect Parisian ending, the tour can continue with a 1‑hour Seine River cruise — a relaxing glide under the bridges of Paris, with magical views of monuments lit by the sun or evening lights.`,
+It’s a calm and cultural stroll full of fresh air, stories, and photo stops — a relaxed way to experience the elegance of the Left Bank.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/f6aed74b-326e-490c-9e7b-361f949ebb53',
+      'https://wa.me/33759752536?text=Hi! I saw your "🏛 From Les Invalides to the Champs de Mars — A Classic Paris Walk" tour on Fran’s Guide 😊 When is your next available tour?',
   },
   {
     title: '❤️ Heart of Paris — Île de la Cité & Île Saint-Louis Walking Tour',
@@ -55,7 +57,7 @@ From the hidden beauty of Place Dauphine to the royal history of the Conciergeri
 
 We end on Île Saint-Louis, a peaceful and elegant island known for its art galleries, cobblestone streets, and the world-famous Berthillon ice cream — because every good story deserves a sweet ending.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/15656567-e6b5-4911-814e-06aecf0e4dfe',
+      'https://wa.me/33759752536?text=Hi! I saw your "❤️ Heart of Paris — Île de la Cité & Île Saint-Louis Walking Tour" tour on Fran’s Guide 😊 When is your next available tour?',
   },
   {
     title: '📚 Le Marais Secrets — Place des Vosges & Victor Hugo’s Paris',
@@ -70,7 +72,7 @@ At Place des Vosges, the oldest planned square in Paris, admire the perfect roya
 
 The walk continues through boutiques, courtyards, and charming lanes before ending in the lively Jewish quarter, full of flavors, history, and local addresses to enjoy after the tour.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/efc77d51-82fb-4b18-af48-2954427310b3',
+      'https://wa.me/33759752536?text=Hi! I saw your "📚 Le Marais Secrets — Place des Vosges & Victor Hugo’s Paris" tour on Fran’s Guide 😊 When is your next available tour?',
   },
   {
     title:
@@ -88,7 +90,7 @@ Finally, enter the world of Rue Mouffetard, one of the city’s oldest and most 
 
 We end on a sweet note: a warm crêpe from my favorite spot — a delicious taste of real Paris life.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/d7973205-9f76-4fc7-870c-6966981fac4e',
+      'https://wa.me/33759752536?text=Hi! I saw your "🌿 Left Bank Elegance — Luxembourg Gardens, Panthéon & Rue Mouffetard" tour on Fran’s Guide 😊 When is your next available tour?',
   },
   {
     title: '🎨 Montmartre Classique & Romantique',
@@ -103,7 +105,7 @@ Then we wander along cobbled lanes like Rue de l’Abreuvoir, past the Maison Ro
 
 The walk ends in a typical Montmartre café — the perfect moment to enjoy a coffee or a glass of wine while watching neighborhood life go by.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/20a647d4-2541-4fe5-9e7c-ab3c69fd0b06',
+      'https://wa.me/33759752536?text=Hi! I saw your "🎨 Montmartre Classique & Romantique" tour on Fran’s Guide 😊 When is your next available tour?',
   },
   {
     title: '☀️ Morning Rituals in Paris — Saint-Germain & Saint-Sulpice Edition',
@@ -118,7 +120,7 @@ At the Saint-Sulpice market, locals chat with their favorite vendors, flowers br
 
 We share stories of daily life, neighborhood traditions, and a few gourmet secrets before ending with a cozy café moment — a perfect, gentle start to your Paris day.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/f3c405c2-7227-4e8d-92a8-da6feeb8b122',
+      'https://wa.me/33759752536?text=Hi! I saw your "☀️ Morning Rituals in Paris — Saint-Germain & Saint-Sulpice Edition" tour on Fran’s Guide 😊 When is your next available tour?',
   },
   {
     title: '⛪ Notre-Dame & Quartier Latin Walking Tour (2026 Edition)',
@@ -133,7 +135,7 @@ Crossing the Seine into the Latin Quarter, we discover the intellectual and lite
 
 It’s the perfect walk for history lovers, couples, and families who want to feel the heartbeat of historic Paris.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/1d2b3670-a2b7-4e6d-b701-03230b758a14',
+      'https://wa.me/33759752536?text=Hi! I saw your "⛪ Notre-Dame & Quartier Latin Walking Tour (2026 Edition)" tour on Fran’s Guide 😊 When is your next available tour?',
   },
   /*{
     title: '🎄 Paris Christmas Lights — From Vendôme to Montaigne',
@@ -148,7 +150,7 @@ Between luxury façades, sparkling window displays, and the scent of roasted che
 
 We stop for photos, share stories of Christmas traditions, and may warm up with a vin chaud or hot chocolate. The tour ends on Avenue Montaigne, where elegance meets joy — a perfect Parisian fairytale in December.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/fc55c69b-e9ae-48e7-aac6-fa791bcea767',
+      'https://wa.me/33759752536?text=Hi! I saw your "🌙 The Magic of Paris by Night — A Romantic Evening Walk" tour on Fran’s Guide 😊 When is your next available tour?',
   },*/
   {
     title: '🌙 The Magic of Paris by Night — A Romantic Evening Walk',
@@ -161,48 +163,48 @@ We follow the lights, reflections, and stories that make Paris by night so unfor
 
 It’s the ideal tour for couples, solo dreamers, and anyone who wants to experience the city’s romantic side after dark.`,
     bookingUrl:
-      'https://fransguide.setmore.com/services/94304f6a-7a77-44e8-8e2a-2fbc06d040e5',
+      'https://wa.me/33759752536?text=Hi! I saw your tour on Fran’s Guide 😊 When is your next available tour?',
   },
   {
     title: '🌟 Parisian Elegance — From Royal Gardens to Hidden Passages',
     duration: '2h15–2h30',
     description: 'An elegant journey from Concorde and the Tuileries to the Louvre, Palais‑Royal, and Galerie Vivienne — a refined walk through royal gardens and hidden passages.',
     details: `Begin at historic Place de la Concorde, walk through the royal Tuileries Gardens and the Louvre courtyard, then slip into the poetic courtyards of Palais-Royal. Continue through Galerie Vivienne’s mosaic floors and glass ceilings, ending near Bibliothèque Richelieu. A refined, slow-paced walk through the most elegant heart of Paris.`,
-    bookingUrl: 'https://fransguide.setmore.com/services/4dd74086-77fe-4902-bb9c-6092089c8eb1'
+    bookingUrl: 'https://wa.me/33759752536?text=Hi! I saw your "🌟 Parisian Elegance — From Royal Gardens to Hidden Passages" tour on Fran’s Guide 😊 When is your next available tour?'
   },
   {
     title: '✨ Parisian Elegance Walk — Opéra, Vendôme, Madeleine & Concorde',
     duration: '1h15–1h30',
     description: 'A refined introduction to the most elegant Paris streets — Opéra Garnier, Place Vendôme, La Madeleine, and Concorde.',
     details: `Start at the golden Opéra Garnier, stroll through luxury streets to Place Vendôme, continue to La Madeleine and finish at historic Place de la Concorde. Perfect for architecture lovers and first‑time visitors.`,
-    bookingUrl: 'https://fransguide.setmore.com/services/6ad15958-b783-4271-91dd-d7f742f6fc77'
+    bookingUrl: 'https://wa.me/33759752536?text=Hi! I saw your "✨ Parisian Elegance Walk — Opéra, Vendôme, Madeleine & Concorde" tour on Fran’s Guide 😊 When is your next available tour?'
   },
   {
     title: '📸 Private Photoshoot & Guided Tour — 3 Perfect Paris Spots',
     duration: '1h30',
     description: 'A fully private photoshoot + guided walk through your choice of three iconic or hidden Paris locations.',
     details: `Choose 3 locations — Eiffel Tower, Louvre, Palais-Royal, Montmartre, bridges, or hidden corners. Includes storytelling, posing guidance, and 20–40 edited photos. Perfect for couples, solo travelers, and special occasions.`,
-    bookingUrl: 'https://fransguide.setmore.com/services/9114bfc5-a429-473d-82da-de71c85af51b'
+    bookingUrl: 'https://wa.me/33759752536?text=Hi! I saw your "📸 Private Photoshoot & Guided Tour — 3 Perfect Paris Spots" tour on Fran’s Guide 😊 When is your next available tour?'
   },
   {
     title: '🥐 Secret Passages of Paris — From Vivienne to Verdeau (with Croissant Break)',
     duration: '1h45',
     description: 'A cozy walk through Paris’s 19th‑century covered passages — Galerie Vivienne, Panoramas, Jouffroy, Verdeau — with a croissant included.',
     details: `Discover elegant galleries filled with mosaics, boutiques, and warm lights. Includes a croissant pause, cultural storytelling, and visits to Vivienne, Panoramas, Jouffroy, and Verdeau. Perfect in winter or rainy days.`,
-    bookingUrl: 'https://fransguide.setmore.com/services/72d9ab9a-ed48-47a8-8c51-21537a9ba202'
+    bookingUrl: 'https://wa.me/33759752536?text=Hi! I saw your "🥐 Secret Passages of Paris — From Vivienne to Verdeau (with Croissant Break)" tour on Fran’s Guide 😊 When is your next available tour?'
   },
   {
     title: '🌿 The Green Path of Paris — A Walk on the Coulée Verte',
     duration: '1h30',
     description: 'A peaceful elevated walk along the Coulée Verte — flowers, wooden paths, gardens, and Paris rooftops.',
     details: `Explore the world’s first elevated park, built on an old railway line. Walk through garden corridors, bamboo tunnels, viewpoints, and the beautiful Reuilly Bridge. A calm, photogenic, and refreshing tour.`,
-    bookingUrl: 'https://fransguide.setmore.com/services/94b33bf9-0b45-4100-b30c-74395cc888f0'
+    bookingUrl: 'https://wa.me/33759752536?text=Hi! I saw your "🌿 The Green Path of Paris — A Walk on the Coulée Verte" tour on Fran’s Guide 😊 When is your next available tour?'
   },
   {
     title: '🍷 Wine & Cheese Tasting Experience — French Flavors in Paris',
     duration: '1h30',
     description: 'A warm, intimate French wine & cheese tasting in a cozy Parisian setting — 2–3 wines, 3–4 cheeses, and pairing secrets.',
     details: `Taste iconic French cheeses and wines while learning how to pair them like a local. Includes cultural stories, aromas, regional insights, and a friendly gourmet moment in a charming wine bar.`,
-    bookingUrl: 'https://fransguide.setmore.com/services/e6f54fe9-0bc5-46f7-b4ef-715997cd8a8d'
+    bookingUrl: 'https://wa.me/33759752536?text=Hi! I saw your "🍷 Wine & Cheese Tasting Experience — French Flavors in Paris" tour on Fran’s Guide 😊 When is your next available tour?'
   }
 ];
