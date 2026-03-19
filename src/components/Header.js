@@ -418,6 +418,7 @@ export default function Header({ language, switchLanguage, content }) {
               <a href="/tours" onClick={() => setMenuOpen(false)}>{content?.navTours || 'Tours'}</a>
               <a href="/about" onClick={() => setMenuOpen(false)}>{content?.navAbout || 'About Fran'}</a>
               <a href="/contact" onClick={() => setMenuOpen(false)}>{content?.navContact || 'Contact'}</a>
+              <a href="/photoshoots" onClick={() => setMenuOpen(false)}>{content?.navPhotoshoots || 'Photos'}</a>
             </nav>
           </div>
           <div className="right-section">

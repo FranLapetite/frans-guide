@@ -16,6 +16,7 @@ import AboutPage from './components/AboutPage';
 import MentionsLegales from './components/MentionsLegales';
 import CGV from './components/CGV';
 import TourDetails from './components/TourDetails';
+import PhotoshootsPage from './components/PhotoshootsPage.js';
 
 // --- Multi-language content dictionary (kept and unchanged except for small fixes) ---
 const TEXTS = {
@@ -122,11 +123,15 @@ const TEXTS = {
 };
 
 
+
+
 // --- Main Application Component ---
 export default function App() {
   const [language, setLanguage] = useState('en');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const scrollButtonRef = useRef(null);
+
+  
 
   // --- GitHub Pages redirect handler ---
   if (window.location.search.includes('?p=')) {
@@ -221,6 +226,7 @@ export default function App() {
               </>
             } />
             <Route path="/tours" element={<ToursPage language={language} content={content} />} />
+            <Route path="/photoshoots" element={<PhotoshootsPage language={language} />} />
             <Route path="/tour/:id" element={<TourDetails />} />
             <Route path="/about" element={<AboutPage language={language} />} />
             <Route path="/contact" element={<ContactSection content={content} />} />
