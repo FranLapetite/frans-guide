@@ -8,10 +8,10 @@ const LABELS = {
     notFound: 'Tour not found.',
     price: 'Price',
     duration: 'Duration',
-    readyTitle: 'Ready to book this tour?',
+    readyTitle: 'Text me on WhatsApp to join this tour',
     readyText:
-      "Pick your date and time on my secure booking page. Your request comes straight to me for approval, and payment is safely processed via Stripe.",
-    bookButton: '📅 Book this tour',
+      "Message me on WhatsApp to check availability, ask questions, and book your spot easily. I usually reply quickly 😊",
+    bookButton: '💬 Message me on WhatsApp',
     noBookingMessage:
       "Online booking for this tour isn't configured yet. Please contact me directly 💌",
   },
@@ -20,10 +20,10 @@ const LABELS = {
     notFound: 'Visite introuvable.',
     price: 'Tarif',
     duration: 'Durée',
-    readyTitle: 'Prêt·e à réserver cette visite ?',
+    readyTitle: 'Écris-moi sur WhatsApp pour rejoindre cette visite',
     readyText:
-      "Choisissez votre date et votre heure sur ma page de réservation sécurisée. Votre demande me sera envoyée pour validation et le paiement se fera en toute sécurité via Stripe.",
-    bookButton: '📅 Réserver cette visite',
+      "Envoie-moi un message sur WhatsApp pour vérifier les disponibilités, poser tes questions et réserver facilement. Je réponds rapidement 😊",
+    bookButton: '💬 M’écrire sur WhatsApp',
     noBookingMessage:
       "La réservation en ligne pour cette visite n'est pas encore configurée. Vous pouvez me contacter directement 💌",
   },
@@ -32,10 +32,10 @@ const LABELS = {
     notFound: 'Tour não encontrado.',
     price: 'Preço',
     duration: 'Duração',
-    readyTitle: 'Pronto(a) para reservar este tour?',
+    readyTitle: 'Fale comigo no WhatsApp para participar deste tour',
     readyText:
-      'Escolha a data e o horário na minha página de reservas. Seu pedido será enviado para aprovação e o pagamento é feito com segurança via Stripe.',
-    bookButton: '📅 Reservar este tour',
+      "Me mande uma mensagem no WhatsApp para ver disponibilidade, tirar dúvidas e reservar facilmente. Eu respondo rápido 😊",
+    bookButton: '💬 Falar no WhatsApp',
     noBookingMessage:
       'As reservas online para este tour ainda não estão configuradas. Fale comigo diretamente 💌',
   },
@@ -44,10 +44,10 @@ const LABELS = {
     notFound: 'Tour no encontrado.',
     price: 'Precio',
     duration: 'Duración',
-    readyTitle: '¿Listo/a para reservar este tour?',
+    readyTitle: 'Escríbeme por WhatsApp para unirte a este tour',
     readyText:
-      'Elige la fecha y la hora en mi página de reserva segura. Tu solicitud me llegará para confirmación y el pago se realizará de forma segura a través de Stripe.',
-    bookButton: '📅 Reservar este tour',
+      "Envíame un mensaje por WhatsApp para consultar disponibilidad, hacer preguntas y reservar fácilmente. Suelo responder rápido 😊",
+    bookButton: '💬 Escribirme por WhatsApp',
     noBookingMessage:
       'La reserva online para este tour aún no está configurada. Puedes contactarme directamente 💌',
   },
