@@ -317,20 +317,6 @@ C'est la visite idéale pour les couples, les rêveurs solitaires et tous ceux q
     bookingUrl: 'https://wa.me/33759752536?text=Hi! I saw your "✨ Parisian Elegance Walk — Opéra, Vendôme, Madeleine & Concorde" tour on Fran\'s Guide 😊 When is your next available tour?'
   },
   {
-    title: '📸 Private Photoshoot & Guided Tour — 3 Perfect Paris Spots',
-    duration: '1h30',
-    price: '120€', flat: true,
-    coords: [48.8584, 2.2945],
-    description: 'A fully private photoshoot + guided walk through your choice of three iconic or hidden Paris locations.',
-    details: `Choose 3 locations — Eiffel Tower, Louvre, Palais-Royal, Montmartre, bridges, or hidden corners. Includes storytelling, posing guidance, and 20–40 edited photos. Perfect for couples, solo travelers, and special occasions.`,
-    fr: {
-      title: 'Séance Photo Privée & Visite Guidée — 3 Spots Parfaits à Paris',
-      description: 'Une séance photo entièrement privée + balade guidée à travers votre choix de trois lieux iconiques ou cachés de Paris.',
-      details: `Choisissez 3 lieux — Tour Eiffel, Louvre, Palais-Royal, Montmartre, ponts ou coins secrets. Comprend storytelling, conseils de pose et 20 à 40 photos retouchées. Parfait pour les couples, les voyageurs solo et les occasions spéciales.`,
-    },
-    bookingUrl: 'https://wa.me/33759752536?text=Hi! I saw your "📸 Private Photoshoot & Guided Tour — 3 Perfect Paris Spots" tour on Fran\'s Guide 😊 When is your next available tour?'
-  },
-  {
     title: '🥐 Secret Passages of Paris — From Vivienne to Verdeau (with Croissant Break)',
     duration: '1h45',
     price: '65€',
