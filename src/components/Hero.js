@@ -1,124 +1,216 @@
 import React from "react";
 
 export default function Hero({
-  title = "Discover Paris with Fran",
-  subtitle = "A passionate Franco-Brazilian guide sharing the city’s secrets, stories, and soul — one charming street at a time.",
-  cta = "Explore My Tours",
-  tagline = "Authentic experiences • Hidden corners • Heartfelt connections",
+  title,
+  subtitle,
+  cta,
+  language = "en",
 }) {
-  const heroStyle = {
-    backgroundImage: "linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('/B6689E79-05BE-4DF4-BD2B-7054494F04AA_1_201_a.jpeg')",
-    backgroundColor: "#ffffff",
-    backgroundSize: "cover",
-    backgroundPosition: "center center",
-    backgroundAttachment: "fixed",
-    color: "#1E2A5E",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    textAlign: "center",
-    minHeight: "90vh",
-    padding: "4rem 2rem",
-    fontFamily: "'Poppins', sans-serif",
-    position: "relative",
-    overflow: "hidden",
-  };
+  const eyebrow = {
+    en: "Paris Audio Tours",
+    fr: "Visites Audio de Paris",
+    pt: "Passeios de Áudio em Paris",
+    es: "Tours de Audio por París",
+  }[language] || "Paris Audio Tours";
+
+  const secondCta = {
+    en: "Learn more",
+    fr: "En savoir plus",
+    pt: "Saiba mais",
+    es: "Saber más",
+  }[language] || "Learn more";
+
+  const badgeTitle = {
+    en: "Audio & Private Tours",
+    fr: "Visites Audio & Privées",
+    pt: "Tours de Áudio & Privados",
+    es: "Tours de Audio & Privados",
+  }[language] || "Audio & Private Tours";
+
+  const badgeSub = {
+    en: "English & French · Any smartphone",
+    fr: "Français & Anglais · Tout smartphone",
+    pt: "Inglês & Francês · Qualquer smartphone",
+    es: "Inglés & Francés · Cualquier smartphone",
+  }[language] || "English & French · Any smartphone";
 
   return (
-    <section id="hero" className="hero-section fade-in" style={heroStyle}>
+    <section className="fg-hero">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins&display=swap');
-        .hero-section {
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+        .fg-hero {
+          height: 100vh;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          padding-top: 80px;
           overflow: hidden;
         }
-        .hero-section h1 {
-          font-family: 'Playfair Display', serif;
-          font-size: 4rem;
-          color: #ffffff;
-          margin-bottom: 1rem;
-          font-weight: bold;
-          letter-spacing: 1.5px;
-          line-height: 1.1;
-          text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        .fg-hero-left {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 80px 60px 80px 80px;
+          gap: 28px;
+          background: #fff;
         }
-        .hero-section p.subtitle {
-          font-size: 1.4rem;
-          color: #ffffff;
-          margin-bottom: 1.5rem;
-          font-weight: 300;
-          letter-spacing: 0.7px;
-          max-width: 600px;
-          line-height: 1.4;
-          text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        .fg-hero-eyebrow {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          color: #4A4845;
+          font-weight: 400;
         }
-        .hero-section p.tagline {
-          font-size: 1.1rem;
-          color: #ffffff;
+        .fg-hero-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(52px, 5.5vw, 72px);
+          line-height: 1.05;
+          font-weight: 400;
+          color: #1C1C1C;
+          margin: 0;
+        }
+        .fg-hero-title em {
           font-style: italic;
-          margin-bottom: 3rem;
-          letter-spacing: 0.5px;
-          text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+          color: #0F2C66;
         }
-        .cta-button {
-          background: #1E2A5E;
-          color: #ffffff;
-          padding: 1.1rem 3.2rem;
-          border-radius: 8px;
-          font-weight: 700;
+        .fg-hero-subtitle {
+          font-family: 'Jost', sans-serif;
+          font-size: 15px;
+          line-height: 1.8;
+          color: #4A4845;
+          max-width: 380px;
+          font-weight: 400;
+          margin: 0;
+        }
+        .fg-hero-actions {
+          display: flex;
+          align-items: center;
+          gap: 32px;
+          margin-top: 8px;
+        }
+        .fg-btn-primary {
+          display: inline-block;
+          background: #0F2C66;
+          color: #fff;
+          padding: 14px 32px;
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
           text-decoration: none;
-          box-shadow: none;
-          transition: all 0.3s ease;
-          font-size: 1.25rem;
-          letter-spacing: 1px;
+          font-weight: 400;
+          transition: opacity 0.2s;
         }
-        .cta-button:hover {
-          transform: translateY(-4px);
-          background: #14204B;
-          box-shadow: none;
+        .fg-btn-primary:hover { opacity: 0.85; color: #fff; }
+        .fg-btn-ghost {
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #1C1C1C;
+          text-decoration: none;
+          font-weight: 400;
+          border-bottom: 1px solid #E8E3DC;
+          padding-bottom: 2px;
+          transition: border-color 0.2s;
         }
-        @media (max-width: 768px) {
-          .hero-section h1 { font-size: 3rem; }
-          .hero-section p.subtitle { font-size: 1.2rem; max-width: 90%; }
-          .hero-section p.tagline { font-size: 1rem; margin-bottom: 2rem; }
-          .cta-button { font-size: 1rem; padding: 0.9rem 2.5rem; }
+        .fg-btn-ghost:hover { border-color: #1C1C1C; color: #1C1C1C; }
+        .fg-hero-right {
+          position: relative;
+          overflow: hidden;
+          background: #F3EFE9;
+        }
+        .fg-hero-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(0.95) saturate(0.9);
+          display: block;
+        }
+        .fg-hero-badge {
+          position: absolute;
+          bottom: 40px;
+          left: 40px;
+          background: rgba(255,255,255,0.93);
+          backdrop-filter: blur(8px);
+          padding: 16px 22px;
+          border-left: 2px solid #0F2C66;
+        }
+        .fg-hero-badge-text {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #0F2C66;
+          font-weight: 500;
+        }
+        .fg-hero-badge-sub {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          color: #4A4845;
+          margin-top: 3px;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 900px) {
+          .fg-hero {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 50vw;
+            height: auto;
+            min-height: 100vh;
+            padding-top: 72px;
+          }
+          .fg-hero-left {
+            padding: 48px 32px;
+            gap: 20px;
+          }
+          .fg-hero-title { font-size: clamp(40px, 10vw, 56px); }
+          .fg-hero-right { min-height: 50vw; }
+          .fg-hero-badge { bottom: 20px; left: 20px; }
         }
         @media (max-width: 480px) {
-          .hero-section {
-            padding: 3rem 1.2rem !important;
-            min-height: 75vh !important;
-            background-attachment: scroll !important;
-          }
-          .hero-section h1 {
-            font-size: 2.2rem !important;
-            letter-spacing: 1px !important;
-            margin-bottom: 0.8rem !important;
-          }
-          .hero-section p.subtitle {
-            font-size: 1rem !important;
-            line-height: 1.45 !important;
-            max-width: 95% !important;
-            margin-bottom: 1.2rem !important;
-          }
-          .hero-section p.tagline {
-            font-size: 0.9rem !important;
-            margin-bottom: 1.8rem !important;
-          }
-          .cta-button {
-            padding: 0.8rem 2rem !important;
-            font-size: 0.95rem !important;
-            letter-spacing: 0.6px !important;
-            border-radius: 6px !important;
-          }
+          .fg-hero-left { padding: 36px 24px; gap: 16px; }
+          .fg-hero-title { font-size: 38px; }
+          .fg-hero-subtitle { font-size: 14px; }
+          .fg-hero-actions { gap: 20px; flex-wrap: wrap; }
+          .fg-btn-primary { padding: 12px 24px; font-size: 11px; }
         }
       `}</style>
 
-      <h1>{title}</h1>
-      <p className="subtitle">{subtitle}</p>
-      {tagline && <p className="tagline">{tagline}</p>}
-      <a href="/tours" className="cta-button">
-        {cta}
-      </a>
+      {/* Left: text */}
+      <div className="fg-hero-left">
+        <span className="fg-hero-eyebrow">{eyebrow}</span>
+        <h1 className="fg-hero-title">
+          {language === "fr" ? (
+            <>Découvrez Paris<br/><em>à votre rythme.</em></>
+          ) : language === "pt" ? (
+            <>Descubra Paris<br/><em>no seu ritmo.</em></>
+          ) : language === "es" ? (
+            <>Descubre París<br/><em>a tu ritmo.</em></>
+          ) : (
+            <>Discover Paris<br/><em>at your own</em><br/>pace.</>
+          )}
+        </h1>
+        <p className="fg-hero-subtitle">{subtitle}</p>
+        <div className="fg-hero-actions">
+          <a href="/tours" className="fg-btn-primary">{cta}</a>
+          <a href="/about" className="fg-btn-ghost">{secondCta}</a>
+        </div>
+      </div>
+
+      {/* Right: photo */}
+      <div className="fg-hero-right">
+        <img
+          src="/hero-paris.jpeg"
+          alt="Paris"
+          className="fg-hero-img"
+        />
+        <div className="fg-hero-badge">
+          <div className="fg-hero-badge-text">{badgeTitle}</div>
+          <div className="fg-hero-badge-sub">{badgeSub}</div>
+        </div>
+      </div>
     </section>
   );
 }

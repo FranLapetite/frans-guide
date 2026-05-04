@@ -15,8 +15,78 @@ import PageFooter from './components/Footer';
 import AboutPage from './components/AboutPage';
 import MentionsLegales from './components/MentionsLegales';
 import CGV from './components/CGV';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import TourDetails from './components/TourDetails';
 import PhotoshootsPage from './components/PhotoshootsPage.js';
+
+// --- Stats Bar Component ---
+function StatsBar({ language = 'en' }) {
+  const labels = {
+    en: ['Audio Tours', 'Private Tours', 'Languages', 'Stories to tell'],
+    fr: ['Visites Audio', 'Visites Privées', 'Langues', 'Histoires à raconter'],
+    pt: ['Tours de Áudio', 'Tours Privados', 'Idiomas', 'Histórias a contar'],
+    es: ['Tours de Audio', 'Tours Privados', 'Idiomas', 'Historias que contar'],
+  };
+  const nums = ['2', '18', '4', '∞'];
+  const l = labels[language] || labels.en;
+  return (
+    <>
+      <style>{`
+        .fg-stats {
+          padding: 60px 80px;
+          border-top: 1px solid #E8E3DC;
+          display: flex;
+          align-items: center;
+          gap: 60px;
+          background: #fff;
+        }
+        .fg-stat { text-align: center; flex-shrink: 0; }
+        .fg-stat-num {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 48px;
+          font-weight: 300;
+          color: #0F2C66;
+          line-height: 1;
+        }
+        .fg-stat-label {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #8A8480;
+          margin-top: 8px;
+          font-weight: 400;
+        }
+        .fg-stat-line {
+          flex: 1;
+          height: 1px;
+          background: #E8E3DC;
+        }
+        @media (max-width: 900px) {
+          .fg-stats { padding: 40px 32px; gap: 32px; }
+          .fg-stat-num { font-size: 36px; }
+        }
+        @media (max-width: 480px) {
+          .fg-stats { padding: 32px 24px; gap: 20px; flex-wrap: wrap; justify-content: space-around; }
+          .fg-stat-line { display: none; }
+          .fg-stat-num { font-size: 32px; }
+          .fg-stat-label { font-size: 10px; }
+        }
+      `}</style>
+      <div className="fg-stats">
+        {nums.map((n, i) => (
+          <React.Fragment key={i}>
+            <div className="fg-stat">
+              <div className="fg-stat-num">{n}</div>
+              <div className="fg-stat-label">{l[i]}</div>
+            </div>
+            {i < nums.length - 1 && <div className="fg-stat-line" />}
+          </React.Fragment>
+        ))}
+      </div>
+    </>
+  );
+}
 
 // --- Multi-language content dictionary (kept and unchanged except for small fixes) ---
 const TEXTS = {
@@ -127,7 +197,7 @@ const TEXTS = {
 
 // --- Main Application Component ---
 export default function App() {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState(() => localStorage.getItem('fg_lang') || 'en');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const scrollButtonRef = useRef(null);
 
@@ -142,19 +212,11 @@ export default function App() {
   // --- Language switching logic (unchanged) ---
   const switchLanguage = (lang) => {
     setLanguage(lang);
-    console.log(`Language switched to: ${lang}`);
+    localStorage.setItem('fg_lang', lang);
   };
 
   // --- Multilingual content selection ---
   const content = TEXTS[language];
-
-  // --- Local hero images per language ---
-  const heroImages = {
-    en: '/assets/images/hero-paris-morning.jpg',
-    fr: '/assets/images/hero-montmartre.jpg',
-    pt: '/assets/images/hero-bossa-cafe.jpg',
-    es: '/assets/images/hero-paris-sunset.jpg'
-  };
 
   // --- Fade-in on mount ---
   useEffect(() => {
@@ -193,7 +255,7 @@ export default function App() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
           rel="stylesheet"
         />
       </head>
@@ -215,11 +277,14 @@ export default function App() {
                   title={content.heroTitle}
                   subtitle={content.heroSubtitle}
                   cta={content.cta}
-                  heroImage={heroImages[language]}
+                  language={language}
                 />
 
+                {/* --- Stats Bar --- */}
+                <StatsBar language={language} />
+
                 {/* --- About Fran Section --- */}
-                <About content={content} />
+                <About content={content} language={language} />
 
                 {/* --- Contact Section --- */}
                 <ContactSection content={content} />
@@ -227,11 +292,12 @@ export default function App() {
             } />
             <Route path="/tours" element={<ToursPage language={language} content={content} />} />
             <Route path="/photoshoots" element={<PhotoshootsPage language={language} />} />
-            <Route path="/tour/:id" element={<TourDetails />} />
+            <Route path="/tour/:id" element={<TourDetails language={language} />} />
             <Route path="/about" element={<AboutPage language={language} />} />
             <Route path="/contact" element={<ContactSection content={content} />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="/cgv" element={<CGV />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
           </Routes>
 
           {/* --- Footer --- */}
@@ -248,28 +314,20 @@ export default function App() {
                 bottom: '2rem',
                 right: '2rem',
                 zIndex: 1000,
-                background: 'linear-gradient(135deg, #D4AF7F, #F7C59F)', // gold-rosé gradient
+                background: '#0F2C66',
                 border: 'none',
-                borderRadius: '50%',
-                width: '48px',
-                height: '48px',
-                color: '#5B3A00',
-                fontSize: '2rem',
-                boxShadow: '0 4px 12px rgba(212,175,127,0.6)',
+                borderRadius: '0',
+                width: '44px',
+                height: '44px',
+                color: '#fff',
+                fontSize: '1rem',
                 cursor: 'pointer',
-                transition: 'all 0.3s ease',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 userSelect: 'none',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 8px 20px rgba(212,175,127,0.9), 0 0 8px 2px rgba(247,197,159,0.7)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(212,175,127,0.6)';
+                fontFamily: "'Jost', sans-serif",
+                letterSpacing: '1px',
               }}
             >
               ↑
@@ -277,29 +335,18 @@ export default function App() {
           )}
         </Router>
       </div>
-      {/* --- Fade-in CSS and body background texture/gradient --- */}
-            <style>{`
+      {/* --- Global fade-in --- */}
+      <style>{`
         body {
-          background:
-            radial-gradient(circle at top left, rgba(254,217,241,0.30) 0, transparent 55%),
-            radial-gradient(circle at top right, rgba(201,253,255,0.28) 0, transparent 55%),
-            radial-gradient(circle at bottom, rgba(254,246,173,0.30) 0, transparent 60%),
-            #ffffff;
-          background-repeat: no-repeat;
-          background-size: cover;
-          font-family: 'Poppins', sans-serif;
+          background: #fff;
+          font-family: 'Jost', sans-serif;
         }
         .fade-in {
-          animation: fadeInApp 1.8s cubic-bezier(0.4,0,0.2,1) both;
+          animation: fadeInApp 0.8s ease both;
         }
         @keyframes fadeInApp {
           from { opacity: 0; }
           to { opacity: 1; }
-        }
-        .scroll-to-top:active,
-        .scroll-to-top:focus {
-          outline: 2px solid #F7C59F;
-          outline-offset: 2px;
         }
       `}</style>
     </>

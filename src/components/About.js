@@ -1,162 +1,139 @@
 import React from 'react';
 
-function About({ content }) {
+function About({ content, language = 'en' }) {
+  const langPills = ['EN', 'FR', 'PT', 'ES'];
+
+  const sectionLabel = {
+    en: 'About Fran',
+    fr: 'À propos',
+    pt: 'Sobre a Fran',
+    es: 'Sobre Fran',
+  }[language] || 'About Fran';
+
+  const quote = {
+    en: <>Paris is<br/><em>my love letter</em><br/>to you.</>,
+    fr: <>Paris est<br/><em>ma lettre d'amour</em><br/>pour vous.</>,
+    pt: <>Paris é<br/><em>minha carta de amor</em><br/>para você.</>,
+    es: <>París es<br/><em>mi carta de amor</em><br/>para ti.</>,
+  }[language] || <>Paris is<br/><em>my love letter</em><br/>to you.</>;
+
   return (
-    <section id="about" className="about-section fade-in">
-      <div className="about-content">
-        <h2
-          className="about-title fade-in"
-          style={{ animationDelay: '0.2s' }}
-        >
-          {content.aboutTitle}
-        </h2>
-
-        <hr className="divider" />
-
-        <div
-          className="photo-container fade-in"
-          aria-label="Portrait of Fran"
-          style={{ animationDelay: '0.4s' }}
-        />
-
-        <p
-          className="about-text fade-in"
-          style={{ animationDelay: '0.6s' }}
-        >
-          {content.aboutText1}
-          <br /><br />
-          {content.aboutText2}
-        </p>
-
-        <p
-          className="signature fade-in"
-          style={{ animationDelay: '0.8s' }}
-        >
-          À bientôt à Paris — Fran 💫
-        </p>
-      </div>
-
+    <section className="fg-about">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Playfair+Display&display=swap');
-
-        .about-section {
-          background: #ffffff;
-          display: flex;
-          justify-content: center;
-          padding: 6rem 1rem;
-          color: #1E2A5E;
-          font-family: 'Playfair Display', serif;
-          text-align: center;
+        .fg-about {
+          padding: 120px 80px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 80px;
           align-items: center;
-          min-height: 90vh;
-          box-sizing: border-box;
+          background: #fff;
         }
-        .about-content {
-          max-width: 620px;
-          margin: 0 auto;
-          padding: 0 1rem;
+        .fg-about-img-wrap {
+          aspect-ratio: 4/5;
+          overflow: hidden;
+          background: linear-gradient(135deg, #E8E3DC, #D4C9BA);
         }
-        .about-title {
-          font-weight: 700;
-          font-size: 2.8rem;
-          margin-bottom: 1rem;
-          color: #1E2A5E;
-          letter-spacing: 0.05em;
-          font-family: 'Playfair Display', serif;
-          opacity: 0;
-          transform: translateY(10px);
-          animation-fill-mode: forwards;
-          animation-name: fadeInUp;
-          animation-duration: 1s;
+        .fg-about-img-wrap img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(0.97) saturate(0.85);
+          display: block;
         }
-        .divider {
-          width: 70px;
-          height: 0;
-          border-top: 1px solid rgba(30,42,94,0.2);
-          margin: 0 auto 2rem;
-          border-radius: 0;
-          box-shadow: none;
+        .fg-about-content {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
         }
-        .about-text {
-          font-size: 1.1rem;
-          line-height: 1.8;
-          margin-bottom: 2rem;
-          font-style: normal;
-          color: #333;
-          font-family: 'Poppins', sans-serif;
-          max-width: 540px;
-          margin-left: auto;
-          margin-right: auto;
-          opacity: 0;
-          transform: translateY(10px);
-          animation-fill-mode: forwards;
-          animation-name: fadeInUp;
-          animation-duration: 1s;
+        .fg-about-eyebrow {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          color: #4A4845;
+          font-weight: 400;
         }
-        .photo-container {
-          width: 200px;
-          height: 200px;
-          margin: 0 auto 2rem;
-          border-radius: 50%;
-          background-image: url('/fran.jpeg');
-          background-size: cover;
-          background-position: center;
-          border: 3px solid rgba(30,42,94,0.15);
-          transition: transform 0.4s ease;
-          opacity: 0;
-          transform: translateY(10px);
-          animation-fill-mode: forwards;
-          animation-name: fadeInUp;
-          animation-duration: 1s;
-          box-shadow: none;
+        .fg-about-quote {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(36px, 3.5vw, 46px);
+          line-height: 1.15;
+          font-weight: 400;
+          color: #1C1C1C;
+          margin: 0;
         }
-        .photo-container:hover {
-          transform: scale(1.03);
-          box-shadow: none;
-        }
-        .signature {
-          margin-top: 1.5rem;
+        .fg-about-quote em {
           font-style: italic;
-          font-size: 1rem;
-          color: rgba(30,42,94,0.7);
-          letter-spacing: 0;
-          user-select: none;
-          opacity: 0;
-          transform: translateY(10px);
-          animation-fill-mode: forwards;
-          animation-name: fadeInUp;
-          animation-duration: 1s;
-          font-family: inherit;
+          color: #0F2C66;
         }
-        .fade-in {
-          /* kept for fade-in */
+        .fg-about-text {
+          font-family: 'Jost', sans-serif;
+          font-size: 15px;
+          line-height: 1.9;
+          color: #4A4845;
+          font-weight: 400;
+          max-width: 440px;
         }
-        @keyframes fadeInUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
+        .fg-about-sig {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 30px;
+          font-style: italic;
+          color: #0F2C66;
+          font-weight: 400;
+        }
+        .fg-lang-pills {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          margin-top: 4px;
+        }
+        .fg-lang-pill {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          border: 1px solid #E8E3DC;
+          padding: 6px 14px;
+          border-radius: 2px;
+          color: #4A4845;
+          font-weight: 400;
+        }
+
+        @media (max-width: 900px) {
+          .fg-about {
+            grid-template-columns: 1fr;
+            padding: 80px 32px;
+            gap: 48px;
           }
+          .fg-about-img-wrap {
+            aspect-ratio: 3/2;
+          }
+          .fg-about-quote { font-size: 38px; }
         }
         @media (max-width: 480px) {
-          .about-section {
-            padding: 4rem 1rem;
-          }
-          .about-title {
-            font-size: 2rem;
-          }
-          .about-text {
-            font-size: 1rem;
-            line-height: 1.6;
-          }
-          .photo-container {
-            width: 150px;
-            height: 150px;
-          }
-          .signature {
-            font-size: 0.9rem;
-          }
+          .fg-about { padding: 60px 24px; gap: 36px; }
+          .fg-about-quote { font-size: 32px; }
+          .fg-about-text { font-size: 14px; }
         }
       `}</style>
+
+      {/* Photo */}
+      <div className="fg-about-img-wrap">
+        <img src="/fran.jpeg" alt="Fran" />
+      </div>
+
+      {/* Content */}
+      <div className="fg-about-content">
+        <span className="fg-about-eyebrow">{sectionLabel}</span>
+        <h2 className="fg-about-quote">{quote}</h2>
+        <p className="fg-about-text">{content.aboutText1}</p>
+        <p className="fg-about-text">{content.aboutText2}</p>
+        <div className="fg-lang-pills">
+          {langPills.map(l => (
+            <span key={l} className="fg-lang-pill">{l}</span>
+          ))}
+        </div>
+        <p className="fg-about-sig">— Fran</p>
+      </div>
     </section>
   );
 }

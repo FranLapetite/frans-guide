@@ -1,472 +1,262 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function Header({ language, switchLanguage, content }) {
-  const languages = [
-    { code: 'en', label: 'English' },
-    { code: 'fr', label: 'Français' },
-    { code: 'pt', label: 'Português' },
-    { code: 'es', label: 'Español' },
-  ];
-
-  const logoSrc = 'logo_fran.png'; // place your logo file in public/brand/
-
-  const [languageOpen, setLanguageOpen] = useState(false);
+export default function Header({ language, switchLanguage }) {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const currentLanguageLabel = languages.find((langObj) => langObj.code === language)?.label || language.toUpperCase();
-
-  const languageRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        languageRef.current &&
-        !languageRef.current.contains(event.target)
-      ) {
-        setLanguageOpen(false);
-      }
-      if (
-        !event.target.closest('.site-header') &&
-        !event.target.closest('.mobile-nav')
-      ) {
-        setMenuOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
+  const navLinks = [
+    { href: '/tours', label: language === 'fr' ? 'Visites' : 'Tours' },
+    { href: '/about', label: language === 'fr' ? 'À propos' : 'About' },
+    { href: '/contact', label: 'Contact' },
+    { href: '/photoshoots', label: 'Photos' },
+  ];
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap');
-
         .site-header {
           position: fixed;
           top: 0;
-          width: 100%;
-          height: 72px;
-          background-color: #ffffff;
-          box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
-          backdrop-filter: blur(6px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-family: 'Poppins', sans-serif;
+          left: 0;
+          right: 0;
           z-index: 1000;
-          padding: 0 2.5rem;
-          box-sizing: border-box;
-        }
-
-        .header-inner {
-          max-width: 1200px;
-          width: 100%;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          position: relative;
-          gap: 1.5rem;
-        }
-
-        .left-section,
-        .center-section,
-        .right-section {
-          display: flex;
-          align-items: center;
-          min-width: 0;
-        }
-
-        .left-section {
-          flex: 0 0 auto;
-          justify-content: flex-start;
-        }
-
-        .center-section {
-          flex: 0 1 auto;
-          justify-content: center;
-          position: relative;
-        }
-
-        .right-section {
-          flex: 0 0 auto;
-          justify-content: flex-end;
-        }
-
-        .main-nav {
-          display: flex;
-          gap: 2.5rem;
-          font-size: 0.9rem;
-          font-weight: 600;
-          font-family: 'Poppins', sans-serif;
-          letter-spacing: 0.08em;
-          text-transform: none;
-        }
-        .main-nav a {
-          text-decoration: none;
-          color: #1E2A5E;
-          position: relative;
-          padding-bottom: 3px;
-          transition: color 0.2s ease;
-          text-transform: uppercase;
-          letter-spacing: 0.13em;
-        }
-        .main-nav a::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 0;
-          height: 1px;
-          background-color: #D4AF7F;
-          transition: width 0.25s ease;
-        }
-        .main-nav a:hover::after,
-        .main-nav a:focus-visible::after {
-          width: 100%;
-        }
-        .main-nav a:hover,
-        .main-nav a:focus-visible {
-          color: #334E8C;
-          outline: none;
-        }
-
-        .mobile-nav {
-          display: none;
-        }
-
-        /* Logo */
-        .logo {
-          font-family: 'Playfair Display', serif;
-          user-select: none;
-          cursor: default;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          padding: 0 60px;
           height: 80px;
-          width: auto;
+          background: rgba(255,255,255,0.92);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-bottom: 1px solid ${scrolled ? '#E8E3DC' : 'transparent'};
+          transition: border-color 0.3s ease !important;
         }
-        .logo img {
-          height: 64px;
-          width: auto;
-          filter: drop-shadow(0 1px 3px rgba(30,42,94,0.1));
-          transition: filter 0.3s ease;
-          border-radius: 6px;
-          display: block;
+        .header-logo {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 22px;
+          font-weight: 400;
+          letter-spacing: 1px;
+          color: #0F2C66;
+          text-decoration: none;
+          flex: 0 0 auto;
+          transition: opacity 0.2s ease !important;
         }
-        .logo img:hover,
-        .logo img:focus-visible {
-          filter: drop-shadow(0 3px 8px rgba(30,42,94,0.2));
-          outline: none;
+        .header-logo:hover { opacity: 0.75; color: #0F2C66; }
+        .header-nav-list {
+          display: flex;
+          gap: 40px;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          flex: 1;
+          justify-content: center;
         }
-
-        /* Language Selector */
-        .language-selector {
-          font-weight: 600;
-          font-size: 0.95rem;
-          color: #1E2A5E;
-          cursor: pointer;
-          user-select: none;
-          font-family: 'Poppins', sans-serif;
+        .header-nav-list a {
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #1C1C1C;
+          text-decoration: none;
+          font-weight: 400;
+          transition: color 0.2s ease !important;
+        }
+        .header-nav-list a:hover { color: #0F2C66; }
+        .header-right {
           display: flex;
           align-items: center;
-          border-radius: 20px;
-          padding: 7px 14px;
-          background: #ffffff;
-          box-shadow: 0 2px 8px rgba(15,23,42,0.12);
-          transition: background-color 0.25s ease, box-shadow 0.25s ease;
-          position: relative;
+          gap: 20px;
+          flex: 0 0 auto;
         }
-        .language-selector:hover,
-        .language-selector:focus-visible {
-          background: #f2f4f8;
-          color: #1E2A5E;
-          box-shadow: 0 0 8px rgba(30,42,94,0.2);
-          outline: none;
+        .lang-toggle {
+          display: flex;
+          gap: 2px;
+          align-items: center;
         }
-
-        .language-selector::after {
-          content: "▼";
-          font-size: 0.65rem;
-          margin-left: 6px;
-          color: #1E2A5E;
-          user-select: none;
-          display: inline-block;
-          transform: translateX(0);
-        }
-
-        .language-dropdown {
-          position: absolute;
-          top: 38px;
-          right: 0;
-          background: #F5F0E6;
-          border-radius: 8px;
-          box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-          opacity: 0;
-          visibility: hidden;
-          transform: translateY(10px);
-          transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-          min-width: 100px;
-          z-index: 1001;
-          font-weight: 600;
-          font-family: 'Poppins', sans-serif;
-          color: #1E2A5E;
-          user-select: none;
-        }
-        .language-dropdown.open {
-          opacity: 1;
-          visibility: visible;
-          transform: translateY(0);
-        }
-
-        .language-dropdown button {
-          width: 100%;
+        .lang-btn {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
           background: none;
           border: none;
-          padding: 10px 16px;
-          text-align: left;
           cursor: pointer;
-          color: #1E2A5E;
-          font-weight: 600;
-          font-family: 'Poppins', sans-serif;
-          border-radius: 6px;
-          transition: background-color 0.25s ease, color 0.25s ease;
+          padding: 4px 6px;
+          color: #4A4845;
+          font-weight: 400;
+          transition: color 0.2s ease !important;
         }
-        .language-dropdown button:hover,
-        .language-dropdown button:focus-visible {
-          background-color: #D7E1FF;
-          color: #334E8C;
-          outline: none;
+        .lang-btn.active {
+          color: #0F2C66;
+          font-weight: 500;
         }
-
-        .burger-button {
+        .lang-btn:hover { color: #0F2C66; }
+        .lang-sep {
+          color: #E8E3DC;
+          font-size: 11px;
+          font-family: 'Jost', sans-serif;
+        }
+        .header-cta {
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #0F2C66;
+          text-decoration: none;
+          font-weight: 500;
+          border-bottom: 1px solid #0F2C66;
+          padding-bottom: 2px;
+          transition: opacity 0.2s ease !important;
+          white-space: nowrap;
+        }
+        .header-cta:hover { opacity: 0.7; color: #0F2C66; }
+        .burger-btn {
           display: none;
-          width: 36px;
-          height: 36px;
-          border-radius: 999px;
+          flex-direction: column;
+          gap: 5px;
+          background: none;
           border: none;
-          background: #ffffff;
-          box-shadow: 0 2px 8px rgba(15,23,42,0.12);
-          display: none;
-          align-items: center;
-          justify-content: center;
           cursor: pointer;
+          padding: 4px;
+          z-index: 1100;
+        }
+        .burger-btn span {
+          display: block;
+          width: 22px;
+          height: 1.5px;
+          background: #1C1C1C;
+          transition: transform 0.25s ease !important, opacity 0.25s ease !important;
+        }
+        .burger-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg) !important; }
+        .burger-btn.open span:nth-child(2) { opacity: 0 !important; }
+        .burger-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg) !important; }
+        .mobile-nav-overlay {
+          display: none;
+          position: fixed;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: #fff;
+          z-index: 999;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          padding: 80px 40px 40px;
+          gap: 0;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease !important;
+        }
+        .mobile-nav-overlay.open { transform: translateX(0) !important; }
+        .mobile-nav-overlay a {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 36px;
+          font-weight: 400;
+          color: #1C1C1C;
+          text-decoration: none;
+          border-bottom: 1px solid #E8E3DC;
+          width: 100%;
+          padding: 16px 0;
+          transition: color 0.2s ease !important;
+        }
+        .mobile-nav-overlay a:hover { color: #0F2C66; }
+        .mobile-lang-row {
+          display: flex;
+          gap: 16px;
+          margin-top: 28px;
+        }
+        .mobile-lang-row button {
+          font-family: 'Jost', sans-serif;
+          font-size: 13px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: #4A4845;
+          font-weight: 400;
           padding: 0;
+          transition: color 0.2s ease !important;
         }
-
-        .burger-lines {
-          width: 18px;
-          height: 2px;
-          background-color: #1E2A5E;
-          position: relative;
-          transition: transform 0.25s ease, background-color 0.25s ease;
-        }
-
-        .burger-lines::before,
-        .burger-lines::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          width: 18px;
-          height: 2px;
-          background-color: #1E2A5E;
-          transition: transform 0.25s ease, opacity 0.25s ease;
-        }
-
-        .burger-lines::before {
-          top: -6px;
-        }
-
-        .burger-lines::after {
-          top: 6px;
-        }
-
-        .burger-button.open .burger-lines {
-          transform: rotate(45deg);
-        }
-
-        .burger-button.open .burger-lines::before {
-          transform: rotate(-90deg) translateX(-6px);
-        }
-
-        .burger-button.open .burger-lines::after {
-          opacity: 0;
-        }
-
-        @media (max-width: 768px) {
-          .site-header {
-            height: 72px;
-            padding: 0 1rem;
-            background: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            width: 100%;
-            left: 0;
-          }
-
-          .header-inner {
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-            position: relative;
-          }
-
-          .left-section,
-          .center-section,
-          .right-section {
-            flex: 0 0 auto;
-            min-width: 0;
-          }
-
-          .left-section {
-            justify-content: flex-start;
-          }
-
-          .center-section {
-            display: none;
-          }
-
-          .right-section {
-            justify-content: flex-end;
-          }
-
-          .logo {
-            height: 72px;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-
-          .logo img {
-            height: 70px;
-          }
-
-          .language-selector {
-            font-size: 0.8rem;
-            padding: 5px 11px;
-            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18);
-          }
-
-          .burger-button {
-            display: flex;
-          }
-
-          .mobile-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            padding: 5rem 1.5rem 2.5rem;
-            gap: 1.3rem;
-            overflow-y: auto;
-            box-shadow: 4px 0 16px rgba(15,23,42,0.18);
-            transform: translateX(-100%);
-            opacity: 0;
-            pointer-events: none;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            z-index: 900;
-          }
-
-          .mobile-nav.open {
-            transform: translateX(0);
-            opacity: 1;
-            pointer-events: auto;
-          }
-
-          .mobile-nav a {
-            font-size: 0.95rem;
-            padding: 0.75rem 0;
-            width: 100%;
-            text-align: left;
-            border-bottom: 1px solid rgba(15,23,42,0.08);
-            white-space: nowrap;
-          }
+        .mobile-lang-row button.active { color: #0F2C66; font-weight: 500; }
+        .mobile-lang-row button:hover { color: #0F2C66; }
+        @media (max-width: 900px) {
+          .site-header { padding: 0 24px; }
+          .header-nav-list { display: none; }
+          .burger-btn { display: flex; }
+          .mobile-nav-overlay { display: flex; }
+          .header-cta { display: none; }
+          .lang-toggle { display: none; }
         }
       `}</style>
+
       <header className="site-header" role="banner" aria-label="Main header">
-        <div className="header-inner">
-          <div className="left-section">
+        <a href="/" className="header-logo">Fran's Guide</a>
+
+        <nav aria-label="Primary navigation">
+          <ul className="header-nav-list">
+            {navLinks.map(link => (
+              <li key={link.href}>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="header-right">
+          <div className="lang-toggle" role="group" aria-label="Language">
             <button
-              type="button"
-              className={`burger-button${menuOpen ? ' open' : ''}`}
-              aria-label="Toggle navigation menu"
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              <span className="burger-lines" />
-            </button>
-            <div className="logo" aria-label="Site Logo and Title">
-              <a href="/" aria-label="Go to homepage">
-                <img src={logoSrc} alt="Fran's Guide — logo" />
-              </a>
-            </div>
+              className={`lang-btn${language === 'en' ? ' active' : ''}`}
+              onClick={() => switchLanguage('en')}
+            >EN</button>
+            <span className="lang-sep">/</span>
+            <button
+              className={`lang-btn${language === 'fr' ? ' active' : ''}`}
+              onClick={() => switchLanguage('fr')}
+            >FR</button>
           </div>
-          <div className="center-section">
-            <nav className={`main-nav${menuOpen ? ' open' : ''}`} aria-label="Primary Navigation">
-              <a href="/" onClick={() => setMenuOpen(false)}>{content?.navHome || 'Home'}</a>
-              <a href="/tours" onClick={() => setMenuOpen(false)}>{content?.navTours || 'Tours'}</a>
-              <a href="/about" onClick={() => setMenuOpen(false)}>{content?.navAbout || 'About Fran'}</a>
-              <a href="/contact" onClick={() => setMenuOpen(false)}>{content?.navContact || 'Contact'}</a>
-              <a href="/photoshoots" onClick={() => setMenuOpen(false)}>{content?.navPhotoshoots || 'Photos'}</a>
-            </nav>
-          </div>
-          <div className="right-section">
-            <div
-              className="language-selector"
-              tabIndex="0"
-              aria-haspopup="true"
-              aria-expanded={languageOpen}
-              aria-label="Language selector"
-              onClick={() => setLanguageOpen(!languageOpen)}
-              ref={languageRef}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setLanguageOpen(!languageOpen);
-                }
-              }}
-            >
-              {currentLanguageLabel}
-              <div className={`language-dropdown${languageOpen ? ' open' : ''}`} role="menu" aria-label="Select language">
-                {languages.map((langObj) => (
-                  <button
-                    key={langObj.code}
-                    type="button"
-                    onClick={() => {
-                      switchLanguage(langObj.code);
-                      setLanguageOpen(false);
-                    }}
-                    role="menuitem"
-                    aria-current={langObj.code === language ? 'true' : undefined}
-                  >
-                    {langObj.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <a href="/tours" className="header-cta">
+            {language === 'fr' ? 'Réserver' : 'Book now'}
+          </a>
         </div>
+
+        <button
+          className={`burger-btn${menuOpen ? ' open' : ''}`}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span /><span /><span />
+        </button>
       </header>
+
       <nav
-        className={`mobile-nav${menuOpen ? ' open' : ''}`}
+        className={`mobile-nav-overlay${menuOpen ? ' open' : ''}`}
         aria-label="Mobile navigation"
       >
-        <a href="/" onClick={() => setMenuOpen(false)}>{content?.navHome || 'Home'}</a>
-        <a href="/tours" onClick={() => setMenuOpen(false)}>{content?.navTours || 'Tours'}</a>
-        <a href="/about" onClick={() => setMenuOpen(false)}>{content?.navAbout || 'About Fran'}</a>
-        <a href="/contact" onClick={() => setMenuOpen(false)}>{content?.navContact || 'Contact'}</a>
-        <a href="/photoshoots" onClick={() => setMenuOpen(false)}>{content?.navPhotoshoots || 'Photos'}</a>
+        {navLinks.map(link => (
+          <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+            {link.label}
+          </a>
+        ))}
+        <div className="mobile-lang-row">
+          <button
+            className={language === 'en' ? 'active' : ''}
+            onClick={() => { switchLanguage('en'); setMenuOpen(false); }}
+          >EN</button>
+          <button
+            className={language === 'fr' ? 'active' : ''}
+            onClick={() => { switchLanguage('fr'); setMenuOpen(false); }}
+          >FR</button>
+        </div>
       </nav>
     </>
   );

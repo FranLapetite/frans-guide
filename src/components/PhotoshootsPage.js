@@ -1,256 +1,284 @@
 import React from 'react';
 
+const WHATSAPP_URL = "https://wa.me/33759752536?text=Hi! I saw your Paris photoshoots on Fran's Guide!! When is your next available photoshoot?";
+
+const INCLUDED = [
+  'Natural and guided photos around Paris',
+  'Iconic and hidden locations',
+  'Posing guidance if needed',
+  'A warm, personal experience',
+  '20–40 edited photos delivered',
+];
+
+const FOR = [
+  'Couples in Paris',
+  'Solo travelers',
+  'Birthdays & special moments',
+  'Content creation',
+];
+
+const samplePhotos = [
+  { src: '/assets/images/photoshoots/photo-1.jpeg', alt: 'Paris couple photoshoot' },
+  { src: '/assets/images/photoshoots/photo-3.jpeg', alt: 'Solo traveler photoshoot in Paris' },
+  { src: '/assets/images/photoshoots/photo-2.jpeg', alt: 'Romantic Eiffel Tower photoshoot' },
+  { src: '/assets/images/photoshoots/photo-4.jpeg', alt: 'Paris lifestyle photoshoot' },
+  { src: '/assets/images/photoshoots/photo-5.jpeg', alt: 'Paris lifestyle photoshoot' },
+  { src: '/assets/images/photoshoots/photo-6.jpeg', alt: 'Paris lifestyle photoshoot' },
+];
+
 export default function PhotoshootsPage() {
-  const samplePhotos = [
-    {
-      src: '/assets/images/photoshoots/photo-1.jpeg',
-      alt: 'Paris couple photoshoot',
-    },
-    {
-      src: '/assets/images/photoshoots/photo-3.jpeg',
-      alt: 'Solo traveler photoshoot in Paris',
-    },
-    {
-      src: '/assets/images/photoshoots/photo-2.jpeg',
-      alt: 'Romantic Eiffel Tower photoshoot',
-    },
-    {
-      src: '/assets/images/photoshoots/photo-4.jpeg',
-      alt: 'Paris lifestyle photoshoot',
-    },
-    {
-      src: '/assets/images/photoshoots/photo-5.jpeg',
-      alt: 'Paris lifestyle photoshoot',
-    },
-    {
-      src: '/assets/images/photoshoots/photo-6.jpeg',
-      alt: 'Paris lifestyle photoshoot',
-    },
-  ];
   return (
-    <div
-      style={{
-        maxWidth: '1100px',
-        margin: '0 auto',
-        padding: '4rem 1.5rem 5rem',
-      }}
-    >
-      <div
-        style={{
-          background: 'rgba(255,255,255,0.92)',
-          borderRadius: '28px',
-          padding: '3rem 2rem',
-          boxShadow: '0 12px 40px rgba(15,44,102,0.08)',
-        }}
-      >
-        <p
-          style={{
-            color: '#0F2C66',
-            fontWeight: 600,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            marginBottom: '0.75rem',
-          }}
-        >
-          Fran’s Guide
-        </p>
+    <>
+      <style>{`
+        .fg-photos-page {
+          padding-top: 80px;
+          background: #fff;
+          min-height: 100vh;
+        }
 
-        <h1
-          style={{
-            fontFamily: 'Playfair Display, serif',
-            fontSize: 'clamp(2.3rem, 6vw, 4.4rem)',
-            lineHeight: 1.05,
-            color: '#3E2C23',
-            marginBottom: '1rem',
-          }}
-        >
-          Paris Photoshoots 📸
-        </h1>
+        /* ── Header ── */
+        .fg-photos-header {
+          padding: 80px 80px 64px;
+          border-bottom: 1px solid #E8E3DC;
+          max-width: 720px;
+        }
+        .fg-photos-eyebrow {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          color: #4A4845;
+          font-weight: 400;
+          margin-bottom: 20px;
+        }
+        .fg-photos-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(40px, 5vw, 62px);
+          font-weight: 400;
+          line-height: 1.05;
+          color: #1C1C1C;
+          margin: 0 0 20px;
+        }
+        .fg-photos-title em {
+          font-style: italic;
+          color: #0F2C66;
+        }
+        .fg-photos-subtitle {
+          font-family: 'Jost', sans-serif;
+          font-size: 15px;
+          line-height: 1.8;
+          color: #4A4845;
+          font-weight: 400;
+          max-width: 520px;
+        }
 
-        <p
-          style={{
-            fontSize: '1.15rem',
-            color: '#5b4b42',
-            maxWidth: '760px',
-            marginBottom: '1.25rem',
-          }}
-        >
-          Natural, elegant photos in the most beautiful corners of Paris.
-        </p>
+        /* ── Photo strip ── */
+        .fg-photos-strip-section {
+          padding: 80px 80px 64px;
+          border-bottom: 1px solid #E8E3DC;
+        }
+        .fg-photos-section-label {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          color: #4A4845;
+          font-weight: 400;
+          margin-bottom: 32px;
+        }
+        .fg-photos-strip {
+          display: flex;
+          gap: 2px;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+        .fg-photos-strip::-webkit-scrollbar { display: none; }
+        .fg-photo-item {
+          flex: 0 0 300px;
+          scroll-snap-align: start;
+          overflow: hidden;
+        }
+        .fg-photo-item img {
+          width: 100%;
+          height: 400px;
+          object-fit: cover;
+          display: block;
+          filter: brightness(0.97) saturate(0.9);
+          transition: filter 0.3s;
+        }
+        .fg-photo-item:hover img {
+          filter: brightness(1) saturate(1);
+        }
 
-        <p
-          style={{
-            fontSize: '1.02rem',
-            color: '#5b4b42',
-            maxWidth: '780px',
-            marginBottom: '2rem',
-          }}
-        >
-          Whether you are traveling solo, as a couple, or celebrating a special moment, I offer relaxed photoshoots designed to capture your Paris memories beautifully.
-        </p>
+        /* ── Details section ── */
+        .fg-photos-details {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          border-bottom: 1px solid #E8E3DC;
+        }
+        .fg-photos-col {
+          padding: 64px 80px;
+          border-right: 1px solid #E8E3DC;
+        }
+        .fg-photos-col:last-child { border-right: none; }
+        .fg-photos-col-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 32px;
+          font-weight: 400;
+          color: #1C1C1C;
+          margin: 0 0 28px;
+        }
+        .fg-photos-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+        .fg-photos-list li {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          font-family: 'Jost', sans-serif;
+          font-size: 14px;
+          color: #1C1C1C;
+          font-weight: 400;
+        }
+        .fg-photos-list li::before {
+          content: '';
+          display: block;
+          width: 24px;
+          height: 1px;
+          background: #0F2C66;
+          flex-shrink: 0;
+        }
 
-        <div style={{ marginBottom: '2.5rem' }}>
-          <h2
-            style={{
-              fontFamily: 'Playfair Display, serif',
-              color: '#3E2C23',
-              marginBottom: '1rem',
-              fontSize: '2rem',
-            }}
-          >
-            Past photoshoots
-          </h2>
-          <p
-            style={{
-              color: '#5b4b42',
-              marginBottom: '1rem',
-              maxWidth: '760px',
-            }}
-          >
-            A few examples of the kind of soft, natural moments we can create together in Paris.
+        /* ── CTA section ── */
+        .fg-photos-cta-section {
+          padding: 80px 80px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 48px;
+        }
+        .fg-photos-cta-text {
+          max-width: 480px;
+        }
+        .fg-photos-cta-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 42px;
+          font-weight: 400;
+          line-height: 1.2;
+          color: #1C1C1C;
+          margin: 0 0 16px;
+        }
+        .fg-photos-cta-title em {
+          font-style: italic;
+          color: #0F2C66;
+        }
+        .fg-photos-cta-body {
+          font-family: 'Jost', sans-serif;
+          font-size: 15px;
+          line-height: 1.8;
+          color: #4A4845;
+          font-weight: 400;
+          margin: 0;
+        }
+        .fg-btn-primary {
+          display: inline-block;
+          background: #0F2C66;
+          color: #fff;
+          padding: 14px 36px;
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          text-decoration: none;
+          font-weight: 400;
+          white-space: nowrap;
+          flex-shrink: 0;
+          transition: opacity 0.2s;
+        }
+        .fg-btn-primary:hover { opacity: 0.85; color: #fff; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+          .fg-photos-header { padding: 60px 32px 48px; }
+          .fg-photos-strip-section { padding: 60px 32px 48px; }
+          .fg-photos-details { grid-template-columns: 1fr; }
+          .fg-photos-col { padding: 48px 32px; border-right: none; border-bottom: 1px solid #E8E3DC; }
+          .fg-photos-col:last-child { border-bottom: none; }
+          .fg-photos-cta-section { flex-direction: column; align-items: flex-start; padding: 60px 32px; }
+        }
+        @media (max-width: 480px) {
+          .fg-photos-header { padding: 48px 24px 36px; }
+          .fg-photos-strip-section { padding: 48px 24px 36px; }
+          .fg-photos-col { padding: 40px 24px; }
+          .fg-photos-cta-section { padding: 48px 24px; }
+          .fg-photo-item { flex: 0 0 240px; }
+          .fg-photo-item img { height: 320px; }
+          .fg-photos-cta-title { font-size: 34px; }
+        }
+      `}</style>
+
+      <div className="fg-photos-page">
+        {/* Header */}
+        <div className="fg-photos-header">
+          <p className="fg-photos-eyebrow">Paris Photoshoots</p>
+          <h1 className="fg-photos-title">
+            Your Paris moment,<br/><em>beautifully captured.</em>
+          </h1>
+          <p className="fg-photos-subtitle">
+            Natural, elegant photos in the most beautiful corners of Paris — for couples, solo travelers, and anyone who wants to remember this city forever.
           </p>
+        </div>
 
-          <div
-            style={{
-              display: 'flex',
-              gap: '1rem',
-              overflowX: 'auto',
-              paddingBottom: '0.5rem',
-              scrollSnapType: 'x mandatory',
-              WebkitOverflowScrolling: 'touch',
-            }}
-          >
-            {samplePhotos.map((photo) => (
-              <div
-                key={photo.src}
-                style={{
-                  minWidth: '280px',
-                  flex: '0 0 280px',
-                  scrollSnapAlign: 'start',
-                  borderRadius: '22px',
-                  overflow: 'hidden',
-                  background: '#fffaf6',
-                  boxShadow: '0 10px 28px rgba(15,44,102,0.08)',
-                  border: '1px solid rgba(15,44,102,0.06)',
-                }}
-              >
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  style={{
-                    width: '100%',
-                    height: '360px',
-                    objectFit: 'cover',
-                    display: 'block',
-                  }}
-                />
+        {/* Photo strip */}
+        <div className="fg-photos-strip-section">
+          <p className="fg-photos-section-label">Past sessions</p>
+          <div className="fg-photos-strip">
+            {samplePhotos.map((p) => (
+              <div key={p.src} className="fg-photo-item">
+                <img src={p.src} alt={p.alt} />
               </div>
             ))}
           </div>
         </div>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '1.25rem',
-            marginBottom: '2rem',
-          }}
-        >
-          <div
-            style={{
-              background: '#fffaf6',
-              borderRadius: '22px',
-              padding: '1.5rem',
-              border: '1px solid rgba(15,44,102,0.08)',
-            }}
-          >
-            <h2
-              style={{
-                fontFamily: 'Playfair Display, serif',
-                color: '#3E2C23',
-                marginBottom: '1rem',
-              }}
-            >
-              What’s included
-            </h2>
-            <ul style={{ margin: 0, paddingLeft: '1.1rem', color: '#5b4b42', lineHeight: 1.8 }}>
-              <li>Natural and guided photos around Paris</li>
-              <li>Iconic and hidden locations</li>
-              <li>Posing help if needed</li>
-              <li>A warm, personal experience</li>
+        {/* Details */}
+        <div className="fg-photos-details">
+          <div className="fg-photos-col">
+            <h2 className="fg-photos-col-title">What's included</h2>
+            <ul className="fg-photos-list">
+              {INCLUDED.map(i => <li key={i}>{i}</li>)}
             </ul>
           </div>
-
-          <div
-            style={{
-              background: '#fffaf6',
-              borderRadius: '22px',
-              padding: '1.5rem',
-              border: '1px solid rgba(15,44,102,0.08)',
-            }}
-          >
-            <h2
-              style={{
-                fontFamily: 'Playfair Display, serif',
-                color: '#3E2C23',
-                marginBottom: '1rem',
-              }}
-            >
-              Perfect for
-            </h2>
-            <ul style={{ margin: 0, paddingLeft: '1.1rem', color: '#5b4b42', lineHeight: 1.8 }}>
-              <li>Couples</li>
-              <li>Solo travelers</li>
-              <li>Birthdays & special moments</li>
-              <li>Content creation</li>
+          <div className="fg-photos-col">
+            <h2 className="fg-photos-col-title">Perfect for</h2>
+            <ul className="fg-photos-list">
+              {FOR.map(f => <li key={f}>{f}</li>)}
             </ul>
           </div>
         </div>
 
-        <div
-          style={{
-            background: 'linear-gradient(135deg, rgba(206,228,254,0.55), rgba(254,217,241,0.42))',
-            borderRadius: '24px',
-            padding: '1.75rem',
-            textAlign: 'center',
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: 'Playfair Display, serif',
-              color: '#3E2C23',
-              marginBottom: '0.75rem',
-            }}
-          >
-            Book your photoshoot on WhatsApp
-          </h2>
-
-          <p style={{ color: '#5b4b42', maxWidth: '700px', margin: '0 auto 1.2rem' }}>
-            Message me directly to check availability, discuss locations, and create a photoshoot that fits your style.
-          </p>
-
-          <a
-            href="https://wa.me/33759752536?text=Hi! I saw your Paris photoshoots on Fran’s Guide!! When is your next available photoshoot?"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '0.95rem 1.4rem',
-              borderRadius: '999px',
-              background: '#0F2C66',
-              color: '#fff',
-              textDecoration: 'none',
-              fontWeight: 600,
-              boxShadow: '0 10px 24px rgba(15,44,102,0.16)',
-            }}
-          >
-            💬 Message me on WhatsApp
+        {/* CTA */}
+        <div className="fg-photos-cta-section">
+          <div className="fg-photos-cta-text">
+            <h2 className="fg-photos-cta-title">
+              Ready to create<br/><em>your Paris story?</em>
+            </h2>
+            <p className="fg-photos-cta-body">
+              Message me directly to check availability, discuss locations, and design a photoshoot that fits your style.
+            </p>
+          </div>
+          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="fg-btn-primary">
+            Book on WhatsApp
           </a>
         </div>
       </div>
-    </div>
+    </>
   );
 }

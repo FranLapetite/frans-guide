@@ -1,265 +1,135 @@
-/* --- Global Variables (Root) --- */
-/* --- Warm Boutique Parisian Variables (Romantic/Elegant) --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+/* ── CSS Variables ── */
 :root {
-    /* Boutique Paris Hues */
-    --color-background: #484239;       /* Soft beige, warm and inviting */
-    --color-primary-light: #564e44;    /* For sections needing extra lightness */
-    --color-text-dark: #2E2A26;        /* Softer, deep brown-charcoal */
-    --color-navy: #1E2A5E;             /* Deep Parisian blue */
-    --color-accent: #E9B4A8;           /* Rosé pink accent */
-    --color-cta: #D6A01D;              /* Golden amber for CTAs */
+  --navy: #0F2C66;
+  --cream: #FAF8F5;
+  --warm: #F3EFE9;
+  --text: #1C1C1C;
+  --muted: #5C5855;
+  --border: #E8E3DC;
+  --accent: #CEE4FE;
+  --white: #FFFFFF;
 
-    /* Boutique Dividers & Scrollbar */
-    --color-divider: #E9B4A8;          /* Rosé pink for luxury dividers */
-    --color-scrollbar-thumb: #CBB89D;  /* Warm taupe for scrollbar thumb */
-    --color-scrollbar-track: #F3E9DC;  /* Soft beige for scrollbar track */
-
-    /* Typography */
-    --font-primary: 'Playfair Display', serif;      /* Luxurious serif */
-    --font-body: 'Poppins', sans-serif;             /* Modern, soft sans */
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Jost', sans-serif;
 }
 
-/* Add these imports to your main CSS file (you may need to link these in your index.html/App.js for a proper build): */
-/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap'); */
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: none;
+}
 
-/* --- Base Styles --- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    transition: all 0.3s ease;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-body);
-    color: var(--color-text-dark);
-    background: linear-gradient(to bottom, #ffffff 0%, #fef6ad26 100%);
-    min-height: 100vh;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    letter-spacing: 0.025em;
-    padding: 0 5%;
-    box-shadow: 0 0 32px 0 rgba(233,180,168,0.06) inset;
+  font-family: var(--font-sans);
+  background: var(--white);
+  color: var(--text);
+  font-weight: 400;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-shadow: none;
+  letter-spacing: 0;
 }
 
-/* Scrollbar Customization */
-body::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+/* ── Base Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text);
+  letter-spacing: 0;
+  text-shadow: none;
+  margin-bottom: 0;
 }
 
-body::-webkit-scrollbar-track {
-    background: var(--color-scrollbar-track);
-}
-
-body::-webkit-scrollbar-thumb {
-    background-color: var(--color-scrollbar-thumb);
-    border-radius: 10px;
-    border: 2px solid var(--color-scrollbar-track);
-}
-
-/* Headers */
-/* Boutique Typography */
-h1, h2, h3 {
-    font-family: var(--font-primary);
-    color: var(--color-navy);
-    letter-spacing: 0.06em;
-    margin-bottom: 0.7em;
-    font-weight: 700;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-shadow: 0 2px 10px rgba(233,180,168,0.08);
-}
-
-/* Responsive Typography Scaling with Luxury */
-h1 {
-    font-size: 3.2rem;
-    letter-spacing: 0.08em;
-    line-height: 1.13;
-}
-
-h2 {
-    font-size: 2.4rem;
-    letter-spacing: 0.07em;
-}
-
-h3 {
-    font-size: 1.7rem;
-    letter-spacing: 0.05em;
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.1rem;
-    }
-    h2 {
-        font-size: 1.5rem;
-    }
-    h3 {
-        font-size: 1.15rem;
-    }
-}
-
-/* Boutique Links */
 a {
-    text-decoration: none;
-    color: var(--color-navy);
-    transition: color 0.2s cubic-bezier(.4,0,.2,1), letter-spacing 0.3s cubic-bezier(.4,0,.2,1);
-    letter-spacing: 0.03em;
-    font-weight: 500;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 400;
 }
+
 a:hover {
-    color: var(--color-accent);
-    letter-spacing: 0.09em;
-    text-shadow: 0 2px 10px rgba(233,180,168,0.12);
+  color: var(--navy);
+  text-shadow: none;
 }
 
-/* Boutique Section Styling */
-section {
-    padding: 90px 0 90px 0;
-    background: linear-gradient(120deg, rgba(233,180,168,0.07) 0%, rgba(246,223,206,0.10) 100%);
-    border-radius: 28px;
-    margin-bottom: 40px;
-    box-shadow: 0 8px 32px 0 rgba(30,42,94,0.03), 0 2px 28px 0 rgba(214,160,29,0.06) inset;
-    position: relative;
-    overflow: hidden;
+p {
+  line-height: 1.8;
 }
 
-section::before {
-    content: '';
-    position: absolute;
-    top: -40px; left: -40px; right: -40px; bottom: -40px;
-    z-index: 0;
-    background: radial-gradient(ellipse 110% 70% at 80% 10%, rgba(233,180,168,0.13) 0%, transparent 90%);
-    pointer-events: none;
-}
-
-/* Boutique Divider Style */
-.divider-luxury, .section-divider, hr.divider-luxury {
-    border: none;
-    border-top: 2.5px solid var(--color-divider);
-    margin: 2.8em auto;
-    opacity: 0.72;
-    width: 80px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--color-divider) 0%, var(--color-cta) 100%);
-}
-
-/* Boutique Fade-in Animation Classes */
-.fade-in {
-    opacity: 0;
-    animation: fadeInUp 1.2s cubic-bezier(.53,.01,.46,1.02) forwards;
-    transform: translateY(28px);
-    will-change: opacity, transform;
-}
-.fade-in-delay {
-    animation-delay: 0.5s;
-}
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(32px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Soft Inner Glow for Cards/Sections */
-.inner-glow {
-    box-shadow: 0 0 0 10px rgba(233,180,168,0.08) inset;
-}
-
-/* Subtle Organic Gradient Texture */
-.organic-gradient {
-    background: radial-gradient(circle at 80% 10%, rgba(233,180,168,0.13) 0%, transparent 70%);
-}
-
-/* === Global mobile responsiveness === */
-
-/* Images should never overflow on mobile */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* General container comfort on big screens */
+/* ── Remove old section styles ── */
+section {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+section::before {
+  content: none;
+}
+
+/* ── App Container ── */
 .FransGuideApp {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-/* Tablet and small laptop */
+/* ── Scroll to top ── */
+.scroll-to-top {
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 2rem !important;
+  z-index: 1000;
+  background: var(--navy) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  width: 44px !important;
+  height: 44px !important;
+  color: #fff !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none !important;
+}
+
+.scroll-to-top:hover {
+  opacity: 0.85;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.scroll-to-top:focus,
+.scroll-to-top:active {
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+
 @media (max-width: 768px) {
-  body {
-    font-size: 15px;
-  }
-
-  h1 {
-    font-size: 2.1rem !important;
-    line-height: 1.2 !important;
-  }
-
-  h2 {
-    font-size: 1.5rem !important;
-    line-height: 1.3 !important;
-  }
-
-  .FransGuideApp {
-    padding: 0 1.25rem;
-  }
-
-  /* Hero / big banner sections */
-  .hero-section,
-  .hero-banner {
-    padding: 3rem 1.5rem !important;
-    min-height: 60vh !important;
-  }
-
-  /* Tours grid spacing */
-  .tours-grid {
-    gap: 1.5rem !important;
-  }
-}
-
-/* Phones */
-@media (max-width: 480px) {
-  body {
-    font-size: 14px;
-  }
-
-  h1 {
-    font-size: 1.8rem !important;
-  }
-
-  h2 {
-    font-size: 1.35rem !important;
-  }
-
-  .FransGuideApp {
-    padding: 0 1rem;
-  }
-
-  .hero-section,
-  .hero-banner {
-    padding: 2.5rem 1.2rem !important;
-    min-height: 55vh !important;
-    text-align: center !important;
-  }
-
-  /* Make tour cards breathe on small screens */
-  .tour-card {
-    padding: 1.4rem 1.2rem !important;
-  }
-
-  /* Scroll-to-top button a bit smaller */
   .scroll-to-top {
-    width: 42px !important;
-    height: 42px !important;
-    bottom: 1.4rem !important;
-    right: 1.4rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    bottom: 1.5rem !important;
+    right: 1.5rem !important;
   }
 }

@@ -269,326 +269,284 @@ function ContactSection({ content }) {
   };
 
   return (
-    <section
-      className="contact-page"
-      style={{
-        background: 'linear-gradient(180deg, #ffffff 0%, #f9f3ed 100%)',
-        minHeight: '100vh',
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '2rem 1.5rem 4rem',
-        fontFamily: "'Poppins', sans-serif",
-        color: '#4a5875',
-        flexDirection: 'column',
-        boxSizing: 'border-box',
-      }}
-    >
+    <section className="fg-contact-page">
       <style>{`
-        @media (max-width: 480px) {
-          h1.page-title {
-            font-size: 2rem;
-            margin-bottom: 1.1rem;
-          }
-          .form-container {
-            padding: 2rem 1.4rem;
-            border-radius: 12px;
-          }
-          h2 {
-            font-size: 1.7rem;
-          }
-          label {
-            font-size: 0.9rem;
-          }
-          .cta-button,
-          .whatsapp-button {
-            font-size: 1rem;
-            padding: 0.75rem 1.6rem;
-          }
-          p.contact-note {
-            font-size: 0.8rem;
-            padding: 0 0.5rem 0.5rem;
-          }
-          .contact-page {
-            padding: 1.5rem 1rem 3rem;
-          }
+        .fg-contact-page {
+          padding-top: 80px;
+          background: #fff;
+          min-height: 100vh;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
         }
-        @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        h1.page-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 2.4rem;
-          color: #1E2A5E;
-          margin-bottom: 1.5rem;
-          font-weight: 700;
-          text-align: center;
-          user-select: none;
-        }
-        .form-container {
-          background: #ffffff;
-          border-radius: 14px;
-          box-shadow: 0 8px 25px rgba(0,0,0,0.04);
-          max-width: 520px;
-          width: 100%;
-          padding: 2.5rem 2.5rem;
-          box-sizing: border-box;
-          animation: fadeUp 1s ease forwards;
-          font-family: 'Poppins', sans-serif;
-          color: #4a5875;
+
+        /* ── Left panel ── */
+        .fg-contact-left {
+          padding: 80px 60px 80px 80px;
+          background: #FAF8F5;
           display: flex;
           flex-direction: column;
+          justify-content: center;
+          gap: 24px;
+          border-right: 1px solid #E8E3DC;
+        }
+        .fg-contact-eyebrow {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          color: #4A4845;
+          font-weight: 400;
+        }
+        .fg-contact-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(36px, 4vw, 52px);
+          font-weight: 400;
+          line-height: 1.1;
+          color: #1C1C1C;
+          margin: 0;
+        }
+        .fg-contact-title em {
+          font-style: italic;
+          color: #0F2C66;
+        }
+        .fg-contact-note {
+          font-family: 'Jost', sans-serif;
+          font-size: 14px;
+          line-height: 1.8;
+          color: #4A4845;
+          font-weight: 400;
+          max-width: 360px;
+        }
+        .fg-contact-wa-link {
+          display: inline-flex;
           align-items: center;
+          gap: 8px;
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #0F2C66;
+          font-weight: 500;
+          border-bottom: 1px solid #E8E3DC;
+          padding-bottom: 2px;
+          text-decoration: none;
+          align-self: flex-start;
+          transition: border-color 0.2s;
         }
-        h2 {
-          font-family: 'Playfair Display', serif;
-          font-size: 2rem;
-          color: #1E2A5E;
-          margin-bottom: 1.2rem;
-          font-weight: 700;
-          text-align: center;
+        .fg-contact-wa-link:hover { border-color: #0F2C66; color: #0F2C66; }
+
+        /* ── Right panel (form) ── */
+        .fg-contact-right {
+          padding: 80px 80px 80px 60px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
-        label {
-          display: block;
+        .fg-form {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          max-width: 480px;
+        }
+        .fg-form-title {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 26px;
+          font-weight: 400;
+          color: #1C1C1C;
+          margin: 0 0 4px;
+        }
+        .fg-field {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .fg-label {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #4A4845;
+          font-weight: 400;
+        }
+        .fg-input,
+        .fg-select,
+        .fg-textarea {
+          font-family: 'Jost', sans-serif;
+          font-size: 14px;
+          color: #1C1C1C;
+          font-weight: 400;
+          background: transparent;
+          border: none;
+          border-bottom: 1px solid #E8E3DC;
+          padding: 10px 0;
           width: 100%;
-          margin-bottom: 1.25rem;
-          font-weight: 600;
-          color: #4a5875;
-          font-family: 'Poppins', sans-serif;
-          font-size: 0.95rem;
-          user-select: none;
-        }
-        input[type="text"],
-        input[type="email"],
-        select,
-        textarea {
-          width: 100%;
-          background: #f7f8fa;
-          border: 1.5px solid transparent;
-          border-radius: 10px;
-          padding: 0.75rem 1rem;
-          font-family: 'Poppins', sans-serif;
-          font-size: 0.95rem;
-          color: #4a5875;
-          transition: border-color 0.3s ease;
-          resize: vertical;
           box-sizing: border-box;
-        }
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        select:focus,
-        textarea:focus {
           outline: none;
-          border-color: #1E2A5E;
-          background: #f7f8fa;
+          transition: border-color 0.2s;
+          appearance: none;
         }
-        input[type="text"]:hover,
-        input[type="email"]:hover,
-        select:hover,
-        textarea:hover {
-          background-color: #f2f3f5;
+        .fg-input:focus,
+        .fg-select:focus,
+        .fg-textarea:focus {
+          border-bottom-color: #0F2C66;
         }
-        .form-error {
+        .fg-textarea { resize: vertical; min-height: 100px; }
+        .fg-form-error {
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
           color: #b33a3a;
-          background: #f9d6d6;
-          border-radius: 8px;
-          padding: 0.6rem 1rem;
-          margin-bottom: 1rem;
-          font-weight: 600;
-          font-family: 'Poppins', sans-serif;
-          box-shadow: inset 0 1px 3px rgba(179, 58, 58, 0.2);
-          width: 100%;
-          text-align: center;
+          letter-spacing: 0.5px;
         }
-        .form-success {
-          color: #1E2A5E;
-          background: #e6e9f0;
-          border-radius: 8px;
-          padding: 0.6rem 1rem;
-          margin-bottom: 1rem;
-          font-weight: 600;
-          font-family: 'Poppins', sans-serif;
-          box-shadow: none;
-          width: 100%;
-          text-align: center;
+        .fg-form-success {
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          color: #0F2C66;
+          letter-spacing: 0.5px;
         }
-        .cta-button {
-          background: #1E2A5E;
+        .fg-form-actions {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-top: 4px;
+        }
+        .fg-submit-btn {
+          background: #0F2C66;
+          color: #fff;
           border: none;
-          border-radius: 8px;
-          color: #ffffff;
-          font-size: 1.1rem;
-          font-weight: 700;
-          padding: 0.85rem 2.2rem;
+          padding: 14px 32px;
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          font-weight: 400;
           cursor: pointer;
-          transition: background-color 0.3s ease, transform 0.2s ease;
-          font-family: 'Poppins', sans-serif;
-          user-select: none;
           width: 100%;
-          margin-top: 0.5rem;
-          box-sizing: border-box;
-          text-align: center;
-          display: inline-block;
+          transition: opacity 0.2s;
         }
-        .cta-button:hover:not(:disabled) {
-          background-color: #14204B;
-          transform: translateY(-3px);
-        }
-        .cta-button:disabled {
-          cursor: not-allowed;
-          opacity: 0.7;
-          background-color: #1E2A5E;
-          transform: none;
-        }
-        p.contact-note {
-          margin-top: 1rem;
-          font-family: 'Poppins', sans-serif;
-          font-size: 0.85rem;
-          color: #5a5a5a;
-          text-align: center;
-          user-select: none;
-          max-width: 600px;
-          padding: 0 1rem;
-        }
-        @media (min-width: 651px) {
-          .form-container {
-            padding: 4rem 3rem;
-          }
-        }
-        @media (max-width: 650px) {
-          .form-container {
-            padding: 2.5rem 2rem;
-          }
-        }
-        .whatsapp-button {
-          background: #25D366;
-          border: none;
-          border-radius: 8px;
-          color: #ffffff;
-          font-size: 1.05rem;
-          font-weight: 700;
-          padding: 0.8rem 2rem;
-          cursor: pointer;
-          transition: transform 0.2s ease, filter 0.2s ease;
-          font-family: 'Poppins', sans-serif;
-          user-select: none;
-          width: 100%;
-          margin-top: 0.75rem;
-          box-sizing: border-box;
-          text-align: center;
-          display: inline-block;
-        }
-        .whatsapp-button:hover {
-          filter: brightness(0.95);
-          transform: translateY(-2px);
-        }
-        .or-divider {
-          width: 100%;
+        .fg-submit-btn:hover:not(:disabled) { opacity: 0.85; }
+        .fg-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .fg-or-row {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
-          margin: 0.75rem 0 0.25rem;
-          color: #7a889f;
-          font-size: 0.85rem;
+          gap: 16px;
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          color: #4A4845;
+          letter-spacing: 1px;
         }
-        .or-divider::before,
-        .or-divider::after {
+        .fg-or-row::before, .fg-or-row::after {
           content: '';
-          height: 1px;
-          background: #e5e9f2;
           flex: 1;
+          height: 1px;
+          background: #E8E3DC;
+        }
+        .fg-wa-btn {
+          background: transparent;
+          border: 1px solid #E8E3DC;
+          color: #1C1C1C;
+          padding: 13px 32px;
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          font-weight: 400;
+          cursor: pointer;
+          width: 100%;
+          transition: border-color 0.2s, color 0.2s;
+        }
+        .fg-wa-btn:hover { border-color: #0F2C66; color: #0F2C66; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+          .fg-contact-page { grid-template-columns: 1fr; }
+          .fg-contact-left {
+            padding: 60px 32px 48px;
+            border-right: none;
+            border-bottom: 1px solid #E8E3DC;
+          }
+          .fg-contact-right { padding: 48px 32px 64px; }
+          .fg-form { max-width: 100%; }
+        }
+        @media (max-width: 480px) {
+          .fg-contact-left { padding: 48px 24px 36px; }
+          .fg-contact-right { padding: 36px 24px 56px; }
+          .fg-contact-title { font-size: 36px; }
         }
       `}</style>
-      <h1 className="page-title">{copy.pageTitle}</h1>
-      <div className="form-container">
-        <form className="contact-form" onSubmit={handleSubmit} autoComplete="off" noValidate>
-          <h2>{copy.sectionTitle}</h2>
-          <label>
-            {copy.nameLabel}
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              disabled={submitting}
-              autoComplete="off"
-            />
-          </label>
-          <label>
-            {copy.emailLabel}
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              disabled={submitting}
-              autoComplete="off"
-            />
-          </label>
-          <label>
-            {copy.tourLabel}
-            <select
-              name="tour"
-              value={form.tour}
-              onChange={handleChange}
-              disabled={submitting}
-            >
+
+      {/* Left: headline */}
+      <div className="fg-contact-left">
+        <span className="fg-contact-eyebrow">{copy.pageTitle}</span>
+        <h1 className="fg-contact-title">
+          {language === 'fr' ? (
+            <>Planifions votre<br/><em>Paris ensemble.</em></>
+          ) : language === 'pt' ? (
+            <>Vamos planejar<br/><em>seu Paris juntos.</em></>
+          ) : language === 'es' ? (
+            <>Planifiquemos<br/><em>tu París juntos.</em></>
+          ) : (
+            <>Let's plan your<br/><em>Paris together.</em></>
+          )}
+        </h1>
+        <p className="fg-contact-note">{copy.contactNote}</p>
+        <a
+          href={`https://wa.me/33759752536?text=${encodeURIComponent(buildWhatsAppLink({name:'',email:'',tour:'',message:''}, language).split('text=')[1] || '')}`}
+          target="_blank"
+          rel="noreferrer"
+          className="fg-contact-wa-link"
+        >
+          {copy.whatsappButton}
+        </a>
+      </div>
+
+      {/* Right: form */}
+      <div className="fg-contact-right">
+        <form className="fg-form" onSubmit={handleSubmit} autoComplete="off" noValidate>
+          <h2 className="fg-form-title">{copy.sectionTitle}</h2>
+
+          <div className="fg-field">
+            <label className="fg-label">{copy.nameLabel}</label>
+            <input className="fg-input" type="text" name="name" value={form.name} onChange={handleChange} required disabled={submitting} autoComplete="off" />
+          </div>
+
+          <div className="fg-field">
+            <label className="fg-label">{copy.emailLabel}</label>
+            <input className="fg-input" type="email" name="email" value={form.email} onChange={handleChange} required disabled={submitting} autoComplete="off" />
+          </div>
+
+          <div className="fg-field">
+            <label className="fg-label">{copy.tourLabel}</label>
+            <select className="fg-select" name="tour" value={form.tour} onChange={handleChange} disabled={submitting}>
               {tourOptions.map((opt) => (
-                <option key={opt.value} value={opt.value}>
-                  {opt.label}
-                </option>
+                <option key={opt.value} value={opt.value}>{opt.label}</option>
               ))}
             </select>
-          </label>
-          <label>
-            {copy.messageLabel}
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              rows={5}
-              required
+          </div>
+
+          <div className="fg-field">
+            <label className="fg-label">{copy.messageLabel}</label>
+            <textarea className="fg-textarea" name="message" value={form.message} onChange={handleChange} rows={4} required disabled={submitting} />
+          </div>
+
+          {error && <p className="fg-form-error" role="alert">{error}</p>}
+          {success && <p className="fg-form-success" role="status">{success}</p>}
+
+          <div className="fg-form-actions">
+            <button className="fg-submit-btn" type="submit" disabled={submitting} aria-busy={submitting}>
+              {submitting ? copy.submitSending : copy.submitIdle}
+            </button>
+            <div className="fg-or-row">{copy.orLabel}</div>
+            <button
+              type="button"
+              className="fg-wa-btn"
+              onClick={() => { window.open(buildWhatsAppLink(form, language), '_blank'); }}
               disabled={submitting}
-            />
-          </label>
-          {error && <div className="form-error" role="alert">{error}</div>}
-          {success && <div className="form-success" role="status">{success}</div>}
-          <button
-            className="cta-button"
-            type="submit"
-            disabled={submitting}
-            aria-busy={submitting}
-          >
-            {submitting ? copy.submitSending : copy.submitIdle}
-          </button>
-          <div className="or-divider">{copy.orLabel}</div>
-          <button
-            type="button"
-            className="whatsapp-button"
-            onClick={() => {
-              const link = buildWhatsAppLink(form, language);
-              window.open(link, '_blank');
-            }}
-            disabled={submitting}
-            aria-label={copy.whatsappButton}
-          >
-            {copy.whatsappButton}
-          </button>
+            >
+              {copy.whatsappButton}
+            </button>
+          </div>
         </form>
       </div>
-      <p className="contact-note">
-        {copy.contactNote}
-      </p>
     </section>
   );
 }

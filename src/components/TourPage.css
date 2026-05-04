@@ -1,117 +1,419 @@
-.tour-page-container {
-  background: linear-gradient(180deg, #F9F5EF 0%, #FFF9F4 100%);
-  padding: 3rem 1.5rem;
+/* Tour page — editorial style */
+
+.fg-tours-page {
+  padding-top: 80px;
+  background: #fff;
+  min-height: 100vh;
 }
 
-.hero-banner {
-  background-color: #E6DAD0;
-  height: 280px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 2.8rem;
-  font-weight: 700;
-  font-family: 'Playfair Display', serif;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
-  margin-bottom: 2.5rem;
-  user-select: none;
+/* ── Page header ── */
+.fg-tours-header {
+  padding: 80px 80px 64px;
+  border-bottom: 1px solid #E8E3DC;
 }
-
-.tour-page-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 2.8rem;
-  color: #4A3C31;
-  margin-bottom: 1.5rem;
-  text-align: center;
+.fg-tours-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #4A4845;
+  font-weight: 400;
+  margin-bottom: 20px;
 }
-
-.divider-container {
-  text-align: center;
-  margin-bottom: 2rem;
+.fg-tours-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 5vw, 60px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1C1C1C;
+  margin: 0 0 16px;
 }
-
-.divider-tagline {
-  font-family: 'Georgia', serif;
-  font-size: 1rem;
-  color: #7A6F63;
-  margin-bottom: 0.3rem;
+.fg-tours-title em {
   font-style: italic;
+  color: #0F2C66;
+}
+.fg-tours-tagline {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  color: #4A4845;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 
-.divider-line {
-  width: 6rem;
-  border-top: 2px solid #C9BBAE;
-  margin: 0 auto;
-  border-radius: 2px;
-}
-
-.tours-grid {
+/* ── Audio section ── */
+.fg-audio-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #E8E3DC;
+  background: #FAF8F5;
 }
-
-.tour-card {
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  padding: 1.8rem 1.5rem 2rem;
+.fg-audio-intro {
+  padding: 72px 60px 72px 80px;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
-  opacity: 0;
-  animation: fadeInUp 0.6s ease forwards;
+  justify-content: center;
+  gap: 20px;
+  border-right: 1px solid #E8E3DC;
 }
-
-.tour-card h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  margin-bottom: 0.25rem;
-  color: #3B2F22;
-  line-height: 1.2;
+.fg-audio-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1C1C1C;
+  margin: 0;
 }
-
-.tour-meta {
+.fg-audio-title em { font-style: italic; color: #0F2C66; }
+.fg-audio-tagline {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #4A4845;
+  font-weight: 400;
+  max-width: 360px;
+}
+.fg-btn-primary {
+  display: inline-block;
+  background: #0F2C66;
+  color: #fff;
+  padding: 13px 28px;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 400;
+  align-self: flex-start;
+  transition: opacity 0.2s;
+}
+.fg-btn-primary:hover { opacity: 0.85; color: #fff; }
+.fg-audio-cards {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 0.8rem;
-  font-size: 0.85rem;
-  color: #7A6F63;
-  font-family: 'Georgia', serif;
+  flex-direction: column;
+  border-left: none;
+}
+.fg-audio-card {
+  padding: 48px 60px;
+  border-bottom: 1px solid #E8E3DC;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fg-audio-card:last-child { border-bottom: none; }
+.fg-audio-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.fg-audio-badge {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0F2C66;
+  border: 1px solid #CEE4FE;
+  background: #CEE4FE30;
+  padding: 4px 10px;
+  border-radius: 2px;
+  font-weight: 400;
+}
+.fg-audio-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #0F2C66;
+}
+.fg-audio-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #1C1C1C;
+  margin: 0;
+}
+.fg-audio-card-sub {
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  color: #4A4845;
+  font-weight: 400;
+  margin: 0;
+}
+.fg-audio-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  color: #4A4845;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.fg-meta-dot { color: #E8E3DC; }
+
+/* ── Private section ── */
+.fg-private-section { }
+.fg-private-header {
+  padding: 72px 80px 48px;
+  border-bottom: 1px solid #E8E3DC;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fg-private-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #1C1C1C;
+  margin: 0;
+}
+.fg-private-title em { font-style: italic; color: #0F2C66; }
+
+/* ── Grid ── */
+.fg-tours-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-left: 1px solid #E8E3DC;
 }
 
-.tour-card p {
-  font-family: 'Georgia', serif;
-  font-size: 1rem;
-  color: #5B5247;
-  line-height: 1.45;
+.fg-tour-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.fg-tour-card {
+  padding: 36px 32px;
+  border-right: 1px solid #E8E3DC;
+  border-bottom: 1px solid #E8E3DC;
+  transition: background 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.fg-tour-card:hover {
+  background: #FAF8F5;
 }
 
-@media (min-width: 768px) {
-  .tours-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.fg-tour-num {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #4A4845;
+  margin-bottom: 16px;
+  font-weight: 400;
 }
+.fg-tour-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1C1C1C;
+  margin: 0 0 10px;
+}
+.fg-tour-dur {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  color: #4A4845;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+.fg-tour-desc {
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #4A4845;
+  font-weight: 400;
+  margin-bottom: 20px;
+  flex: 1;
+}
+.fg-tour-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+.fg-tour-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #0F2C66;
+  white-space: nowrap;
+}
+.fg-tour-price-note {
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #4A4845;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+.fg-tour-cta {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #0F2C66;
+  font-weight: 400;
+  border-bottom: 1px solid #E8E3DC;
+  padding-bottom: 2px;
+  display: inline-block;
+  align-self: flex-start;
+  transition: border-color 0.2s;
+  white-space: nowrap;
+}
+.fg-tour-cta:hover { border-color: #0F2C66; }
 
-@media (min-width: 1024px) {
-  .tours-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+/* ── Photoshoot CTA ── */
+.fg-photoshoot-cta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid #E8E3DC;
+  background: #0F2C66;
+}
+.fg-photoshoot-left {
+  padding: 72px 60px 72px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.fg-photoshoot-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+}
+.fg-photoshoot-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #fff;
+  margin: 0;
+}
+.fg-photoshoot-title em { font-style: italic; color: #CEE4FE; }
+.fg-photoshoot-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.fg-photoshoot-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+}
+.fg-photoshoot-price-note {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+.fg-photoshoot-body {
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.65);
+  font-weight: 400;
+  max-width: 380px;
+}
+.fg-photoshoot-right {
+  padding: 72px 80px 72px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.fg-photoshoot-features {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.fg-photoshoot-feat {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 400;
+}
+.fg-photoshoot-feat::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: #CEE4FE;
+  flex-shrink: 0;
+}
+.fg-photoshoot-special {
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+  font-weight: 400;
+  margin: 4px 0 0;
+}
+.fg-photoshoot-special-link {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.fg-photoshoot-special-link:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.7);
+}
+.fg-btn-light {
+  display: inline-block;
+  background: #fff;
+  color: #0F2C66;
+  padding: 13px 28px;
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  align-self: flex-start;
+  transition: opacity 0.2s;
+}
+.fg-btn-light:hover { opacity: 0.88; color: #0F2C66; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .fg-tours-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .fg-tours-header { padding: 60px 32px 48px; }
+  .fg-audio-section { grid-template-columns: 1fr; }
+  .fg-audio-intro { padding: 60px 32px 48px; border-right: none; border-bottom: 1px solid #E8E3DC; }
+  .fg-audio-card { padding: 36px 32px; }
+  .fg-private-header { padding: 60px 32px 40px; }
+  .fg-photoshoot-cta { grid-template-columns: 1fr; }
+  .fg-photoshoot-left { padding: 60px 32px 48px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .fg-photoshoot-right { padding: 48px 32px 60px; }
+}
+@media (max-width: 640px) {
+  .fg-tours-header { padding: 48px 24px 36px; }
+  .fg-tours-grid { grid-template-columns: 1fr; }
+  .fg-tour-card { padding: 28px 24px; }
+  .fg-audio-intro { padding: 48px 24px 36px; }
+  .fg-audio-card { padding: 28px 24px; }
+  .fg-private-header { padding: 48px 24px 32px; }
+  .fg-photoshoot-left { padding: 48px 24px 36px; }
+  .fg-photoshoot-right { padding: 36px 24px 48px; }
 }
