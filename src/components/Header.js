@@ -15,9 +15,17 @@ export default function Header({ language, switchLanguage }) {
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
+  const navLabels = {
+    en: { tours: 'Tours', about: 'About', book: 'Book now' },
+    fr: { tours: 'Visites', about: 'À propos', book: 'Réserver' },
+    pt: { tours: 'Tours', about: 'Sobre', book: 'Reservar' },
+    es: { tours: 'Tours', about: 'Sobre', book: 'Reservar' },
+  };
+  const nav = navLabels[language] || navLabels.en;
+
   const navLinks = [
-    { href: '/tours', label: language === 'fr' ? 'Visites' : 'Tours' },
-    { href: '/about', label: language === 'fr' ? 'À propos' : 'About' },
+    { href: '/tours', label: nav.tours },
+    { href: '/about', label: nav.about },
     { href: '/contact', label: 'Contact' },
     { href: '/photoshoots', label: 'Photos' },
   ];
@@ -213,19 +221,17 @@ export default function Header({ language, switchLanguage }) {
 
         <div className="header-right">
           <div className="lang-toggle" role="group" aria-label="Language">
-            <button
-              className={`lang-btn${language === 'en' ? ' active' : ''}`}
-              onClick={() => switchLanguage('en')}
-            >EN</button>
-            <span className="lang-sep">/</span>
-            <button
-              className={`lang-btn${language === 'fr' ? ' active' : ''}`}
-              onClick={() => switchLanguage('fr')}
-            >FR</button>
+            {['en', 'fr', 'pt', 'es'].map((lang, i, arr) => (
+              <React.Fragment key={lang}>
+                <button
+                  className={`lang-btn${language === lang ? ' active' : ''}`}
+                  onClick={() => switchLanguage(lang)}
+                >{lang.toUpperCase()}</button>
+                {i < arr.length - 1 && <span className="lang-sep">/</span>}
+              </React.Fragment>
+            ))}
           </div>
-          <a href="/tours" className="header-cta">
-            {language === 'fr' ? 'Réserver' : 'Book now'}
-          </a>
+          <a href="/tours" className="header-cta">{nav.book}</a>
         </div>
 
         <button
@@ -248,14 +254,13 @@ export default function Header({ language, switchLanguage }) {
           </a>
         ))}
         <div className="mobile-lang-row">
-          <button
-            className={language === 'en' ? 'active' : ''}
-            onClick={() => { switchLanguage('en'); setMenuOpen(false); }}
-          >EN</button>
-          <button
-            className={language === 'fr' ? 'active' : ''}
-            onClick={() => { switchLanguage('fr'); setMenuOpen(false); }}
-          >FR</button>
+          {['en', 'fr', 'pt', 'es'].map(lang => (
+            <button
+              key={lang}
+              className={language === lang ? 'active' : ''}
+              onClick={() => { switchLanguage(lang); setMenuOpen(false); }}
+            >{lang.toUpperCase()}</button>
+          ))}
         </div>
       </nav>
     </>
