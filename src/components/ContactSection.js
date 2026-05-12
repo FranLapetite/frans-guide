@@ -200,8 +200,8 @@ const getCopy = (language, content = {}) => {
   };
 };
 
-function ContactSection({ content }) {
-  const language = detectLanguageFromContent(content || {});
+function ContactSection({ content, language: langProp }) {
+  const language = langProp || detectLanguageFromContent(content || {});
   const tourOptions = getTourOptions(language);
   const copy = getCopy(language, content || {});
 
@@ -241,12 +241,14 @@ function ContactSection({ content }) {
     setSubmitting(true);
     setError('');
     setSuccess('');
+    const noTourLabels = { fr: 'Aucune visite sélectionnée', pt: 'Nenhum tour selecionado', es: 'Ningún tour seleccionado' };
+    const dateLocales = { fr: 'fr-FR', pt: 'pt-BR', es: 'es-ES' };
     const templateParams = {
       name: form.name,
       email: form.email,
-      tour: form.tour || 'No tour selected',
+      tour: form.tour || noTourLabels[language] || 'No tour selected',
       message: form.message,
-      time: new Date().toLocaleString('en-GB', { dateStyle: 'full', timeStyle: 'short' }),
+      time: new Date().toLocaleString(dateLocales[language] || 'en-GB', { dateStyle: 'full', timeStyle: 'short' }),
     };
     emailjs
       .send(

@@ -1,21 +1,115 @@
 import React from 'react';
 
-const WHATSAPP_URL = "https://wa.me/33759752536?text=Hi! I saw your Paris photoshoots on Fran's Guide!! When is your next available photoshoot?";
-
-const INCLUDED = [
-  'Natural and guided photos around Paris',
-  'Iconic and hidden locations',
-  'Posing guidance if needed',
-  'A warm, personal experience',
-  '20–40 edited photos delivered',
-];
-
-const FOR = [
-  'Couples in Paris',
-  'Solo travelers',
-  'Birthdays & special moments',
-  'Content creation',
-];
+const T = {
+  en: {
+    whatsapp: "Hi! I saw your Paris photoshoots on Fran's Guide!! When is your next available photoshoot?",
+    eyebrow: 'Paris Photoshoots',
+    title1: 'Your Paris moment,',
+    title2: 'beautifully captured.',
+    subtitle: 'Natural, elegant photos in the most beautiful corners of Paris — for couples, solo travelers, and anyone who wants to remember this city forever.',
+    pastSessions: 'Past sessions',
+    included: 'What\'s included',
+    perfectFor: 'Perfect for',
+    ctaTitle1: 'Ready to create',
+    ctaTitle2: 'your Paris story?',
+    ctaBody: 'Message me directly to check availability, discuss locations, and design a photoshoot that fits your style.',
+    bookBtn: 'Book on WhatsApp',
+    includedList: [
+      'Natural and guided photos around Paris',
+      'Iconic and hidden locations',
+      'Posing guidance if needed',
+      'A warm, personal experience',
+      '20–40 edited photos delivered',
+    ],
+    forList: [
+      'Couples in Paris',
+      'Solo travelers',
+      'Birthdays & special moments',
+      'Content creation',
+    ],
+  },
+  fr: {
+    whatsapp: "Bonjour ! J'ai vu vos séances photo à Paris sur Fran's Guide ! Quand est votre prochaine séance photo disponible ?",
+    eyebrow: 'Séances Photo à Paris',
+    title1: 'Votre moment parisien,',
+    title2: 'magnifiquement capturé.',
+    subtitle: 'Des photos naturelles et élégantes dans les plus beaux recoins de Paris — pour les couples, les voyageurs en solo et tous ceux qui veulent se souvenir de cette ville à jamais.',
+    pastSessions: 'Séances précédentes',
+    included: 'Ce qui est inclus',
+    perfectFor: 'Parfait pour',
+    ctaTitle1: 'Prête à créer',
+    ctaTitle2: 'votre histoire parisienne ?',
+    ctaBody: 'Contactez-moi directement pour vérifier les disponibilités, discuter des lieux et concevoir une séance photo adaptée à votre style.',
+    bookBtn: 'Réserver sur WhatsApp',
+    includedList: [
+      'Photos naturelles et guidées autour de Paris',
+      'Lieux emblématiques et secrets',
+      'Conseils de pose si besoin',
+      'Une expérience chaleureuse et personnelle',
+      '20 à 40 photos retouchées livrées',
+    ],
+    forList: [
+      'Couples à Paris',
+      'Voyageurs en solo',
+      'Anniversaires et moments spéciaux',
+      'Création de contenu',
+    ],
+  },
+  pt: {
+    whatsapp: "Olá! Vi seus ensaios fotográficos em Paris no Fran's Guide! Quando é o próximo horário disponível?",
+    eyebrow: 'Ensaios Fotográficos em Paris',
+    title1: 'O seu momento em Paris,',
+    title2: 'lindamente registrado.',
+    subtitle: 'Fotos naturais e elegantes nos cantos mais bonitos de Paris — para casais, viajantes solo e todos que querem lembrar desta cidade para sempre.',
+    pastSessions: 'Sessões anteriores',
+    included: 'O que está incluído',
+    perfectFor: 'Perfeito para',
+    ctaTitle1: 'Pronta para criar',
+    ctaTitle2: 'a sua história em Paris?',
+    ctaBody: 'Fale comigo diretamente para verificar disponibilidade, discutir locais e criar um ensaio que combine com o seu estilo.',
+    bookBtn: 'Reservar pelo WhatsApp',
+    includedList: [
+      'Fotos naturais e guiadas por Paris',
+      'Locais icônicos e escondidos',
+      'Orientações de pose se precisar',
+      'Uma experiência calorosa e pessoal',
+      '20 a 40 fotos editadas entregues',
+    ],
+    forList: [
+      'Casais em Paris',
+      'Viajantes solo',
+      'Aniversários e momentos especiais',
+      'Criação de conteúdo',
+    ],
+  },
+  es: {
+    whatsapp: "¡Hola! Vi tus sesiones de fotos en París en Fran's Guide! ¿Cuándo tienes disponibilidad?",
+    eyebrow: 'Sesiones de Fotos en París',
+    title1: 'Tu momento en París,',
+    title2: 'bellamente capturado.',
+    subtitle: 'Fotos naturales y elegantes en los rincones más bellos de París — para parejas, viajeros en solitario y todos los que quieren recordar esta ciudad para siempre.',
+    pastSessions: 'Sesiones anteriores',
+    included: 'Qué incluye',
+    perfectFor: 'Ideal para',
+    ctaTitle1: 'Lista para crear',
+    ctaTitle2: '¿tu historia en París?',
+    ctaBody: 'Escríbeme directamente para ver disponibilidad, hablar de los lugares y diseñar una sesión que se adapte a tu estilo.',
+    bookBtn: 'Reservar por WhatsApp',
+    includedList: [
+      'Fotos naturales y guiadas por París',
+      'Lugares icónicos y escondidos',
+      'Orientación de poses si lo necesitas',
+      'Una experiencia cálida y personal',
+      '20 a 40 fotos editadas entregadas',
+    ],
+    forList: [
+      'Parejas en París',
+      'Viajeros en solitario',
+      'Cumpleaños y momentos especiales',
+      'Creación de contenido',
+    ],
+  },
+};
 
 const samplePhotos = [
   { src: '/assets/images/photoshoots/photo-1.jpeg', alt: 'Paris couple photoshoot' },
@@ -26,7 +120,9 @@ const samplePhotos = [
   { src: '/assets/images/photoshoots/photo-6.jpeg', alt: 'Paris lifestyle photoshoot' },
 ];
 
-export default function PhotoshootsPage() {
+export default function PhotoshootsPage({ language = 'en' }) {
+  const t = T[language] || T.en;
+  const whatsappUrl = `https://wa.me/33759752536?text=${encodeURIComponent(t.whatsapp)}`;
   return (
     <>
       <style>{`
@@ -227,18 +323,16 @@ export default function PhotoshootsPage() {
       <div className="fg-photos-page">
         {/* Header */}
         <div className="fg-photos-header">
-          <p className="fg-photos-eyebrow">Paris Photoshoots</p>
+          <p className="fg-photos-eyebrow">{t.eyebrow}</p>
           <h1 className="fg-photos-title">
-            Your Paris moment,<br/><em>beautifully captured.</em>
+            {t.title1}<br/><em>{t.title2}</em>
           </h1>
-          <p className="fg-photos-subtitle">
-            Natural, elegant photos in the most beautiful corners of Paris — for couples, solo travelers, and anyone who wants to remember this city forever.
-          </p>
+          <p className="fg-photos-subtitle">{t.subtitle}</p>
         </div>
 
         {/* Photo strip */}
         <div className="fg-photos-strip-section">
-          <p className="fg-photos-section-label">Past sessions</p>
+          <p className="fg-photos-section-label">{t.pastSessions}</p>
           <div className="fg-photos-strip">
             {samplePhotos.map((p) => (
               <div key={p.src} className="fg-photo-item">
@@ -251,15 +345,15 @@ export default function PhotoshootsPage() {
         {/* Details */}
         <div className="fg-photos-details">
           <div className="fg-photos-col">
-            <h2 className="fg-photos-col-title">What's included</h2>
+            <h2 className="fg-photos-col-title">{t.included}</h2>
             <ul className="fg-photos-list">
-              {INCLUDED.map(i => <li key={i}>{i}</li>)}
+              {t.includedList.map(i => <li key={i}>{i}</li>)}
             </ul>
           </div>
           <div className="fg-photos-col">
-            <h2 className="fg-photos-col-title">Perfect for</h2>
+            <h2 className="fg-photos-col-title">{t.perfectFor}</h2>
             <ul className="fg-photos-list">
-              {FOR.map(f => <li key={f}>{f}</li>)}
+              {t.forList.map(f => <li key={f}>{f}</li>)}
             </ul>
           </div>
         </div>
@@ -268,14 +362,12 @@ export default function PhotoshootsPage() {
         <div className="fg-photos-cta-section">
           <div className="fg-photos-cta-text">
             <h2 className="fg-photos-cta-title">
-              Ready to create<br/><em>your Paris story?</em>
+              {t.ctaTitle1}<br/><em>{t.ctaTitle2}</em>
             </h2>
-            <p className="fg-photos-cta-body">
-              Message me directly to check availability, discuss locations, and design a photoshoot that fits your style.
-            </p>
+            <p className="fg-photos-cta-body">{t.ctaBody}</p>
           </div>
-          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="fg-btn-primary">
-            Book on WhatsApp
+          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="fg-btn-primary">
+            {t.bookBtn}
           </a>
         </div>
       </div>

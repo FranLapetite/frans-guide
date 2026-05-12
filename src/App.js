@@ -287,14 +287,14 @@ export default function App() {
                 <About content={content} language={language} />
 
                 {/* --- Contact Section --- */}
-                <ContactSection content={content} />
+                <ContactSection content={content} language={language} />
               </>
             } />
             <Route path="/tours" element={<ToursPage language={language} content={content} />} />
             <Route path="/photoshoots" element={<PhotoshootsPage language={language} />} />
             <Route path="/tour/:id" element={<TourDetails language={language} />} />
             <Route path="/about" element={<AboutPage language={language} />} />
-            <Route path="/contact" element={<ContactSection content={content} />} />
+            <Route path="/contact" element={<ContactSection content={content} language={language} />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="/cgv" element={<CGV />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
