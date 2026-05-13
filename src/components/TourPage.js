@@ -169,10 +169,18 @@ const LABELS = {
 const AUDIO_TOURS = [
   {
     id: 'eiffel-secrets',
-    titleEn: 'Eiffel Secrets',
-    subtitleEn: 'From the Trocadero to the foot of the Iron Lady',
-    titleFr: 'Secrets de la Tour Eiffel',
-    subtitleFr: 'Du Trocadéro au pied de la Dame de Fer',
+    title: {
+      en: 'Eiffel Secrets',
+      fr: 'Secrets de la Tour Eiffel',
+      pt: 'Segredos da Torre Eiffel',
+      es: 'Secretos de la Torre Eiffel',
+    },
+    subtitle: {
+      en: 'From the Trocadero to the foot of the Iron Lady',
+      fr: 'Du Trocadéro au pied de la Dame de Fer',
+      pt: 'Do Trocadéro aos pés da Dama de Ferro',
+      es: 'Del Trocadero a los pies de la Dama de Hierro',
+    },
     duration: '30 min',
     distance: '1.5 km',
     stops: 9,
@@ -181,10 +189,18 @@ const AUDIO_TOURS = [
   },
   {
     id: 'notre-dame',
-    titleEn: 'Notre-Dame & Quartier Latin',
-    subtitleEn: 'From the Conciergerie to the Latin Quarter',
-    titleFr: 'Notre-Dame & Quartier Latin',
-    subtitleFr: 'De la Conciergerie au Quartier Latin',
+    title: {
+      en: 'Notre-Dame & Quartier Latin',
+      fr: 'Notre-Dame & Quartier Latin',
+      pt: 'Notre-Dame & Quartier Latin',
+      es: 'Notre-Dame & Barrio Latino',
+    },
+    subtitle: {
+      en: 'From the Conciergerie to the Latin Quarter',
+      fr: 'De la Conciergerie au Quartier Latin',
+      pt: 'Da Conciergerie ao Quartier Latin',
+      es: 'De la Conciergerie al Barrio Latino',
+    },
     duration: '45 min',
     distance: '1.8 km',
     stops: 8,
@@ -200,7 +216,7 @@ function stripEmoji(str) {
 const ToursSection = ({ language = 'en' }) => {
   const l = LABELS[language] || LABELS.en;
   const ps = PHOTOSHOOT[language] || PHOTOSHOOT.en;
-  const isFr = language === 'fr';
+  const lang = LABELS[language] ? language : 'en';
   const [showAll, setShowAll] = useState(false);
   const VISIBLE = 6;
 
@@ -234,10 +250,10 @@ const ToursSection = ({ language = 'en' }) => {
                 <span className="fg-audio-price">{tour.price}</span>
               </div>
               <h3 className="fg-audio-card-title">
-                {isFr ? tour.titleFr : tour.titleEn}
+                {tour.title[lang] || tour.title.en}
               </h3>
               <p className="fg-audio-card-sub">
-                {isFr ? tour.subtitleFr : tour.subtitleEn}
+                {tour.subtitle[lang] || tour.subtitle.en}
               </p>
               <div className="fg-audio-meta">
                 <span>{tour.duration}</span>
