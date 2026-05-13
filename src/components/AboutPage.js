@@ -100,9 +100,86 @@ const TEXTS = {
     ctaBody: 'Que vous cherchiez une visite privée, une séance photo ou simplement en savoir plus sur l\'application — je serais ravie de vous lire.',
     ctaLink: 'Envoyer un message',
   },
+  pt: {
+    eyebrow: 'Sobre Fran',
+    heroTitle: <>Franco-brasileira.<br/>Guia. Fotógrafa.<br/><em>Engenheira.</em></>,
+    heroPara: 'Franco-brasileira, baseada em Paris. Desde 2022, guio visitantes pela cidade e capturo seus momentos — através de tours privados, ensaios fotográficos para casais, casamentos e noivados, e o aplicativo Fran\'s Guide, que desenvolvi eu mesma.',
+    s1eyebrow: 'O começo',
+    s1title: <>Guia desde<br/><em>2022.</em></>,
+    s1body: [
+      'Comecei a guiar em Paris em 2022, e imediatamente pareceu a coisa certa. Caminhar com pessoas pelas ruas que conheço de cor — compartilhando histórias, cantos escondidos, a luz na hora certa — revelou ser exatamente o trabalho que eu estava procurando. Crescer entre o Brasil e a França me deu uma forma de ver a cidade que não é totalmente local, nem totalmente turística — algo entre os dois, que acaba sendo o melhor ponto de partida para guiar.',
+      'O que começou como tours privados para casais e viajantes solo cresceu e se transformou em um catálogo completo: caminhadas, ensaios fotográficos, experiências de áudio, rituais matinais. Cada roteiro vem de um conhecimento real — ruas percorridas centenas de vezes, histórias coletadas ao longo de anos guiando e explorando a cidade. Cada tour é uma conversa.',
+    ],
+    s2eyebrow: 'O outro lado',
+    s2title: <>Engenheira de<br/><em>computação.</em></>,
+    s2body: [
+      'Antes de guiar, me formei como engenheira de computação. Esse bagageiro nunca me abandonou — apenas encontrou um novo propósito. Quando quis oferecer tours de áudio, não terceirizei o aplicativo: eu mesma o construí.',
+      'Fran\'s Guide é um aplicativo mobile React Native com tours de áudio guiados por GPS, um mapa interativo e funcionalidades com IA. Projetar e desenvolver este aplicativo foi um dos projetos mais satisfatórios da minha vida — um lugar onde os dois lados de mim finalmente convergem.',
+    ],
+    s3eyebrow: 'O aplicativo',
+    s3title: <>Construído do<br/><em>zero.</em></>,
+    s3features: [
+      'Narração de áudio guiada por GPS, passo a passo',
+      'Mapa interativo — siga o roteiro em tempo real',
+      'Funcionalidades com IA integradas à experiência',
+      'Disponível em inglês e francês',
+      'Desenvolvido com React Native & Expo',
+    ],
+    s3body: 'Cada roteiro no aplicativo vem de experiência real — tours que conduzi dezenas de vezes, ruas que percorri centenas de vezes. Os roteiros são escritos da memória e do amor, não de um guia turístico. O aplicativo está em beta para os tours da Torre Eiffel e Notre-Dame, com mais roteiros em desenvolvimento.',
+    s4eyebrow: 'Fotografia',
+    s4title: <>Uma paixão desde<br/><em>a infância.</em></>,
+    s4body: [
+      'A fotografia faz parte da minha vida desde que me lembro. Muito antes de guiar, muito antes de Paris — eu já era atraída pela luz, pelo momento, pela história que um único enquadramento pode contar.',
+      'Poder transformar essa paixão de vida toda em ensaios fotográficos para casais, casamentos, noivados, viajantes solo e momentos especiais em Paris parece um sonho realizado. Cada sessão é diferente, cada luz é diferente — mas o objetivo é sempre o mesmo: fotos que você vai realmente guardar.',
+    ],
+    galleryEyebrow: 'Paris, através da minha lente',
+    galleryTitle: <>Lugares que<br/><em>ficam com você.</em></>,
+    ctaEyebrow: 'Entre em contato',
+    ctaTitle: <>Pronta para explorar<br/><em>Paris comigo?</em></>,
+    ctaBody: 'Seja você procurando um tour privado, um ensaio fotográfico ou apenas queira saber mais sobre o aplicativo — adoraria ouvir de você.',
+    ctaLink: 'Enviar uma mensagem',
+  },
+  es: {
+    eyebrow: 'Sobre Fran',
+    heroTitle: <>Franco-brasileña.<br/>Guía. Fotógrafa.<br/><em>Ingeniera.</em></>,
+    heroPara: 'Franco-brasileña, afincada en París. Desde 2022, guío visitantes por la ciudad y capturo sus momentos — a través de tours privados, sesiones de fotos para parejas, bodas y compromisos, y la app Fran\'s Guide, que diseñé y desarrollé yo misma.',
+    s1eyebrow: 'El comienzo',
+    s1title: <>Guía desde<br/><em>2022.</em></>,
+    s1body: [
+      'Empecé a guiar en París en 2022, y de inmediato sentí que era lo correcto. Caminar con personas por las calles que conozco de memoria — compartiendo historias, rincones escondidos, la luz en el momento exacto — resultó ser exactamente el trabajo que buscaba. Crecer entre Brasil y Francia me dio una forma de ver la ciudad que no es del todo local ni del todo turística — algo intermedio, que resulta ser el mejor lugar desde el que guiar.',
+      'Lo que comenzó como tours privados para parejas y viajeros en solitario creció hasta convertirse en un catálogo completo: rutas a pie, sesiones de fotos, experiencias de audio, rituales matutinos. Cada itinerario viene de un conocimiento real — calles recorridas cientos de veces, historias recopiladas a lo largo de años guiando y explorando la ciudad. Cada tour es una conversación.',
+    ],
+    s2eyebrow: 'El otro lado',
+    s2title: <>Ingeniera en<br/><em>informática.</em></>,
+    s2body: [
+      'Antes de guiar, me formé como ingeniera en informática. Ese bagaje nunca me abandonó — solo encontró un nuevo propósito. Cuando quise ofrecer tours de audio, no externalicé la app: la construí yo misma.',
+      'Fran\'s Guide es una app mobile React Native con tours de audio guiados por GPS, un mapa interactivo y funciones con IA. Diseñar y desarrollar esta app ha sido uno de los proyectos más satisfactorios de mi vida — un lugar donde ambos lados de mí convergen por fin.',
+    ],
+    s3eyebrow: 'La app',
+    s3title: <>Construida desde<br/><em>cero.</em></>,
+    s3features: [
+      'Narración de audio guiada por GPS, parada a parada',
+      'Mapa interactivo — sigue la ruta en tiempo real',
+      'Funciones con IA integradas en la experiencia',
+      'Disponible en inglés y francés',
+      'Desarrollada con React Native & Expo',
+    ],
+    s3body: 'Cada ruta de la app viene de la experiencia real — tours que he dirigido decenas de veces, calles que he recorrido cientos de veces. Los guiones están escritos desde la memoria y el amor, no desde una guía turística. La app está en beta para los tours de la Torre Eiffel y Notre-Dame, con más rutas en desarrollo.',
+    s4eyebrow: 'Fotografía',
+    s4title: <>Una pasión desde<br/><em>la infancia.</em></>,
+    s4body: [
+      'La fotografía ha formado parte de mi vida desde que recuerdo. Mucho antes de guiar, mucho antes de París — ya me atraían la luz, el momento, la historia que un solo encuadre puede contar.',
+      'Poder convertir esa pasión de toda la vida en sesiones de fotos para parejas, bodas, compromisos, viajeros en solitario y momentos especiales en París se siente como un sueño hecho realidad. Cada sesión es diferente, cada luz es diferente — pero el objetivo es siempre el mismo: fotos que realmente vayas a guardar.',
+    ],
+    galleryEyebrow: 'París, a través de mi objetivo',
+    galleryTitle: <>Lugares que<br/><em>se quedan contigo.</em></>,
+    ctaEyebrow: 'Ponte en contacto',
+    ctaTitle: <>¿Lista para explorar<br/><em>París conmigo?</em></>,
+    ctaBody: 'Tanto si buscas un tour privado, una sesión de fotos o simplemente quieres saber más sobre la app — me encantaría saber de ti.',
+    ctaLink: 'Enviar un mensaje',
+  },
 };
 
-// Fallback to EN for PT/ES
 const getText = (lang) => TEXTS[lang] || TEXTS.en;
 
 const AboutPage = ({ language = 'en' }) => {
