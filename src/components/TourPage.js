@@ -207,6 +207,66 @@ const AUDIO_TOURS = [
     price: '€7,99',
     appUrl: 'https://apps.apple.com/fr/app/frans-guide/id6762883412?l=en-GB',
   },
+  {
+    id: 'le-marais',
+    title: {
+      en: 'Le Marais',
+      fr: 'Le Marais',
+      pt: 'Le Marais',
+      es: 'Le Marais',
+    },
+    subtitle: {
+      en: 'From Hôtel de Ville to Place des Vosges',
+      fr: 'De l\'Hôtel de Ville à la Place des Vosges',
+      pt: 'Do Hôtel de Ville à Place des Vosges',
+      es: 'Del Hôtel de Ville a la Place des Vosges',
+    },
+    duration: '40 min',
+    distance: '1.8 km',
+    stops: 8,
+    price: '€7,99',
+    appUrl: 'https://apps.apple.com/fr/app/Frans-guide/id6762883412?l=en-GB',
+  },
+  {
+    id: 'montmartre',
+    title: {
+      en: 'Montmartre',
+      fr: 'Montmartre',
+      pt: 'Montmartre',
+      es: 'Montmartre',
+    },
+    subtitle: {
+      en: 'From the funicular to the Moulin de la Galette',
+      fr: 'Du funiculaire au Moulin de la Galette',
+      pt: 'Do funicular ao Moulin de la Galette',
+      es: 'Del funicular al Moulin de la Galette',
+    },
+    duration: '50 min',
+    distance: '2.0 km',
+    stops: 10,
+    price: '€7,99',
+    appUrl: 'https://apps.apple.com/fr/app/Frans-guide/id6762883412?l=en-GB',
+  },
+  {
+    id: 'louvre',
+    title: {
+      en: 'The Louvre',
+      fr: 'Le Louvre',
+      pt: 'O Louvre',
+      es: 'El Louvre',
+    },
+    subtitle: {
+      en: 'From the Pyramid to the Palais-Royal',
+      fr: 'De la Pyramide au Palais-Royal',
+      pt: 'Da Pirâmide ao Palais-Royal',
+      es: 'De la Pirámide al Palais-Royal',
+    },
+    duration: '35 min',
+    distance: '1.5 km',
+    stops: 8,
+    price: '€7,99',
+    appUrl: 'https://apps.apple.com/fr/app/Frans-guide/id6762883412?l=en-GB',
+  },
 ];
 
 function stripEmoji(str) {
