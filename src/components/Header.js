@@ -16,10 +16,10 @@ export default function Header({ language, switchLanguage }) {
   }, [menuOpen]);
 
   const navLabels = {
-    en: { tours: 'Tours', about: 'About', book: 'Book now' },
-    fr: { tours: 'Visites', about: 'À propos', book: 'Réserver' },
-    pt: { tours: 'Tours', about: 'Sobre', book: 'Reservar' },
-    es: { tours: 'Tours', about: 'Sobre', book: 'Reservar' },
+    en: { tours: 'Tours', about: 'About', book: 'Book now', weddings: 'Weddings' },
+    fr: { tours: 'Visites', about: 'À propos', book: 'Réserver', weddings: 'Mariages' },
+    pt: { tours: 'Tours', about: 'Sobre', book: 'Reservar', weddings: 'Casamentos' },
+    es: { tours: 'Tours', about: 'Sobre', book: 'Reservar', weddings: 'Bodas' },
   };
   const nav = navLabels[language] || navLabels.en;
 
@@ -28,6 +28,7 @@ export default function Header({ language, switchLanguage }) {
     { href: '/about', label: nav.about },
     { href: '/contact', label: 'Contact' },
     { href: '/photoshoots', label: 'Photos' },
+    { href: '/weddings', label: nav.weddings },
   ];
 
   return (

@@ -23,7 +23,7 @@ const TEXTS = {
       },
       {
         q: 'Can I book a professional photoshoot in Paris?',
-        a: "Yes! Fran is also a professional photographer. A photoshoot at the most beautiful spots in Paris costs 120€ (flat rate, 1 hour) and includes 20 to 40 edited photos, for couples, solo travelers, weddings, engagements, birthdays and content creation. You can also add a private guided tour to your session for 30€.",
+        a: "Yes! Fran is also a professional photographer. Sessions start at 120€ (express, 30 minutes) with packages for couples, birthdays and families, up to 40 retouched photos delivered in a private Pixieset gallery. You can combine your photoshoot with a private guided tour (280€ for 2 hours), and dedicated wedding packages cover everything from the civil ceremony (250€) to full-day coverage.",
       },
       {
         q: 'In which languages are the tours available?',
@@ -60,7 +60,7 @@ const TEXTS = {
       },
       {
         q: 'Puis-je réserver une séance photo professionnelle à Paris ?',
-        a: "Oui ! Fran est aussi photographe professionnelle. Une séance photo dans les plus beaux endroits de Paris coûte 120€ (forfait, 1 heure) et comprend 20 à 40 photos retouchées, pour les couples, voyageurs solo, mariages, fiançailles, anniversaires et création de contenu. Vous pouvez aussi ajouter une visite guidée privée à votre séance pour 30€.",
+        a: "Oui ! Fran est aussi photographe professionnelle. Les séances démarrent à 120€ (express, 30 minutes) avec des formules couple, anniversaire et famille, jusqu'à 40 photos retouchées livrées dans une galerie privée Pixieset. Vous pouvez combiner votre séance avec une visite guidée privée (280€ les 2 heures), et des formules mariage dédiées couvrent tout, de la cérémonie civile (250€) à la journée complète.",
       },
       {
         q: 'Dans quelles langues les visites sont-elles disponibles ?',
@@ -97,7 +97,7 @@ const TEXTS = {
       },
       {
         q: 'Posso reservar um ensaio fotográfico profissional em Paris?',
-        a: 'Sim! Fran também é fotógrafa profissional. Um ensaio nos lugares mais bonitos de Paris custa 120€ (pacote, 1 hora) e inclui de 20 a 40 fotos editadas, para casais, viajantes solo, casamentos, noivados, aniversários e criação de conteúdo. Você também pode adicionar um tour guiado privado à sua sessão por 30€.',
+        a: 'Sim! Fran também é fotógrafa profissional. As sessões começam em 120€ (express, 30 minutos) com pacotes para casais, aniversários e famílias, até 40 fotos retocadas entregues em uma galeria privada Pixieset. Você pode combinar seu ensaio com um tour guiado privado (280€ por 2 horas), e pacotes de casamento dedicados cobrem tudo, da cerimônia civil (250€) ao dia completo.',
       },
       {
         q: 'Em quais idiomas os tours estão disponíveis?',
@@ -134,7 +134,7 @@ const TEXTS = {
       },
       {
         q: '¿Puedo reservar una sesión de fotos profesional en París?',
-        a: '¡Sí! Fran también es fotógrafa profesional. Una sesión en los lugares más bonitos de París cuesta 120€ (tarifa fija, 1 hora) e incluye de 20 a 40 fotos editadas, para parejas, viajeros en solitario, bodas, compromisos, cumpleaños y creación de contenido. También puedes añadir un tour guiado privado a tu sesión por 30€.',
+        a: '¡Sí! Fran también es fotógrafa profesional. Las sesiones empiezan en 120€ (exprés, 30 minutos) con paquetes para parejas, cumpleaños y familias, hasta 40 fotos retocadas entregadas en una galería privada Pixieset. Puedes combinar tu sesión con un tour guiado privado (280€ por 2 horas), y los paquetes de boda dedicados cubren desde la ceremonia civil (250€) hasta el día completo.',
       },
       {
         q: '¿En qué idiomas están disponibles los tours?',

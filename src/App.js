@@ -18,6 +18,7 @@ import CGV from './components/CGV';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TourDetails from './components/TourDetails';
 import PhotoshootsPage from './components/PhotoshootsPage.js';
+import WeddingsPage from './components/WeddingsPage';
 import Reviews from './components/Reviews';
 import FAQ from './components/FAQ';
 
@@ -300,6 +301,7 @@ export default function App() {
             } />
             <Route path="/tours" element={<ToursPage language={language} content={content} />} />
             <Route path="/photoshoots" element={<PhotoshootsPage language={language} />} />
+            <Route path="/weddings" element={<WeddingsPage language={language} />} />
             <Route path="/tour/:id" element={<TourDetails language={language} />} />
             <Route path="/about" element={<AboutPage language={language} />} />
             <Route path="/contact" element={<ContactSection content={content} language={language} />} />
