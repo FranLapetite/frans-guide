@@ -139,6 +139,12 @@ function Reviews({ language = 'en' }) {
         }
         @media (max-width: 480px) {
           .fg-reviews { padding: 56px 24px; }
+          .fg-review-card { padding: 26px 22px; }
+          .fg-reviews-cta {
+            width: 100%;
+            text-align: center;
+            padding: 15px 20px;
+          }
         }
       `}</style>
 

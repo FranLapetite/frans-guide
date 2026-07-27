@@ -635,7 +635,15 @@ export default function PhotoshootsPage({ language = 'en' }) {
           .fg-photos-col { padding: 40px 24px; }
           .fg-photos-cta-section { padding: 48px 24px; }
           .fg-photos-packs { padding: 48px 24px; }
+          .fg-photos-pack-card { padding: 24px 20px; }
+          .fg-photos-pack-head {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+          }
+          .fg-photos-pack-link { padding: 8px 0 2px; }
           .fg-photos-wed-banner { padding: 40px 24px; }
+          .fg-photos-wed-btn { width: 100%; text-align: center; }
           .fg-photo-item { flex: 0 0 240px; }
           .fg-photo-item img { height: 320px; }
           .fg-photos-cta-title { font-size: 34px; }

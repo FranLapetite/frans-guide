@@ -897,13 +897,30 @@ export default function WeddingsPage({ language = 'en' }) {
         @media (max-width: 480px) {
           .fg-wed-header { padding: 48px 24px 36px; }
           .fg-wed-collage { padding: 0 24px 44px; }
+          .fg-wed-quote { padding: 28px 24px; }
           .fg-wed-packages { padding: 48px 24px; }
-          .fg-wed-card { padding: 28px 24px; }
+          .fg-wed-card { padding: 26px 22px; gap: 16px; }
+          .fg-wed-card-head {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+            padding-bottom: 14px;
+          }
+          .fg-wed-card-price { font-size: 28px; }
+          .fg-wed-card-price small { text-align: left; }
+          .fg-wed-badge { left: 22px; }
+          .fg-wed-card-btn {
+            align-self: stretch;
+            text-align: center;
+            padding: 15px 20px;
+          }
           .fg-wed-options { padding: 40px 24px; }
-          .fg-wed-options-grid { grid-template-columns: 1fr; }
+          .fg-wed-options-grid { grid-template-columns: 1fr; gap: 14px; }
+          .fg-wed-option-card { padding: 22px 20px; }
           .fg-wed-process { padding: 48px 24px; }
           .fg-wed-steps { grid-template-columns: 1fr; gap: 28px; }
           .fg-wed-cta { padding: 48px 24px; }
+          .fg-wed-cta-right { width: 100%; }
         }
       `}</style>
 

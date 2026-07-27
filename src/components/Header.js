@@ -23,6 +23,14 @@ export default function Header({ language, switchLanguage }) {
   };
   const nav = navLabels[language] || navLabels.en;
 
+  const bookMessages = {
+    en: "Hello Fran! I'd like to book with you. When are you available?",
+    fr: 'Bonjour Fran ! Je souhaite réserver avec vous. Quelles sont vos disponibilités ?',
+    pt: 'Olá Fran! Gostaria de reservar com você. Quando você está disponível?',
+    es: '¡Hola Fran! Me gustaría reservar contigo. ¿Cuándo tienes disponibilidad?',
+  };
+  const bookUrl = `https://wa.me/33759752536?text=${encodeURIComponent(bookMessages[language] || bookMessages.en)}`;
+
   const navLinks = [
     { href: '/tours', label: nav.tours },
     { href: '/about', label: nav.about },
@@ -177,6 +185,23 @@ export default function Header({ language, switchLanguage }) {
           transition: color 0.2s ease !important;
         }
         .mobile-nav-overlay a:hover { color: #0F2C66; }
+        .mobile-book-cta {
+          font-family: 'Jost', sans-serif !important;
+          font-size: 13px !important;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          background: #0F2C66;
+          color: #fff !important;
+          padding: 16px 0 !important;
+          text-align: center;
+          width: 100%;
+          margin-top: 24px;
+          border-bottom: none !important;
+          font-weight: 500;
+          cursor: pointer;
+          transition: opacity 0.2s ease !important;
+        }
+        .mobile-book-cta:hover { opacity: 0.85; color: #fff !important; }
         .mobile-lang-row {
           display: flex;
           gap: 16px;
@@ -232,7 +257,7 @@ export default function Header({ language, switchLanguage }) {
               </React.Fragment>
             ))}
           </div>
-          <a href="/tours" className="header-cta">{nav.book}</a>
+          <a href={bookUrl} target="_blank" rel="noopener noreferrer" className="header-cta">{nav.book}</a>
         </div>
 
         <button
@@ -254,6 +279,15 @@ export default function Header({ language, switchLanguage }) {
             {link.label}
           </a>
         ))}
+        <a
+          href={bookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mobile-book-cta"
+          onClick={() => setMenuOpen(false)}
+        >
+          {nav.book}
+        </a>
         <div className="mobile-lang-row">
           {['en', 'fr', 'pt', 'es'].map(lang => (
             <button
