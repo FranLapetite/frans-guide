@@ -308,8 +308,8 @@ const T = {
   en: {
     whatsapp: "Hello Fran! I found your wedding photography on Fran's Guide. I'd love to know your availability!",
     eyebrow: 'Wedding Photography in Paris',
-    title1: 'Your wedding day,',
-    title2: 'beautifully told.',
+    title1: 'One day.',
+    title2: 'A thousand memories.',
     subtitle: 'Civil ceremonies, religious weddings and couple sessions across Paris. Natural, elegant photos that tell the real story of your day.',
     portfolioLabel: 'Recent weddings',
     quote: 'Every love story deserves to be beautifully told.',
@@ -347,8 +347,8 @@ const T = {
   fr: {
     whatsapp: "Bonjour Fran ! J'ai vu vos photos de mariage sur Fran's Guide. J'aimerais connaître vos disponibilités !",
     eyebrow: 'Photographe de Mariage à Paris',
-    title1: 'Votre mariage,',
-    title2: 'joliment raconté.',
+    title1: 'Un jour.',
+    title2: 'Mille souvenirs.',
     subtitle: 'Cérémonies civiles, mariages religieux et séances couple dans tout Paris. Des photos naturelles et élégantes qui racontent la vraie histoire de votre journée.',
     portfolioLabel: 'Mariages récents',
     quote: 'Chaque histoire d\'amour mérite d\'être joliment racontée.',
@@ -386,8 +386,8 @@ const T = {
   pt: {
     whatsapp: "Olá Fran! Vi suas fotos de casamento no Fran's Guide. Adoraria saber sua disponibilidade!",
     eyebrow: 'Fotógrafa de Casamento em Paris',
-    title1: 'O seu casamento,',
-    title2: 'lindamente contado.',
+    title1: 'Um dia.',
+    title2: 'Mil memórias.',
     subtitle: 'Cerimônias civis, casamentos religiosos e ensaios de casal por toda Paris. Fotos naturais e elegantes que contam a verdadeira história do seu dia.',
     portfolioLabel: 'Casamentos recentes',
     quote: 'Toda história de amor merece ser lindamente contada.',
@@ -425,8 +425,8 @@ const T = {
   es: {
     whatsapp: "¡Hola Fran! Vi tus fotos de boda en Fran's Guide. ¡Me encantaría saber tu disponibilidad!",
     eyebrow: 'Fotógrafa de Bodas en París',
-    title1: 'Tu boda,',
-    title2: 'bellamente contada.',
+    title1: 'Un día.',
+    title2: 'Mil recuerdos.',
     subtitle: 'Ceremonias civiles, bodas religiosas y sesiones de pareja por todo París. Fotos naturales y elegantes que cuentan la verdadera historia de tu día.',
     portfolioLabel: 'Bodas recientes',
     quote: 'Cada historia de amor merece ser bellamente contada.',
@@ -503,17 +503,30 @@ export default function WeddingsPage({ language = 'en' }) {
           margin: 0 0 20px;
         }
         .fg-wed-header {
-          padding: 80px 80px 64px;
+          padding: 96px 80px 72px;
           border-bottom: 1px solid #E8E3DC;
-          max-width: 760px;
+          text-align: center;
+        }
+        .fg-wed-header .fg-wed-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 18px;
+        }
+        .fg-wed-header .fg-wed-eyebrow::before,
+        .fg-wed-header .fg-wed-eyebrow::after {
+          content: '';
+          display: block;
+          width: 40px;
+          height: 1px;
+          background: #0F2C66;
         }
         .fg-wed-title {
           font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(40px, 5vw, 62px);
+          font-size: clamp(44px, 5.5vw, 72px);
           font-weight: 400;
-          line-height: 1.05;
+          line-height: 1.08;
           color: #1C1C1C;
-          margin: 0 0 20px;
+          margin: 0 0 24px;
         }
         .fg-wed-title em { font-style: italic; color: #0F2C66; }
         .fg-wed-subtitle {
@@ -522,6 +535,7 @@ export default function WeddingsPage({ language = 'en' }) {
           color: #4A4845;
           font-weight: 400;
           max-width: 560px;
+          margin: 0 auto;
         }
 
         .fg-wed-portfolio { border-bottom: 1px solid #E8E3DC; }
