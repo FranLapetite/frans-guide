@@ -133,10 +133,10 @@ const getCopy = (language, content = {}) => {
   };
 
   const contactNotes = {
-    en: "You can also reach me on Instagram @frans.guide — or tap the green button to chat on WhatsApp instantly.",
-    fr: "Vous pouvez aussi me contacter sur Instagram @frans.guide — ou appuyer sur le bouton vert pour discuter instantanément sur WhatsApp.",
-    pt: "Você também pode falar comigo pelo Instagram @frans.guide — ou tocar no botão verde para conversar comigo pelo WhatsApp.",
-    es: "También puedes escribirme por Instagram @frans.guide — o tocar el botón verde para hablar conmigo por WhatsApp al instante.",
+    en: "You can also reach me on Instagram @frans.guide, or tap the green button to chat on WhatsApp instantly.",
+    fr: "Vous pouvez aussi me contacter sur Instagram @frans.guide, ou appuyer sur le bouton vert pour discuter instantanément sur WhatsApp.",
+    pt: "Você também pode falar comigo pelo Instagram @frans.guide, ou tocar no botão verde para conversar comigo pelo WhatsApp.",
+    es: "También puedes escribirme por Instagram @frans.guide, o tocar el botón verde para hablar conmigo por WhatsApp al instante.",
   };
 
   const validation = {
@@ -492,7 +492,7 @@ function ContactSection({ content, language: langProp }) {
         </h1>
         <p className="fg-contact-note">{copy.contactNote}</p>
         <a
-          href={`https://wa.me/33759752536?text=${encodeURIComponent(buildWhatsAppLink({name:'',email:'',tour:'',message:''}, language).split('text=')[1] || '')}`}
+          href={buildWhatsAppLink({name:'',email:'',tour:'',message:''}, language)}
           target="_blank"
           rel="noreferrer"
           className="fg-contact-wa-link"

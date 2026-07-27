@@ -10,7 +10,7 @@ const PHOTOSHOOT = {
     title: <>A photoshoot<br/><em>in Paris.</em></>,
     price: '120€',
     priceNote: 'flat rate · 1h · 20–40 edited photos',
-    body: "A professional photoshoot at the most beautiful spots in Paris — iconic backdrops, natural light, and memories you'll keep forever.",
+    body: "A professional photoshoot at the most beautiful spots in Paris: iconic backdrops, natural light, and memories you'll keep forever.",
     features: [
       '20–40 edited photos delivered',
       'Iconic and hidden locations',
@@ -26,7 +26,7 @@ const PHOTOSHOOT = {
     title: <>Une séance photo<br/><em>à Paris.</em></>,
     price: '120€',
     priceNote: 'forfait · 1h · 20–40 photos retouchées',
-    body: 'Une séance photo professionnelle dans les plus beaux endroits de Paris — décors iconiques, lumière naturelle, et des souvenirs pour toujours.',
+    body: 'Une séance photo professionnelle dans les plus beaux endroits de Paris : décors iconiques, lumière naturelle, et des souvenirs pour toujours.',
     features: [
       '20–40 photos retouchées livrées',
       'Lieux iconiques et cachés',
@@ -42,7 +42,7 @@ const PHOTOSHOOT = {
     title: <>Uma sessão de fotos<br/><em>em Paris.</em></>,
     price: '120€',
     priceNote: 'pacote · 1h · 20–40 fotos editadas',
-    body: 'Uma sessão de fotos profissional nos lugares mais bonitos de Paris — cenários icônicos, luz natural e lembranças para sempre.',
+    body: 'Uma sessão de fotos profissional nos lugares mais bonitos de Paris: cenários icônicos, luz natural e lembranças para sempre.',
     features: [
       '20–40 fotos editadas entregues',
       'Locais icônicos e escondidos',
@@ -58,7 +58,7 @@ const PHOTOSHOOT = {
     title: <>Una sesión de fotos<br/><em>en París.</em></>,
     price: '120€',
     priceNote: 'tarifa fija · 1h · 20–40 fotos editadas',
-    body: 'Una sesión de fotos profesional en los lugares más bonitos de París — escenarios icónicos, luz natural y recuerdos para siempre.',
+    body: 'Una sesión de fotos profesional en los lugares más bonitos de París: escenarios icónicos, luz natural y recuerdos para siempre.',
     features: [
       '20–40 fotos editadas entregadas',
       'Lugares icónicos y escondidos',
@@ -78,9 +78,11 @@ const LABELS = {
     perPerson: '/ person',
     flatRate: 'flat rate',
 
-    audioEyebrow: 'Audio Tours — The App',
+    audioEyebrow: 'Audio Tours: The App',
     audioTitle: <>Listen. Walk.<br/><em>Discover.</em></>,
-    audioTagline: 'Self-guided audio tours for your smartphone — explore Paris at your own pace, in English or French.',
+    audioTagline: 'Self-guided audio tours for your smartphone, explore Paris at your own pace, in English or French.',
+    audioAILabel: 'Your AI guide',
+    audioAI: 'Ask anything during your tour and get answers in real time, like a real guide walking beside you.',
     audioCta: 'Download the app',
     audioLearn: 'Learn more →',
     from: 'From',
@@ -90,7 +92,7 @@ const LABELS = {
 
     privateEyebrow: 'Private Tours with Fran',
     privateTitle: <>In person,<br/><em>with Fran.</em></>,
-    privateTagline: 'Handpicked walks, stories and photo moments — every route built from years of guiding this city',
+    privateTagline: 'Handpicked walks, stories and photo moments, every route built from years of guiding this city',
     discover: 'Discover →',
     showMore: 'See all tours',
     showLess: 'Show less',
@@ -101,9 +103,11 @@ const LABELS = {
     perPerson: '/ pers.',
     flatRate: 'forfait',
 
-    audioEyebrow: 'Visites Audio — L\'Application',
+    audioEyebrow: 'Visites Audio : L\'Application',
     audioTitle: <>Écouter. Marcher.<br/><em>Découvrir.</em></>,
-    audioTagline: 'Visites audio auto-guidées sur smartphone — explorez Paris à votre rythme, en anglais ou en français.',
+    audioTagline: 'Visites audio auto-guidées sur smartphone, explorez Paris à votre rythme, en anglais ou en français.',
+    audioAILabel: 'Votre guide IA',
+    audioAI: 'Posez vos questions pendant la visite et obtenez des réponses en temps réel, comme un vrai guide à vos côtés.',
     audioCta: 'Télécharger l\'application',
     audioLearn: 'En savoir plus →',
     from: 'À partir de',
@@ -113,7 +117,7 @@ const LABELS = {
 
     privateEyebrow: 'Visites Privées avec Fran',
     privateTitle: <>En personne,<br/><em>avec Fran.</em></>,
-    privateTagline: 'Balades, histoires et instants photo — chaque parcours construit à partir d\'années de visites guidées',
+    privateTagline: 'Balades, histoires et instants photo, chaque parcours construit à partir d\'années de visites guidées',
     discover: 'Découvrir →',
     showMore: 'Voir toutes les visites',
     showLess: 'Voir moins',
@@ -124,9 +128,11 @@ const LABELS = {
     perPerson: '/ pessoa',
     flatRate: 'pacote',
 
-    audioEyebrow: 'Tours de Áudio — O App',
+    audioEyebrow: 'Tours de Áudio: O App',
     audioTitle: <>Ouvir. Caminhar.<br/><em>Descobrir.</em></>,
-    audioTagline: 'Tours de áudio autoguiados no smartphone — explore Paris no seu ritmo, em inglês ou francês.',
+    audioTagline: 'Tours de áudio autoguiados no smartphone, explore Paris no seu ritmo, em inglês ou francês.',
+    audioAILabel: 'Seu guia de IA',
+    audioAI: 'Faça perguntas durante o tour e receba respostas em tempo real, como um guia de verdade ao seu lado.',
     audioCta: 'Baixar o app',
     audioLearn: 'Saiba mais →',
     from: 'A partir de',
@@ -136,7 +142,7 @@ const LABELS = {
 
     privateEyebrow: 'Tours Privados com a Fran',
     privateTitle: <>Presencial,<br/><em>com a Fran.</em></>,
-    privateTagline: 'Passeios, histórias e momentos de foto — cada rota construída com anos de experiência',
+    privateTagline: 'Passeios, histórias e momentos de foto, cada rota construída com anos de experiência',
     discover: 'Descobrir →',
     showMore: 'Ver todos os tours',
     showLess: 'Ver menos',
@@ -147,9 +153,11 @@ const LABELS = {
     perPerson: '/ persona',
     flatRate: 'tarifa fija',
 
-    audioEyebrow: 'Tours de Audio — La App',
+    audioEyebrow: 'Tours de Audio: La App',
     audioTitle: <>Escuchar. Caminar.<br/><em>Descubrir.</em></>,
-    audioTagline: 'Tours de audio autoguiados en tu smartphone — explora París a tu ritmo, en inglés o francés.',
+    audioTagline: 'Tours de audio autoguiados en tu smartphone, explora París a tu ritmo, en inglés o francés.',
+    audioAILabel: 'Tu guía de IA',
+    audioAI: 'Haz preguntas durante tu tour y recibe respuestas en tiempo real, como un guía de verdad a tu lado.',
     audioCta: 'Descargar la app',
     audioLearn: 'Saber más →',
     from: 'Desde',
@@ -159,7 +167,7 @@ const LABELS = {
 
     privateEyebrow: 'Tours Privados con Fran',
     privateTitle: <>En persona,<br/><em>con Fran.</em></>,
-    privateTagline: 'Paseos, historias y momentos de foto — cada ruta construida con años de guiar esta ciudad',
+    privateTagline: 'Paseos, historias y momentos de foto, cada ruta construida con años de guiar esta ciudad',
     discover: 'Descubrir →',
     showMore: 'Ver todos los tours',
     showLess: 'Ver menos',
@@ -230,10 +238,10 @@ const AUDIO_TOURS = [
   {
     id: 'montmartre',
     title: {
-      en: 'Montmartre — The Artists\' Hill',
-      fr: 'Montmartre — La Colline des Artistes',
-      pt: 'Montmartre — A Colina dos Artistas',
-      es: 'Montmartre — La Colina de los Artistas',
+      en: 'Montmartre: The Artists\' Hill',
+      fr: 'Montmartre : La Colline des Artistes',
+      pt: 'Montmartre: A Colina dos Artistas',
+      es: 'Montmartre: La Colina de los Artistas',
     },
     subtitle: {
       en: 'From Place Blanche to the view over Paris',
@@ -294,16 +302,25 @@ const ToursSection = ({ language = 'en' }) => {
       ══════════════════════════════════════════ */}
       <div className="fg-audio-section">
         <div className="fg-audio-intro">
-          <p className="fg-tours-eyebrow">{l.audioEyebrow}</p>
-          <h2 className="fg-audio-title">{l.audioTitle}</h2>
-          <p className="fg-audio-tagline">{l.audioTagline}</p>
-          <a href="https://apps.apple.com/fr/app/frans-guide/id6762883412?l=en-GB" target="_blank" rel="noreferrer" className="fg-btn-primary">
-            {l.audioCta}
-          </a>
+          <div className="fg-audio-intro-left">
+            <p className="fg-audio-eyebrow">{l.audioEyebrow}</p>
+            <h2 className="fg-audio-title">{l.audioTitle}</h2>
+          </div>
+          <div className="fg-audio-intro-right">
+            <p className="fg-audio-tagline">{l.audioTagline}</p>
+            <a href="https://apps.apple.com/fr/app/frans-guide/id6762883412?l=en-GB" target="_blank" rel="noreferrer" className="fg-btn-primary">
+              {l.audioCta}
+            </a>
+          </div>
         </div>
 
-        <div className="fg-audio-cards">
-          {AUDIO_TOURS.map((tour, idx) => (
+        <div className="fg-audio-ai-band">
+          <p className="fg-audio-ai-label">{l.audioAILabel}</p>
+          <p className="fg-audio-ai">{l.audioAI}</p>
+        </div>
+
+        <div className="fg-audio-strip">
+          {AUDIO_TOURS.map((tour) => (
             <div key={tour.id} className="fg-audio-card">
               <div className="fg-audio-card-top">
                 <span className="fg-audio-badge">Audio</span>

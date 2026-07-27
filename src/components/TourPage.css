@@ -42,64 +42,139 @@
 
 /* ── Audio section ── */
 .fg-audio-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   border-bottom: 1px solid #E8E3DC;
   background: #FAF8F5;
 }
 .fg-audio-intro {
-  padding: 72px 60px 72px 80px;
+  padding: 64px 80px 56px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  border-bottom: 1px solid #E8E3DC;
+}
+.fg-audio-intro-left {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  border-right: 1px solid #E8E3DC;
+  gap: 16px;
+  flex: 0 0 auto;
+}
+.fg-audio-intro-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24px;
+  flex-shrink: 1;
+}
+.fg-audio-eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #4A4845;
+  font-weight: 400;
+  margin-bottom: 0;
 }
 .fg-audio-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px, 4vw, 52px);
+  font-size: clamp(34px, 3.5vw, 48px);
   font-weight: 400;
   line-height: 1.1;
   color: #1C1C1C;
   margin: 0;
 }
-.fg-audio-title em { font-style: italic; color: #0F2C66; }
+.fg-audio-title em { font-style: italic; color: #1C1C1C; }
 .fg-audio-tagline {
   font-family: 'Jost', sans-serif;
-  font-size: 14px;
-  line-height: 1.8;
+  font-size: 13px;
+  line-height: 1.9;
   color: #4A4845;
   font-weight: 400;
-  max-width: 360px;
+  max-width: 320px;
+  text-align: right;
+}
+.fg-audio-ai-band {
+  padding: 0 80px 56px;
+  text-align: center;
+}
+.fg-audio-ai-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #4A4845;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+}
+.fg-audio-ai-label::before,
+.fg-audio-ai-label::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: #0F2C66;
+}
+.fg-audio-ai {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 2.4vw, 27px);
+  font-style: italic;
+  line-height: 1.5;
+  color: #0F2C66;
+  font-weight: 400;
+  max-width: 640px;
+  margin: 16px auto 0;
 }
 .fg-btn-primary {
   display: inline-block;
   background: #0F2C66;
   color: #fff;
-  padding: 13px 28px;
+  padding: 14px 32px;
   font-family: 'Jost', sans-serif;
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 500;
   align-self: flex-start;
   transition: opacity 0.2s;
+  white-space: nowrap;
 }
-.fg-btn-primary:hover { opacity: 0.85; color: #fff; }
-.fg-audio-cards {
+.fg-btn-primary:hover { opacity: 0.88; color: #fff; }
+
+/* Horizontal scrollable strip */
+.fg-audio-strip {
   display: flex;
-  flex-direction: column;
-  border-left: none;
-}
-.fg-audio-card {
-  padding: 48px 60px;
+  gap: 20px;
+  padding: 40px 80px 48px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  background: #FAF8F5;
   border-bottom: 1px solid #E8E3DC;
+}
+.fg-audio-strip::-webkit-scrollbar { display: none; }
+
+.fg-audio-card {
+  flex: 1 0 0;
+  min-width: 200px;
+  padding: 32px 28px;
+  border: 1px solid #E8E3DC;
+  background: #fff;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  scroll-snap-align: start;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
-.fg-audio-card:last-child { border-bottom: none; }
+.fg-audio-card:hover {
+  box-shadow: 0 4px 20px rgba(15,44,102,0.08);
+  transform: translateY(-2px);
+}
+
 .fg-audio-card-top {
   display: flex;
   align-items: center;
@@ -120,13 +195,13 @@
 }
 .fg-audio-price {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 400;
   color: #0F2C66;
 }
 .fg-audio-card-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 400;
   line-height: 1.2;
   color: #1C1C1C;
@@ -134,17 +209,19 @@
 }
 .fg-audio-card-sub {
   font-family: 'Jost', sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   color: #4A4845;
   font-weight: 400;
   margin: 0;
+  line-height: 1.6;
+  flex: 1;
 }
 .fg-audio-meta {
   display: flex;
   align-items: center;
   gap: 8px;
   font-family: 'Jost', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   color: #4A4845;
   font-weight: 400;
   letter-spacing: 0.5px;
@@ -399,9 +476,12 @@
 }
 @media (max-width: 900px) {
   .fg-tours-header { padding: 60px 32px 48px; }
-  .fg-audio-section { grid-template-columns: 1fr; }
-  .fg-audio-intro { padding: 60px 32px 48px; border-right: none; border-bottom: 1px solid #E8E3DC; }
-  .fg-audio-card { padding: 36px 32px; }
+  .fg-audio-intro { padding: 56px 32px 48px; flex-direction: column; align-items: flex-start; gap: 28px; }
+  .fg-audio-intro-right { align-items: flex-start; }
+  .fg-audio-tagline { text-align: left; max-width: 100%; }
+  .fg-audio-ai-band { padding: 0 32px 44px; }
+  .fg-audio-strip { padding: 32px 24px 40px; gap: 16px; }
+  .fg-audio-card { flex: 0 0 clamp(200px, 64vw, 260px); padding: 28px 24px; }
   .fg-private-header { padding: 60px 32px 40px; }
   .fg-photoshoot-cta { grid-template-columns: 1fr; }
   .fg-photoshoot-left { padding: 60px 32px 48px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
@@ -411,8 +491,9 @@
   .fg-tours-header { padding: 48px 24px 36px; }
   .fg-tours-grid { grid-template-columns: 1fr; }
   .fg-tour-card { padding: 28px 24px; }
-  .fg-audio-intro { padding: 48px 24px 36px; }
-  .fg-audio-card { padding: 28px 24px; }
+  .fg-audio-intro { padding: 44px 24px 40px; }
+  .fg-audio-strip { padding: 24px 20px 32px; gap: 12px; }
+  .fg-audio-card { flex: 0 0 76vw; padding: 24px 20px; }
   .fg-private-header { padding: 48px 24px 32px; }
   .fg-photoshoot-left { padding: 48px 24px 36px; }
   .fg-photoshoot-right { padding: 36px 24px 48px; }

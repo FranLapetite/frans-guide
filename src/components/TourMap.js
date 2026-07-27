@@ -33,10 +33,10 @@ function makeIcon(number) {
 }
 
 const LABELS = {
-  en: { t1: 'Where we', t2: 'explore.', sub: 'Every pin is a starting point — click to discover the tour.', discover: 'Discover →' },
-  fr: { t1: 'Où on', t2: 'explore.', sub: 'Chaque épingle est un point de départ — cliquez pour découvrir la visite.', discover: 'Découvrir →' },
-  pt: { t1: 'Onde', t2: 'exploramos.', sub: 'Cada marcador é um ponto de partida — clique para descobrir o tour.', discover: 'Descobrir →' },
-  es: { t1: 'Dónde', t2: 'exploramos.', sub: 'Cada marcador es un punto de partida — haz clic para descubrir el tour.', discover: 'Descubrir →' },
+  en: { t1: 'Where we', t2: 'explore.', sub: 'Every pin is a starting point: click to discover the tour.', discover: 'Discover →' },
+  fr: { t1: 'Où on', t2: 'explore.', sub: 'Chaque épingle est un point de départ : cliquez pour découvrir la visite.', discover: 'Découvrir →' },
+  pt: { t1: 'Onde', t2: 'exploramos.', sub: 'Cada marcador é um ponto de partida: clique para descobrir o tour.', discover: 'Descobrir →' },
+  es: { t1: 'Dónde', t2: 'exploramos.', sub: 'Cada marcador es un punto de partida: haz clic para descubrir el tour.', discover: 'Descubrir →' },
 };
 
 function stripEmoji(str) {

@@ -18,6 +18,8 @@ import CGV from './components/CGV';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TourDetails from './components/TourDetails';
 import PhotoshootsPage from './components/PhotoshootsPage.js';
+import Reviews from './components/Reviews';
+import FAQ from './components/FAQ';
 
 // --- Stats Bar Component ---
 function StatsBar({ language = 'en' }) {
@@ -285,6 +287,12 @@ export default function App() {
 
                 {/* --- About Fran Section --- */}
                 <About content={content} language={language} />
+
+                {/* --- Reviews Section --- */}
+                <Reviews language={language} />
+
+                {/* --- FAQ Section --- */}
+                <FAQ language={language} />
 
                 {/* --- Contact Section --- */}
                 <ContactSection content={content} language={language} />

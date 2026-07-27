@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const T = {
   en: {
@@ -6,7 +6,7 @@ const T = {
     eyebrow: 'Paris Photoshoots',
     title1: 'Your Paris moment,',
     title2: 'beautifully captured.',
-    subtitle: 'Natural, elegant photos in the most beautiful corners of Paris — for couples, solo travelers, and anyone who wants to remember this city forever.',
+    subtitle: 'Natural, elegant photos in the most beautiful corners of Paris, for couples, solo travelers, and anyone who wants to remember this city forever.',
     pastSessions: 'Past sessions',
     included: 'What\'s included',
     perfectFor: 'Perfect for',
@@ -33,7 +33,7 @@ const T = {
     eyebrow: 'Séances Photo à Paris',
     title1: 'Votre moment parisien,',
     title2: 'magnifiquement capturé.',
-    subtitle: 'Des photos naturelles et élégantes dans les plus beaux recoins de Paris — pour les couples, les voyageurs en solo et tous ceux qui veulent se souvenir de cette ville à jamais.',
+    subtitle: 'Des photos naturelles et élégantes dans les plus beaux recoins de Paris, pour les couples, les voyageurs en solo et tous ceux qui veulent se souvenir de cette ville à jamais.',
     pastSessions: 'Séances précédentes',
     included: 'Ce qui est inclus',
     perfectFor: 'Parfait pour',
@@ -60,7 +60,7 @@ const T = {
     eyebrow: 'Ensaios Fotográficos em Paris',
     title1: 'O seu momento em Paris,',
     title2: 'lindamente registrado.',
-    subtitle: 'Fotos naturais e elegantes nos cantos mais bonitos de Paris — para casais, viajantes solo e todos que querem lembrar desta cidade para sempre.',
+    subtitle: 'Fotos naturais e elegantes nos cantos mais bonitos de Paris, para casais, viajantes solo e todos que querem lembrar desta cidade para sempre.',
     pastSessions: 'Sessões anteriores',
     included: 'O que está incluído',
     perfectFor: 'Perfeito para',
@@ -87,7 +87,7 @@ const T = {
     eyebrow: 'Sesiones de Fotos en París',
     title1: 'Tu momento en París,',
     title2: 'bellamente capturado.',
-    subtitle: 'Fotos naturales y elegantes en los rincones más bellos de París — para parejas, viajeros en solitario y todos los que quieren recordar esta ciudad para siempre.',
+    subtitle: 'Fotos naturales y elegantes en los rincones más bellos de París, para parejas, viajeros en solitario y todos los que quieren recordar esta ciudad para siempre.',
     pastSessions: 'Sesiones anteriores',
     included: 'Qué incluye',
     perfectFor: 'Ideal para',
@@ -123,6 +123,8 @@ const samplePhotos = [
 export default function PhotoshootsPage({ language = 'en' }) {
   const t = T[language] || T.en;
   const whatsappUrl = `https://wa.me/33759752536?text=${encodeURIComponent(t.whatsapp)}`;
+  const [isPaused, setIsPaused] = useState(false);
+  const loopedPhotos = [...samplePhotos, ...samplePhotos];
   return (
     <>
       <style>{`
@@ -183,17 +185,27 @@ export default function PhotoshootsPage({ language = 'en' }) {
           margin-bottom: 32px;
         }
         .fg-photos-strip {
+          overflow: hidden;
+          width: 100%;
+        }
+        .fg-photos-track {
           display: flex;
           gap: 2px;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
+          width: max-content;
+          animation: fg-marquee 42s linear infinite;
         }
-        .fg-photos-strip::-webkit-scrollbar { display: none; }
+        .fg-photos-strip:hover .fg-photos-track {
+          animation-play-state: paused;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .fg-photos-track { animation: none; }
+        }
+        @keyframes fg-marquee {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
         .fg-photo-item {
           flex: 0 0 300px;
-          scroll-snap-align: start;
           overflow: hidden;
         }
         .fg-photo-item img {
@@ -333,12 +345,22 @@ export default function PhotoshootsPage({ language = 'en' }) {
         {/* Photo strip */}
         <div className="fg-photos-strip-section">
           <p className="fg-photos-section-label">{t.pastSessions}</p>
-          <div className="fg-photos-strip">
-            {samplePhotos.map((p) => (
-              <div key={p.src} className="fg-photo-item">
-                <img src={p.src} alt={p.alt} />
-              </div>
-            ))}
+          <div
+            className="fg-photos-strip"
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+            onTouchCancel={() => setIsPaused(false)}
+          >
+            <div
+              className="fg-photos-track"
+              style={isPaused ? { animationPlayState: 'paused' } : undefined}
+            >
+              {loopedPhotos.map((p, i) => (
+                <div key={`${p.src}-${i}`} className="fg-photo-item">
+                  <img src={p.src} alt={p.alt} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

@@ -23,7 +23,7 @@ Contact : contact@fransguide.com`,
             {
               subtitle: 'Sur le site web (fransguide.com)',
               items: [
-                'Formulaire de contact : nom, adresse e-mail, message — uniquement si vous choisissez de nous contacter.',
+                'Formulaire de contact : nom, adresse e-mail, message, uniquement si vous choisissez de nous contacter.',
                 'Préférence de langue : stockée localement dans votre navigateur (localStorage). Aucune donnée envoyée à nos serveurs.',
                 'Aucun cookie de tracking, aucune publicité, aucun analytics tiers.',
               ],
@@ -106,7 +106,7 @@ Contact: contact@fransguide.com`,
             {
               subtitle: 'On the website (fransguide.com)',
               items: [
-                'Contact form: name, email address, message — only if you choose to contact us.',
+                'Contact form: name, email address, message, only if you choose to contact us.',
                 'Language preference: stored locally in your browser (localStorage). No data is sent to our servers.',
                 'No tracking cookies, no advertising, no third-party analytics.',
               ],
