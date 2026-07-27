@@ -1,28 +1,35 @@
 import React from 'react';
 import { reviews } from '../data/reviews';
 
-// TODO(Fran): replace with your real Google Business review link once it's ready.
-const GOOGLE_REVIEW_URL = 'https://g.page/r/REPLACE_WITH_YOUR_GOOGLE_REVIEW_LINK/review';
+const GOOGLE_REVIEW_URL = 'https://g.page/r/CcSUW66rZ7tnEAE/review';
 
 const TEXTS = {
   en: {
     eyebrow: 'Testimonials',
     title: <>What travelers<br/><em>say about Fran.</em></>,
+    emptyTitle: <>Your review<br/><em>would mean a lot.</em></>,
+    emptyText: 'Walked through Paris with me, or had your photos taken? Sharing a few words on Google helps other travelers find their way here.',
     cta: 'Leave a review',
   },
   fr: {
     eyebrow: 'Témoignages',
     title: <>Ce que disent<br/><em>les voyageurs.</em></>,
+    emptyTitle: <>Votre avis<br/><em>compte beaucoup.</em></>,
+    emptyText: 'Vous avez marché dans Paris avec moi, ou fait vos photos ensemble ? Quelques mots sur Google aident d\'autres voyageurs à trouver leur chemin jusqu\'ici.',
     cta: 'Laisser un avis',
   },
   pt: {
     eyebrow: 'Depoimentos',
     title: <>O que dizem<br/><em>os viajantes.</em></>,
+    emptyTitle: <>A sua avaliação<br/><em>faz diferença.</em></>,
+    emptyText: 'Caminhou por Paris comigo, ou fizemos as suas fotos? Algumas palavras no Google ajudam outros viajantes a chegarem até aqui.',
     cta: 'Deixar uma avaliação',
   },
   es: {
     eyebrow: 'Testimonios',
     title: <>Lo que dicen<br/><em>los viajeros.</em></>,
+    emptyTitle: <>Tu reseña<br/><em>significa mucho.</em></>,
+    emptyText: '¿Paseaste por París conmigo, o hicimos tus fotos? Unas pocas palabras en Google ayudan a otros viajeros a llegar hasta aquí.',
     cta: 'Dejar una reseña',
   },
 };
@@ -39,6 +46,7 @@ function Stars({ rating }) {
 
 function Reviews({ language = 'en' }) {
   const t = TEXTS[language] || TEXTS.en;
+  const hasReviews = reviews.length > 0;
 
   return (
     <section className="fg-reviews">
@@ -74,6 +82,17 @@ function Reviews({ language = 'en' }) {
           margin: 0;
         }
         .fg-reviews-title em { font-style: italic; color: #0F2C66; }
+        /* With no reviews yet, the head is the last child: drop its bottom gap */
+        .fg-reviews-head:last-child { margin-bottom: 0; }
+        .fg-reviews-invite {
+          font-family: 'Jost', sans-serif;
+          font-size: 14px;
+          line-height: 1.8;
+          color: #4A4845;
+          font-weight: 400;
+          margin: 18px 0 0;
+          max-width: 460px;
+        }
         .fg-reviews-cta {
           display: inline-block;
           background: #0F2C66;
@@ -151,7 +170,8 @@ function Reviews({ language = 'en' }) {
       <div className="fg-reviews-head">
         <div>
           <p className="fg-reviews-eyebrow">{t.eyebrow}</p>
-          <h2 className="fg-reviews-title">{t.title}</h2>
+          <h2 className="fg-reviews-title">{hasReviews ? t.title : t.emptyTitle}</h2>
+          {!hasReviews && <p className="fg-reviews-invite">{t.emptyText}</p>}
         </div>
         <a
           href={GOOGLE_REVIEW_URL}
@@ -163,15 +183,17 @@ function Reviews({ language = 'en' }) {
         </a>
       </div>
 
-      <div className="fg-reviews-grid">
-        {reviews.map((r) => (
-          <div key={r.name} className="fg-review-card">
-            <Stars rating={r.rating} />
-            <p className="fg-review-text">&ldquo;{r.text}&rdquo;</p>
-            <p className="fg-review-name">{r.name}</p>
-          </div>
-        ))}
-      </div>
+      {hasReviews && (
+        <div className="fg-reviews-grid">
+          {reviews.map((r) => (
+            <div key={r.name} className="fg-review-card">
+              <Stars rating={r.rating} />
+              <p className="fg-review-text">&ldquo;{r.text}&rdquo;</p>
+              <p className="fg-review-name">{r.name}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
