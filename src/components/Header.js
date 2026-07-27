@@ -166,23 +166,29 @@ export default function Header({ language, switchLanguage }) {
           z-index: 999;
           flex-direction: column;
           align-items: flex-start;
-          justify-content: center;
-          padding: 80px 40px 40px;
+          justify-content: flex-start;
+          padding: 100px 40px 40px;
           gap: 0;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
           transform: translateX(-100%);
           transition: transform 0.3s ease !important;
         }
         .mobile-nav-overlay.open { transform: translateX(0) !important; }
         .mobile-nav-overlay a {
           font-family: 'Cormorant Garamond', serif;
-          font-size: 36px;
+          font-size: 28px;
           font-weight: 400;
           color: #1C1C1C;
           text-decoration: none;
           border-bottom: 1px solid #E8E3DC;
           width: 100%;
-          padding: 16px 0;
+          padding: 13px 0;
           transition: color 0.2s ease !important;
+        }
+        @media (max-height: 700px) {
+          .mobile-nav-overlay { padding-top: 88px; }
+          .mobile-nav-overlay a { font-size: 24px; padding: 11px 0; }
         }
         .mobile-nav-overlay a:hover { color: #0F2C66; }
         .mobile-book-cta {
