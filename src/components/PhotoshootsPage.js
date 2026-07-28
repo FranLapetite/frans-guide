@@ -292,11 +292,25 @@ const LIFESTYLE_PACKS = [
 
 const samplePhotos = [
   { src: '/assets/images/photoshoots/photo-1.jpeg', alt: 'Paris couple photoshoot' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-07.jpeg', alt: 'Couple embracing above the Paris rooftops at Montmartre' },
   { src: '/assets/images/photoshoots/photo-3.jpeg', alt: 'Solo traveler photoshoot in Paris' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-12.jpeg', alt: 'Reaching for wisteria blossoms during a spring photoshoot in Paris' },
   { src: '/assets/images/photoshoots/photo-2.jpeg', alt: 'Romantic Eiffel Tower photoshoot' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-10.jpeg', alt: 'Couple photoshoot on a stone wall in Montmartre, Paris' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-13.jpeg', alt: 'Black and white portrait session on the dunes' },
   { src: '/assets/images/photoshoots/photo-4.jpeg', alt: 'Paris lifestyle photoshoot' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-11.jpeg', alt: 'Portrait in a floral dress on the cobbled streets of Montmartre' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-08.jpeg', alt: 'Couple laughing by a Montmartre street sign in Paris' },
   { src: '/assets/images/photoshoots/photo-5.jpeg', alt: 'Paris lifestyle photoshoot' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-14.jpeg', alt: 'Black and white portrait walking on the sand dunes' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-09.jpeg', alt: 'Couple photoshoot in a Montmartre street in Paris' },
   { src: '/assets/images/photoshoots/photo-6.jpeg', alt: 'Paris lifestyle photoshoot' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-15.jpeg', alt: 'Golden hour portrait session on the dunes' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-16.jpeg', alt: 'Bachelorette party photoshoot in Paris' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-17.jpeg', alt: 'Friends celebrating a bachelorette party in Paris' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-18.jpeg', alt: 'Bachelorette group photoshoot in the streets of Paris' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-19.jpeg', alt: 'Bachelorette party portrait in Paris' },
+  { src: '/assets/images/photoshoots/paris-photoshoot-20.jpeg', alt: 'Bachelorette party celebration photoshoot in Paris' },
 ];
 
 export default function PhotoshootsPage({ language = 'en' }) {
@@ -383,14 +397,15 @@ export default function PhotoshootsPage({ language = 'en' }) {
           from { transform: translateX(0); }
           to { transform: translateX(-50%); }
         }
+        /* Fixed height, automatic width: every photo keeps its own framing,
+           landscape stays landscape and nothing is ever cropped. */
         .fg-photo-item {
-          flex: 0 0 300px;
+          flex: 0 0 auto;
           overflow: hidden;
         }
         .fg-photo-item img {
-          width: 100%;
           height: 400px;
-          object-fit: cover;
+          width: auto;
           display: block;
           filter: brightness(0.97) saturate(0.9);
           transition: filter 0.3s;
@@ -644,8 +659,7 @@ export default function PhotoshootsPage({ language = 'en' }) {
           .fg-photos-pack-link { padding: 8px 0 2px; }
           .fg-photos-wed-banner { padding: 40px 24px; }
           .fg-photos-wed-btn { width: 100%; text-align: center; }
-          .fg-photo-item { flex: 0 0 240px; }
-          .fg-photo-item img { height: 320px; }
+          .fg-photo-item img { height: 300px; }
           .fg-photos-cta-title { font-size: 34px; }
         }
       `}</style>
@@ -671,7 +685,12 @@ export default function PhotoshootsPage({ language = 'en' }) {
           >
             <div
               className="fg-photos-track"
-              style={isPaused ? { animationPlayState: 'paused' } : undefined}
+              style={{
+                // ~5s per photo keeps the scrolling speed constant whatever
+                // the number of photos in the strip
+                animationDuration: `${samplePhotos.length * 5}s`,
+                ...(isPaused ? { animationPlayState: 'paused' } : {}),
+              }}
             >
               {loopedPhotos.map((p, i) => (
                 <div key={`${p.src}-${i}`} className="fg-photo-item">

@@ -1,10 +1,16 @@
 import React from 'react';
 
-// Editorial collage: drop new wedding photos into public/assets/images/weddings/
-// and update these paths (using lifestyle photos until then).
+// Editorial collage. Both photos are landscape-ish, so the main slot is square
+// rather than portrait: it crops Fran's framing as little as possible.
 const COLLAGE = {
-  main: { src: '/assets/images/photoshoots/photo-2.jpeg', alt: 'Wedding couple photoshoot in Paris' },
-  side: { src: '/assets/images/photoshoots/photo-5.jpeg', alt: 'Civil wedding photography Paris' },
+  main: {
+    src: '/assets/images/weddings/wedding-ceremony.jpeg',
+    alt: 'Bride and groom during their civil ceremony at a Paris city hall',
+  },
+  side: {
+    src: '/assets/images/weddings/wedding-confetti.jpeg',
+    alt: 'Newlyweds walking under a shower of petals after their Paris wedding',
+  },
 };
 
 const PACKAGES = [
@@ -554,9 +560,10 @@ export default function WeddingsPage({ language = 'en' }) {
           padding: 0 80px 72px;
           align-items: start;
         }
+        /* No aspect-ratio and no object-fit anywhere in the collage: the photos
+           are shown whole, in their own framing, and the page adapts to them. */
         .fg-wed-collage-main {
           overflow: hidden;
-          aspect-ratio: 3/4;
         }
         .fg-wed-collage-side {
           display: flex;
@@ -566,12 +573,10 @@ export default function WeddingsPage({ language = 'en' }) {
         }
         .fg-wed-collage-img {
           overflow: hidden;
-          aspect-ratio: 4/3;
         }
         .fg-wed-collage img {
           width: 100%;
-          height: 100%;
-          object-fit: cover;
+          height: auto;
           display: block;
           filter: brightness(0.97) saturate(0.88);
           transition: filter 0.3s, transform 0.4s;
@@ -883,7 +888,6 @@ export default function WeddingsPage({ language = 'en' }) {
           .fg-wed-header { padding: 60px 32px 48px; }
           .fg-wed-portfolio-label { padding: 44px 32px 24px; }
           .fg-wed-collage { grid-template-columns: 1fr; padding: 0 32px 56px; }
-          .fg-wed-collage-main { aspect-ratio: 4/5; }
           .fg-wed-collage-side { padding-top: 0; }
           .fg-wed-packages { padding: 60px 32px; }
           .fg-wed-cards { grid-template-columns: 1fr; }
