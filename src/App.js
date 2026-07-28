@@ -207,9 +207,18 @@ export default function App() {
   
 
   // --- GitHub Pages redirect handler ---
-  if (window.location.search.includes('?p=')) {
-    const newPath = window.location.search.replace('?p=', '');
-    window.history.replaceState(null, '', newPath);
+  // 404.html sends deep links here as /?p=<path>&q=<original query string>.
+  // Rebuild the real URL so React Router sees the path and analytics still
+  // sees the utm_* parameters.
+  const redirectParams = new URLSearchParams(window.location.search);
+  const redirectedPath = redirectParams.get('p');
+  if (redirectedPath) {
+    const redirectedQuery = redirectParams.get('q');
+    window.history.replaceState(
+      null,
+      '',
+      redirectedPath + (redirectedQuery ? `?${redirectedQuery}` : '') + window.location.hash
+    );
   }
 
   // --- Language switching logic (unchanged) ---
