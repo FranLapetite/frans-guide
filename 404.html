@@ -4,9 +4,15 @@
     <meta charset="utf-8" />
     <title>Redirecting…</title>
     <script>
-      // Redirect all 404s to index.html and preserve the path for React Router
-      var redirectTo = window.location.protocol + '//' + window.location.host + '/?p=' + window.location.pathname;
-      window.location.replace(redirectTo);
+      // Redirect all 404s to index.html, preserving the path AND the query
+      // string (needed for utm_* campaign tracking) plus any hash.
+      var l = window.location;
+      var redirectTo =
+        l.protocol + '//' + l.host +
+        '/?p=' + encodeURIComponent(l.pathname) +
+        (l.search ? '&q=' + encodeURIComponent(l.search.slice(1)) : '') +
+        l.hash;
+      l.replace(redirectTo);
     </script>
   </head>
   <body>
