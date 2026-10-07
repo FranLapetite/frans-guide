@@ -93,6 +93,9 @@ export default function TourMap({ language = 'en' }) {
           width: 100%;
           font-family: 'Jost', sans-serif;
         }
+        .fg-map-wrap .leaflet-tile-pane {
+          filter: grayscale(0.7) contrast(0.9) brightness(1.05);
+        }
         /* Popup styles */
         .fg-map-wrap .leaflet-popup-content-wrapper {
           border-radius: 0;
@@ -171,7 +174,7 @@ export default function TourMap({ language = 'en' }) {
           >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-              url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+              url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {mapped.map(({ tour, idx }) => {
               const t = (language !== 'en' && tour[language]) ? tour[language] : {};
