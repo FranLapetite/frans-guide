@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AIRBNB_EXPERIENCE_URL } from '../data/links';
 
 const T = {
   en: {
@@ -14,6 +15,8 @@ const T = {
     ctaTitle2: 'your Paris story?',
     ctaBody: 'Message me directly to check availability, discuss locations, and design a photoshoot that fits your style.',
     bookBtn: 'Book on WhatsApp',
+    airbnbNote: 'Also on Airbnb Experiences: book your photoshoot in one click.',
+    airbnbBtn: 'Book on Airbnb',
     packsLabel: 'Sessions & prices',
     packsTitle1: 'A session for',
     packsTitle2: 'every moment.',
@@ -52,6 +55,8 @@ const T = {
     ctaTitle2: 'votre histoire parisienne ?',
     ctaBody: 'Contactez-moi directement pour vérifier les disponibilités, discuter des lieux et concevoir une séance photo adaptée à votre style.',
     bookBtn: 'Réserver sur WhatsApp',
+    airbnbNote: 'Aussi sur Airbnb Expériences : réservez votre séance photo en un clic.',
+    airbnbBtn: 'Réserver sur Airbnb',
     packsLabel: 'Séances & tarifs',
     packsTitle1: 'Une séance pour',
     packsTitle2: 'chaque moment.',
@@ -90,6 +95,8 @@ const T = {
     ctaTitle2: 'a sua história em Paris?',
     ctaBody: 'Fale comigo diretamente para verificar disponibilidade, discutir locais e criar um ensaio que combine com o seu estilo.',
     bookBtn: 'Reservar pelo WhatsApp',
+    airbnbNote: 'Também no Airbnb Experiences: reserve o seu ensaio com um clique.',
+    airbnbBtn: 'Reservar no Airbnb',
     packsLabel: 'Sessões & preços',
     packsTitle1: 'Uma sessão para',
     packsTitle2: 'cada momento.',
@@ -128,6 +135,8 @@ const T = {
     ctaTitle2: '¿tu historia en París?',
     ctaBody: 'Escríbeme directamente para ver disponibilidad, hablar de los lugares y diseñar una sesión que se adapte a tu estilo.',
     bookBtn: 'Reservar por WhatsApp',
+    airbnbNote: 'También en Airbnb Experiences: reserva tu sesión de fotos con un clic.',
+    airbnbBtn: 'Reservar en Airbnb',
     packsLabel: 'Sesiones & precios',
     packsTitle1: 'Una sesión para',
     packsTitle2: 'cada momento.',
@@ -607,6 +616,26 @@ export default function PhotoshootsPage({ language = 'en' }) {
           font-style: italic;
           color: #0F2C66;
         }
+        .fg-photos-cta-airbnb {
+          font-family: 'Jost', sans-serif;
+          font-size: 14px;
+          line-height: 1.7;
+          color: #0F2C66;
+          margin: 14px 0 0;
+        }
+        .fg-photos-cta-buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          flex-shrink: 0;
+        }
+        .fg-photos-cta-buttons .fg-btn-primary { text-align: center; }
+        .fg-photos-airbnb-btn {
+          background: transparent !important;
+          color: #0F2C66 !important;
+          border: 1px solid #0F2C66;
+        }
+        .fg-photos-airbnb-btn:hover { background: #CEE4FE !important; }
         .fg-photos-cta-body {
           font-family: 'Jost', sans-serif;
           font-size: 15px;
@@ -758,10 +787,21 @@ export default function PhotoshootsPage({ language = 'en' }) {
               {t.ctaTitle1}<br/><em>{t.ctaTitle2}</em>
             </h2>
             <p className="fg-photos-cta-body">{t.ctaBody}</p>
+            <p className="fg-photos-cta-airbnb">{t.airbnbNote}</p>
           </div>
-          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="fg-btn-primary">
-            {t.bookBtn}
-          </a>
+          <div className="fg-photos-cta-buttons">
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="fg-btn-primary">
+              {t.bookBtn}
+            </a>
+            <a
+              href={AIRBNB_EXPERIENCE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="fg-btn-primary fg-photos-airbnb-btn"
+            >
+              {t.airbnbBtn}
+            </a>
+          </div>
         </div>
       </div>
     </>

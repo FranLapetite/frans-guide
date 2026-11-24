@@ -31,7 +31,7 @@ const TEXTS = {
       },
       {
         q: 'How do I book a tour or a photoshoot?',
-        a: 'The fastest way is WhatsApp: tap any booking button on the site and your message is pre-filled. You can also use the contact form or reach out on Instagram @frans.guide. Fran usually replies quickly.',
+        a: 'The fastest way is WhatsApp: tap any booking button on the site and your message is pre-filled. You can also use the contact form or reach out on Instagram @frans.guide. Fran usually replies quickly. Photoshoots can also be booked in one click on Airbnb Experiences.',
       },
       {
         q: 'What happens if it rains on the day of my tour or photoshoot?',
@@ -68,7 +68,7 @@ const TEXTS = {
       },
       {
         q: 'Comment réserver une visite ou une séance photo ?',
-        a: "Le plus rapide est WhatsApp : appuyez sur n'importe quel bouton de réservation du site et votre message est pré-rempli. Vous pouvez aussi utiliser le formulaire de contact ou écrire sur Instagram @frans.guide. Fran répond généralement rapidement.",
+        a: "Le plus rapide est WhatsApp : appuyez sur n'importe quel bouton de réservation du site et votre message est pré-rempli. Vous pouvez aussi utiliser le formulaire de contact ou écrire sur Instagram @frans.guide. Fran répond généralement rapidement. Les séances photo se réservent aussi en un clic sur Airbnb Expériences.",
       },
       {
         q: "Que se passe-t-il s'il pleut le jour de ma visite ou de ma séance photo ?",
@@ -105,7 +105,7 @@ const TEXTS = {
       },
       {
         q: 'Como reservo um tour ou um ensaio fotográfico?',
-        a: 'O jeito mais rápido é o WhatsApp: toque em qualquer botão de reserva do site e sua mensagem já vem pronta. Você também pode usar o formulário de contato ou falar pelo Instagram @frans.guide. Fran costuma responder rápido.',
+        a: 'O jeito mais rápido é o WhatsApp: toque em qualquer botão de reserva do site e sua mensagem já vem pronta. Você também pode usar o formulário de contato ou falar pelo Instagram @frans.guide. Fran costuma responder rápido. Os ensaios fotográficos também podem ser reservados com um clique no Airbnb Experiences.',
       },
       {
         q: 'O que acontece se chover no dia do meu tour ou ensaio?',
@@ -142,7 +142,7 @@ const TEXTS = {
       },
       {
         q: '¿Cómo reservo un tour o una sesión de fotos?',
-        a: 'Lo más rápido es WhatsApp: toca cualquier botón de reserva del sitio y tu mensaje ya está listo. También puedes usar el formulario de contacto o escribir por Instagram @frans.guide. Fran suele responder rápido.',
+        a: 'Lo más rápido es WhatsApp: toca cualquier botón de reserva del sitio y tu mensaje ya está listo. También puedes usar el formulario de contacto o escribir por Instagram @frans.guide. Fran suele responder rápido. Las sesiones de fotos también se pueden reservar con un clic en Airbnb Experiences.',
       },
       {
         q: '¿Qué pasa si llueve el día de mi tour o sesión de fotos?',
